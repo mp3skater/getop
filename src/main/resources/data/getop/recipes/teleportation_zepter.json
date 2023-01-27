@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " #g",
+        " E#",
+        "/  "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:end_crystal"
+        },
+        "g": {
+            "item": "getop:painite_ingot"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "/": {
+            "item": "minecraft:blaze_rod"
+        }
+    },
+    "result": {
+        "item": "getop:teleportation_zepter",
+        "count": 1
+    }
+}

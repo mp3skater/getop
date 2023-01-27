@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#g#",
+        "RNR",
+        " Q "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:end_crystal"
+        },
+        "g": {
+            "item": "getop:painite_ingot"
+        },
+        "R": {
+            "item": "minecraft:redstone_block"
+        },
+        "N": {
+            "item": "minecraft:nether_star"
+        },
+        "Q": {
+            "item": "minecraft:netherite_sword"
+        }
+    },
+    "result": {
+        "item": "getop:deathsword",
+        "count": 1
+    }
+}
