@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "getop:block/painite_ore_block"
+    "all": "getop:block/painite_block"
   }
 }

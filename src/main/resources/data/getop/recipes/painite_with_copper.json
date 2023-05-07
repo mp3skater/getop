@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#c#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "getop:painite"
+        },
+        "c": {
+            "item": "minecraft:copper_ingot"
+        }
+    },
+    "result": {
+        "item": "getop:painite_ingot",
+        "count": 1
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "item.getop.painite": "Painite",
+  "item.getop.painite_ingot": "Painite Ingot",
+
+  "item.getop.deathsword": "Deathsword",
+  "item.getop.pickashe": "Pickashe",
+  "item.getop.end_sceptre": "End Sceptre",
+  "item.getop.ice_scythe": "Ice Scythe",
+  "item.getop.herobrine_sword": "Herobrine Sword",
+
+  "item.getop.painite_helmet": "Painite Helmet",
+  "item.getop.painite_chestplate": "Painite Chestplate",
+  "item.getop.painite_leggings": "Painite Leggings",
+  "item.getop.painite_boots": "Painite Boots",
+
+  "block.getop.painite_ore_block": "Painite Ore",
+  "block.getop.painite_block": "Painite Block",
+
+  "enchantment.getop.lightning_striker": "Lightning Striker",
+
+  "effects.getop.freeze": "Freeze",
+
+  "item.getop.end_sceptre.affirmation": "Block hit!",
+
+  "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
+
+  "itemGroup.getoptab": "Get OP Items"
+}
