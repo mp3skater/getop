@@ -4,6 +4,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,19 +19,17 @@ public class VoidwalkEffect extends MobEffect {
         super(mobEffectCategory, color);
     }
     @Override
-    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public void applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
+        //to get the player from a Living Entity, var player is already defined in "instanceof" method,
+        //then get vec, check if clientside to avoid problems with other servers...,
+        //after that just a simple "player.setDeltaMovement" method to make the player float
+        if (pLivingEntity instanceof Player player) {
+            Vec3 vec = pLivingEntity.getDeltaMovement();
+            if(!pLivingEntity.level.isClientSide()){
+                player.setDeltaMovement(vec.x, 0.01, vec.z);
+            }
 
-        //Timer timer = new Timer();
-        //timer.schedule(new TimerTask() {
-            //@Override
-            //public void run() {
-                Vec3 vec = pLivingEntity.getDeltaMovement();
-                if(!pLivingEntity.level.isClientSide()){
-                    pLivingEntity.setDeltaMovement(vec.x, 0.1, vec.z);
-                }
-        //    }
-        //}, 1000); // delay for 1 second
-        super.applyEffectTick(pLivingEntity, pAmplifier);
+        }
     }
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
