@@ -40,6 +40,8 @@ public class GetOP
 
         ModEntityTypes.register(eventBus);
 
+        ModStructures.register(eventBus);
+
         eventBus.addListener(this::setup);
 
         eventBus.addListener(this::setup);
@@ -47,8 +49,6 @@ public class GetOP
         MinecraftForge.EVENT_BUS.register(this);
 
         GeckoLib.initialize();
-
-        ModStructures.register(eventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GetOPClientConfigs.SPEC, "getop-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GetOPCommonConfigs.SPEC, "getop-common.toml");
