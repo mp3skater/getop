@@ -1,6 +1,7 @@
 package net.mp3skater.getop.item.custom;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,6 +24,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
 
 import java.util.Map;
+import java.util.Random;
 
 public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -79,9 +81,9 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
             player.addEffect(new MobEffectInstance(mapStatusEffect.getEffect(),
                     mapStatusEffect.getDuration(), mapStatusEffect.getAmplifier()));
 
-            //if(new Random().nextFloat() > 0.6f) { // 40% of damaging the armor! Possibly!
-            //    player.getInventory().hurtArmor(DamageSource.MAGIC, 1f, new int[]{0, 1, 2, 3});
-            //}
+            if(new Random().nextFloat() > 0.95f) { // 5% of damaging the armor! Possibly!
+                player.getInventory().hurtArmor(DamageSource.MAGIC, 1f, new int[]{0, 1, 2, 3});
+            }
         }
     }
 

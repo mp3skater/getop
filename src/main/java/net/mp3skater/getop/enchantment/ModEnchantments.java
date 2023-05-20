@@ -17,7 +17,7 @@ public class ModEnchantments {
     public static RegistryObject<Enchantment> LIGHTNING_STRIKER =
             ENCHANTMENTS.register("lightning_striker",
                     () -> new LightningStrikerEnchantment(Enchantment.Rarity.VERY_RARE,
-                            EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+                            EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

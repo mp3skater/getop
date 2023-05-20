@@ -1,6 +1,7 @@
 package net.mp3skater.getop.item;
 
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.SwordItem;
@@ -47,13 +48,13 @@ public class ModItems {
             () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.HEAD,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_CHESTPLATE = ITEMS.register("painite_chestplate",
-            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.CHEST,
+            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.CHEST,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_LEGGINGS = ITEMS.register("painite_leggings",
-            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.LEGS,
+            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.LEGS,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_BOOTS = ITEMS.register("painite_boots",
-            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.FEET,
+            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
 
 

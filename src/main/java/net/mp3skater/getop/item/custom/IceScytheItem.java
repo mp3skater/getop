@@ -15,7 +15,8 @@ public class IceScytheItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        pTarget.addEffect(new MobEffectInstance(new FreezeEffect(MobEffectCategory.HARMFUL, 3124690), 40, 1), pAttacker);
+        pTarget.addEffect(new MobEffectInstance(new FreezeEffect(MobEffectCategory.HARMFUL, 3124690),
+                40, 1), pAttacker);
         return super.hurtEnemy(pStack, pTarget, pAttacker);
     }
 }

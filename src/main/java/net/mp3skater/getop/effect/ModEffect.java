@@ -17,8 +17,8 @@ public class ModEffect {
     public static final RegistryObject<MobEffect> FREEZE = MOB_EFFECTS.register("freeze",
             () -> new FreezeEffect(MobEffectCategory.HARMFUL, 3124690));
 
-    public static final RegistryObject<MobEffect> VOID_WALK_EFFECT = MOB_EFFECTS.register("void_walk",
-            () -> new VoidwalkEffect(MobEffectCategory.BENEFICIAL, 0x040017));
+    public static final RegistryObject<MobEffect> VOID_WALK = MOB_EFFECTS.register("void_walk",
+            () -> new VoidwalkEffect(MobEffectCategory.BENEFICIAL, 0));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

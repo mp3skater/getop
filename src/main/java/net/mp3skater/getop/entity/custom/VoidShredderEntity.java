@@ -1,23 +1,20 @@
 package net.mp3skater.getop.entity.custom;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -26,12 +23,15 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class VoidShredderEntity extends Animal implements IAnimatable {
+public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy {
     private AnimationFactory factory = new AnimationFactory(this);
-    public VoidShredderEntity(EntityType<? extends Animal> entityType, Level level) {
+    public VoidShredderEntity(EntityType<? extends FlyingMob> entityType, Level level) {
         super(entityType, level);
-        this.moveControl = new FlyingMoveControl(this, 10, false);
+        this.xpReward = 50;
+        //this.moveControl = new VoidShredder.VoidShredderMoveControl(this);
+        //this.lookControl = new VoidShredder.VoidShredderLookControl(this);
     }
+    
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 85.0D)
@@ -43,20 +43,30 @@ public class VoidShredderEntity extends Animal implements IAnimatable {
 
     //Goals of Entity
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1d, true));
+        //this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1d, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8f));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Shulker.class, false));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1d));
+        //this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1d));
     }
-    //(Not used for this Entity) Is used for breedable Entities
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        return null;
+
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
     }
+
+    //Called when the entity is attacked.
+        public boolean hurt(DamageSource pSource, float pAmount) {
+            if (this.isInvulnerableTo(pSource)) {
+                return false;
+            } else if (pSource.getDirectEntity() instanceof LightningBolt && pSource.getEntity() instanceof Player) {
+                super.hurt(pSource, 1000.0F);
+                return true;
+            } else {
+                return super.hurt(pSource, pAmount);
+            }
+        }
 
     //Sets the animation in different States
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
