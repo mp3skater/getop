@@ -48,13 +48,13 @@ public class ModItems {
             () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.HEAD,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_CHESTPLATE = ITEMS.register("painite_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.CHEST,
+            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.CHEST,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_LEGGINGS = ITEMS.register("painite_leggings",
-            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.LEGS,
+            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.LEGS,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PAINITE_BOOTS = ITEMS.register("painite_boots",
-            () -> new ArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.FEET,
+            () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
 
 

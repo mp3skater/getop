@@ -36,25 +36,29 @@ public class DeathSwordItem extends SwordItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack>
     use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
-        Level world = player.getLevel();
         Vec3 vec = player.getLookAngle();
-        //is required for the server to control the Players movement
-            player.hurtMarked = true;
         BlockPos pos = player.getOnPos();
+        ItemStack itemstack = player.getItemInHand(hand);
         int radius = GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get();
-        List<Entity> entities = world.getEntities(player, new AABB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius));
-        //player.sendMessage(new TextComponent("In a radius of " + GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get()
-        //        + " blocks these entities will get damaged 20 hp: " + entities), player.getUUID());
-        for (Entity entity : entities) {
-            if(((LivingEntity) entity).hasLineOfSight(player)) {
-                    if(((LivingEntity) entity).hasLineOfSight(player))
-                        entity.hurt(DamageSource.MAGIC, 20);
-                    entity.setDeltaMovement(0.5f * vec.x, 0.5d * vec.y, 0.5d * vec.z);
-            }
+        if (hand == InteractionHand.MAIN_HAND || !level.isClientSide) {
+            //#List<Entity> entities = level.getEntities(player, new AABB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius));
+            //player.sendMessage(new TextComponent("In a radius of " + GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get()
+            //        + " blocks these entities will get damaged 25 hp: " + entities), player.getUUID());
+            player.sendMessage(new TextComponent("this is vec.x" + vec.x), player.getUUID());
+
+            //#for (Entity entity : entities) {
+            //#
+            //#            if(((LivingEntity) entity).)
+            //#                entity.hurt(DamageSource.MAGIC, 25);
+            //#            entity.setDeltaMovement(0.5f * vec.x, 0.5d * vec.y, 0.5d * vec.z);
+            //#}
+
+            //damages weapon per hit
+            itemstack.hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
         }
+        //gives the End Sceptre a cool down of half a sec after being used
+        player.getCooldowns().addCooldown(this, 50);
+
         return super.use(level, player, hand);
     }
-
-
-
 }

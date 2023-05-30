@@ -1,5 +1,6 @@
 package net.mp3skater.getop.entity.custom;
 
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -70,6 +72,13 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
 
     //Sets the animation in different States
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        Vec3 v = getDeltaMovement();
+        //System.out.println(new TextComponent("Entity is going up"));
+        if(v.y > 0) {
+            System.out.println("Entity is going up");
+        //    event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
+        //    return PlayState.CONTINUE;
+        }
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
             return PlayState.CONTINUE;

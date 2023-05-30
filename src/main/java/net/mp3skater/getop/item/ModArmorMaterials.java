@@ -10,7 +10,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    PAINITE("painite", 35, new int[]{4, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
+    PAINITE("painite", 35, new int[]{4, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_GOLD,
             3.5F, 0.0F, () -> Ingredient.of(ModItems.PAINITE.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
