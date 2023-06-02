@@ -1,6 +1,8 @@
 package net.mp3skater.getop;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -8,6 +10,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.mp3skater.getop.block.ModBlocks;
 import net.mp3skater.getop.config.GetOPClientConfigs;
 import net.mp3skater.getop.config.GetOPCommonConfigs;

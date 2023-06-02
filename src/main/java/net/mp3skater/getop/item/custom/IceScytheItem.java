@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.mp3skater.getop.effect.FreezeEffect;
+import org.jetbrains.annotations.NotNull;
 
 public class IceScytheItem extends SwordItem {
     public IceScytheItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
@@ -14,7 +15,7 @@ public class IceScytheItem extends SwordItem {
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+    public boolean hurtEnemy(@NotNull ItemStack pStack, LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
         pTarget.addEffect(new MobEffectInstance(new FreezeEffect(MobEffectCategory.HARMFUL, 3124690),
                 40, 1), pAttacker);
         return super.hurtEnemy(pStack, pTarget, pAttacker);

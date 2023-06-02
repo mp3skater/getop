@@ -37,7 +37,7 @@ public class DeathSwordItem extends SwordItem {
     public @NotNull InteractionResultHolder<ItemStack>
     use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         Vec3 vec = player.getLookAngle();
-        BlockPos pos = player.getOnPos();
+        Vec3 eyePosition = player.getEyePosition();
         ItemStack itemstack = player.getItemInHand(hand);
         int radius = GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get();
         if (hand == InteractionHand.MAIN_HAND || !level.isClientSide) {

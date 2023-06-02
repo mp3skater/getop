@@ -21,11 +21,11 @@ public class RadioactiveBlock extends Block {
         if(!pLevel.isClientSide()) {
             if(pEntity instanceof LivingEntity livingEntity) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 21, 20));
-                if(livingEntity.verticalCollision) {
-                    Vec3 v = livingEntity.getDeltaMovement();
-                    float f = (float) v.y;
-                    livingEntity.setDeltaMovement(v.x * 0.2, Mth.fastInvCubeRoot(f) + 0.8, v.x * 0.2);
-                }
+            }
+            if(pEntity instanceof LivingEntity livingEntity && livingEntity.verticalCollision) {
+                Vec3 v = livingEntity.getDeltaMovement();
+                float f = (float) v.y;
+                livingEntity.setDeltaMovement(v.x * 0.2, Mth.fastInvCubeRoot(f) + 0.8, v.x * 0.2);
             }
         }
 

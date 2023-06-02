@@ -48,12 +48,22 @@ public class EndSceptreItem extends SwordItem {
                 vec_end = vec3.add((double) f6 * d0, (double) f5 * d0, (double) f7 * d0);
                 BlockPos blockpos = new BlockPos(vec_end);
                 BlockState state = level.getBlockState(blockpos);
-                boolean isBlock = state.isAir() || state.is(Blocks.WATER) || state.is(Blocks.LAVA)
+                BlockPos tpable_pos = new BlockPos(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
+                BlockState tp = level.getBlockState(tpable_pos);
+                BlockPos tpable_pos2 = new BlockPos(tpable_pos.getX(), tpable_pos.getY() + 1, tpable_pos.getZ());
+                BlockState tp2 = level.getBlockState(tpable_pos2);
+                boolean isnotBlock = state.isAir() || state.is(Blocks.WATER) || state.is(Blocks.LAVA)
                         || state.is(Blocks.POWDER_SNOW) || state.is(Blocks.TALL_SEAGRASS)
                         || state.is(Blocks.GRASS) || state.is(Blocks.TALL_GRASS);
-                if (!isBlock){
-                    tped = true;
-                    break;
+                boolean is_nottpable = tp.isAir() || tp.is(Blocks.WATER) || tp.is(Blocks.LAVA)
+                        || tp.is(Blocks.POWDER_SNOW) || tp.is(Blocks.TALL_SEAGRASS)
+                        || tp.is(Blocks.GRASS) || tp.is(Blocks.TALL_GRASS);
+                boolean is_nottpable2 = tp2.isAir() || tp2.is(Blocks.WATER) || tp2.is(Blocks.LAVA)
+                        || tp2.is(Blocks.POWDER_SNOW) || tp2.is(Blocks.TALL_SEAGRASS)
+                        || tp2.is(Blocks.GRASS) || tp2.is(Blocks.TALL_GRASS);
+                if (!isnotBlock && is_nottpable && is_nottpable2) {
+                        tped = true;
+                        break;
                 }
             }
             assert vec_end != null : "Attention vec_end is null!!!";

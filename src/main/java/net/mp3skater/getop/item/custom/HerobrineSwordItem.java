@@ -26,7 +26,8 @@ public class HerobrineSwordItem extends SwordItem {
     }
 
     public void onCreated(ItemStack stack, Level level, Player player) {
+        stack.enchant(new LightningStrikerEnchantment(Enchantment.Rarity.RARE,
+                EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}), 3);
         super.onCraftedBy(stack, level, player);
-        stack.enchant(new LightningStrikerEnchantment(Enchantment.Rarity.RARE, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}), 3);
     }
 }

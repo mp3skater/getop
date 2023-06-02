@@ -59,9 +59,4 @@ Thank you for playing our mod! We hope it brings you a fantastic gaming experien
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.18.1,1.19)"
     ordering="NONE"
-    side="BOTH"
-# Here's another dependency
-#[[dependencies.getop]]
-#    modId="geckolib"
-#    mandatory=true
-#    ordering="NONE"
+    side="BOTH"# PlayerAnimator dependency
