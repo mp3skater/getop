@@ -2,8 +2,10 @@ package net.mp3skater.getop.item.custom;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -31,8 +33,7 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
 
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
         (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-                .put(ModArmorMaterials.PAINITE, new MobEffectInstance(new VoidwalkEffect(MobEffectCategory.BENEFICIAL,
-                        0x040017), 40, 1)).build();
+                .put(ModArmorMaterials.PAINITE, new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1)).build();
     public PainiteArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);
     }

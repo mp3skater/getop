@@ -1,6 +1,7 @@
 package net.mp3skater.getop.item.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Position;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
