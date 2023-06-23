@@ -19,7 +19,7 @@ modId="getop" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.1.1" #mandatory
+version="0.1.2" #mandatory
  # A display name for the mod
 displayName="Get OP Mod" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
@@ -34,11 +34,7 @@ credits="Thanks for IFEN7 for helping us out with the builds and Kaupenjoe for h
 authors="mp3skater & Johnny 1857" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This Mod serves a noble purpose: to help a Minecraft Server survive longer by introducing weapons to fight for and providing basis to form alliances. It also encourages vast exploration of your world, leaving no inch uncharted.
-
-We're excited to share that this is our first mod, and we have big dreams for its future! If you encounter any bugs, have suggestions for improvements, or want to share ideas, please let us know. We appreciate any help we can get.
-
-Thank you for playing our mod! We hope it brings you a fantastic gaming experience and countless hours of fun! :)
+The GetOP-Mod helps your Minecraft Server to "survive" longer by introducing weapons to fight for and form alliances. It also encourages vast exploration of your world to become the most OP Player of them all.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.getop]] #optional

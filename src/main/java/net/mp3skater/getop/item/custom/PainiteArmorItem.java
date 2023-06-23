@@ -2,8 +2,6 @@ package net.mp3skater.getop.item.custom;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -12,9 +10,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.mp3skater.getop.effect.FreezeEffect;
-import net.mp3skater.getop.effect.ModEffect;
-import net.mp3skater.getop.effect.VoidwalkEffect;
 import net.mp3skater.getop.item.ModArmorMaterials;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;

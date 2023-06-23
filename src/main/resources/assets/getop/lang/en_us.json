@@ -5,6 +5,7 @@
   "item.getop.deathsword": "Deathsword",
   "item.getop.pickashe": "Pickashe",
   "item.getop.end_sceptre": "End Sceptre",
+  "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
   "item.getop.ice_scythe": "Ice Scythe",
   "item.getop.herobrine_sword": "Herobrine Sword",
 
@@ -15,14 +16,13 @@
 
   "block.getop.painite_ore_block": "Painite Ore",
   "block.getop.painite_block": "Painite Block",
+  "block.getop.anvilofsage_block": "Anvil Of Sage",
 
   "enchantment.getop.lightning_striker": "Lightning Striker",
 
   "effects.getop.freeze": "Freeze",
 
   "item.getop.end_sceptre.affirmation": "Block hit!",
-
-  "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
 
   "itemGroup.getoptab": "Get OP Items"
 }

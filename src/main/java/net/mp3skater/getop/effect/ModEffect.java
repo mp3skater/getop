@@ -9,7 +9,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 
-
 public class ModEffect {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, GetOP.MOD_ID);
@@ -17,8 +16,8 @@ public class ModEffect {
     public static final RegistryObject<MobEffect> FREEZE = MOB_EFFECTS.register("freeze",
             () -> new FreezeEffect(MobEffectCategory.HARMFUL, 3124690));
 
-    public static final RegistryObject<MobEffect> VOID_WALK = MOB_EFFECTS.register("void_walk",
-            () -> new VoidwalkEffect(MobEffectCategory.BENEFICIAL, 0));
+    public static final RegistryObject<MobEffect> PAINITE_ARMOR_BOOST = MOB_EFFECTS.register("painite_armor_boost",
+            () -> new PainiteArmorBoostEffect(MobEffectCategory.BENEFICIAL, 4536563));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

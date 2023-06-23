@@ -1,8 +1,6 @@
 package net.mp3skater.getop.item.custom;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Position;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,14 +12,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
+import net.mp3skater.getop.particle.ModParticles;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.util.List;
 
 public class DeathSwordItem extends SwordItem {
     public DeathSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
@@ -37,24 +34,34 @@ public class DeathSwordItem extends SwordItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack>
     use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
-        Vec3 vec = player.getLookAngle();
-        Vec3 eyePosition = player.getEyePosition();
-        ItemStack itemstack = player.getItemInHand(hand);
-        int radius = GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get();
+        Vec3 look = player.getLookAngle();
+        Vec3 start = player.getEyePosition();
+        double margin_xz = 5; // margin of x/z-axe around the death-ray
+        double margin_y = 2; // margin of y-axe around the death-ray
+        Vec3 end = start.add(look.x * GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get(),
+                             look.y * GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get(),
+                             look.z * GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get());
         if (hand == InteractionHand.MAIN_HAND || !level.isClientSide) {
-            //#List<Entity> entities = level.getEntities(player, new AABB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius));
-            //player.sendMessage(new TextComponent("In a radius of " + GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get()
-            //        + " blocks these entities will get damaged 25 hp: " + entities), player.getUUID());
-            player.sendMessage(new TextComponent("this is vec.x" + vec.x), player.getUUID());
 
-            //#for (Entity entity : entities) {
-            //#
-            //#            if(((LivingEntity) entity).)
-            //#                entity.hurt(DamageSource.MAGIC, 25);
-            //#            entity.setDeltaMovement(0.5f * vec.x, 0.5d * vec.y, 0.5d * vec.z);
-            //#}
+            spawnDeathParticle(start, look, level);
 
+            double minX = Math.min(start.x, end.x) - margin_xz;
+            double minY = Math.min(start.y, end.y) - margin_y;
+            double minZ = Math.min(start.z, end.z) - margin_xz;
+            double maxX = Math.max(start.x, end.x) + margin_xz;
+            double maxY = Math.max(start.y, end.y) + margin_y;
+            double maxZ = Math.max(start.z, end.z) + margin_xz;
+            AABB boundingBox = new AABB(minX, minY, minZ, maxX, maxY, maxZ);
+            Iterable<Entity> entities = level.getEntities(player, boundingBox);
+                //player.sendMessage(new TextComponent("In a radius of " + GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get()
+                //        + " blocks these entities will get damaged 25 hp: " + entities), player.getUUID());
+            for (Entity entity : entities) {
+                        if((entity instanceof LivingEntity))
+                            entity.hurt(DamageSource.MAGIC, 12);
+                        entity.setDeltaMovement(0.5d * look.x, 0, 0.5d * look.z);
+            }
             //damages weapon per hit
+            ItemStack itemstack = player.getItemInHand(hand);
             itemstack.hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
         }
         //gives the End Sceptre a cool down of half a sec after being used
@@ -62,4 +69,10 @@ public class DeathSwordItem extends SwordItem {
 
         return super.use(level, player, hand);
     }
+
+    private void spawnDeathParticle(Vec3 start, Vec3 look, Level level) {
+        level.addParticle(ModParticles.DEATHRAY_PARTICLE.get(),
+                start.x, start.y, start.z, look.x * 0.5d,  look.y * 0.5d,  look.z * 0.5d);
+    }
+
 }
