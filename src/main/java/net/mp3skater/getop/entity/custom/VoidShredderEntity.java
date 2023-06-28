@@ -16,6 +16,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -35,6 +36,8 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
     private AnimationFactory factory = new AnimationFactory(this);
     public VoidShredderEntity(EntityType<? extends FlyingMob> entityType, Level level) {
         super(entityType, level);
+        this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.xpReward = 20;
         this.moveControl = new VoidShredderEntity.VoidShredder_MoveControl(this);
     }
@@ -42,10 +45,10 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 85.0D)
-                .add(Attributes.ATTACK_DAMAGE, 20.0f)
+                .add(Attributes.ATTACK_DAMAGE, 19.0f)
                 .add(Attributes.ATTACK_SPEED, 2.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.4f)
-                .add(Attributes.FLYING_SPEED, 0.6f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.3f)
+                .add(Attributes.FLYING_SPEED, 0.8f).build();
     }
 
     //Goals of Entity
@@ -73,6 +76,10 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         }
     public boolean isPersistenceRequired() {
         return true;
+    }
+
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+        return false;
     }
 
     //Sets the animation in different States
@@ -137,16 +144,10 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
             }
         }
 
-        /**
-         * Returns whether an in-progress EntityAIBase should continue executing
-         */
         public boolean canContinueToUse() {
             return false;
         }
 
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
         public void start() {
             Random random = this.voidshredder.getRandom();
             double d0 = this.voidshredder.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
@@ -164,10 +165,6 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
             this.setFlags(EnumSet.of(Goal.Flag.LOOK));
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean canUse() {
             return true;
         }

@@ -50,7 +50,6 @@ public class HerobrineSwordItem extends SwordItem {
         player.hurtMarked = true;
         ItemStack itemstack = player.getItemInHand(hand);
         ServerLevel s_level = ((ServerLevel) player.level);
-
         if (hand == InteractionHand.MAIN_HAND) {
             float f = player.getXRot();
             float f1 = player.getYRot();
@@ -64,7 +63,6 @@ public class HerobrineSwordItem extends SwordItem {
             double d0;
             Vec3 vec_end = null;
             boolean tped = false;
-
             for (d0 = 0d; d0 <= GetOPCommonConfigs.END_SCEPTRE_REACH_DISTANCE.get(); d0++) {
                 vec_end = vec3.add((double) f6 * d0, (double) f5 * d0, (double) f7 * d0);
                 BlockPos blockpos = new BlockPos(vec_end);

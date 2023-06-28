@@ -17,11 +17,11 @@ public class GetOPCommonConfigs {
         BUILDER.push("Configs for the Get OP Mod");
 
         END_SCEPTRE_REACH_DISTANCE = BUILDER.comment("How long the reach distance of the teleport ability!")
-                .defineInRange("Reach Distance", 30d, 8d, 75d);
+                .defineInRange("Reach Distance", 40d, 8d, 80d);
         DEATH_SWORD_REACH_DISTANCE = BUILDER.comment("How long the reach distance of death-ray ability!")
-                .defineInRange("Reach Distance", 20d, 5d, 50d);
+                .defineInRange("Reach Distance", 12d, 5d, 50d);
         ICE_SCYTHE_RADIUS = BUILDER.comment("How big the radius of freeze ability!")
-                .defineInRange("Radius", 8d, 4d, 20d);
+                .defineInRange("Radius", 12d, 5d, 50d);
         HEROBRINE_SWORD_REACH_DISTANCE = BUILDER.comment("How long the reach distance of herobrine ability!")
                 .defineInRange("Reach Distance", 30d, 5d, 50d);
         PAINITE_ORE_VEIN_SIZE = BUILDER.comment("How much Painite spawns in your world!")

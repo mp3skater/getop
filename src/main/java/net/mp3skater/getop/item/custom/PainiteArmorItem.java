@@ -10,6 +10,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.mp3skater.getop.effect.ModEffect;
 import net.mp3skater.getop.item.ModArmorMaterials;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -26,9 +27,10 @@ import java.util.Random;
 public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
+    public static Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
         (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-                .put(ModArmorMaterials.PAINITE, new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1)).build();
+                .put(ModArmorMaterials.PAINITE, new MobEffectInstance(ModEffect.PAINITE_ARMOR_BOOST.get(),
+                        25, 1)).build();
     public PainiteArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);
     }
@@ -43,14 +45,13 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
     public AnimationFactory getFactory() {
         return this.factory;
     }
-
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
         return PlayState.CONTINUE;
     }
 
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
+        super.onArmorTick(stack, world, player);
         if(!world.isClientSide()) {
             if(hasFullSuitOfArmorOn(player)) {
                 evaluateArmorEffects(player);

@@ -17,6 +17,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
 import net.mp3skater.getop.effect.FreezeEffect;
+import net.mp3skater.getop.effect.ModEffect;
 import org.jetbrains.annotations.NotNull;
 
 public class IceScytheItem extends SwordItem {
@@ -38,8 +39,10 @@ public class IceScytheItem extends SwordItem {
     public @NotNull InteractionResultHolder<ItemStack>
     use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         Vec3 center = player.getEyePosition();
-        double radius = GetOPCommonConfigs.END_SCEPTRE_REACH_DISTANCE.get();
-
+        double radius = GetOPCommonConfigs.ICE_SCYTHE_RADIUS.get();
+        if(player.hasEffect(ModEffect.PAINITE_ARMOR_BOOST.get())) {
+            radius = radius * 2;
+        }
 
         double minX = center.x - radius;
         double minY = center.y - radius;

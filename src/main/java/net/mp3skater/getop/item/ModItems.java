@@ -57,8 +57,6 @@ public class ModItems {
             () -> new PainiteArmorItem(ModArmorMaterials.PAINITE, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
 
-
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
