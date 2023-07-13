@@ -103,13 +103,13 @@ public class EndSceptreItem extends SwordItem {
                 //gives the End Sceptre a cool down of half a sec after being used
                     player.getCooldowns().addCooldown(this, 10);
                     COOLDOWN_EVERY_7_TPS++;
-                    if(COOLDOWN_EVERY_7_TPS >= 7){
-                        player.getCooldowns().addCooldown(this, 200);
-                        player.sendMessage(new TextComponent("End Sceptre 10s cooldown.."
-                                //+ " every 7 uses without Painite-Armor"
-                                ), player.getUUID());
-                        COOLDOWN_EVERY_7_TPS = 0;
-                    }
+                    //if(COOLDOWN_EVERY_7_TPS >= 7){
+                    //    player.getCooldowns().addCooldown(this, 200);
+                    //    player.sendMessage(new TextComponent("End Sceptre 10s cooldown.."
+                    //            //+ " every 7 uses without Painite-Armor"
+                    //            ), player.getUUID());
+                    //    COOLDOWN_EVERY_7_TPS = 0;
+                    //}
             }
         return super.use(level, player, hand);
     }

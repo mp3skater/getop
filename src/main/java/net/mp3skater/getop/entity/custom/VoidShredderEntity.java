@@ -1,5 +1,7 @@
 package net.mp3skater.getop.entity.custom;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -8,14 +10,15 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -27,10 +30,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.Comparator;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Random;
 
 public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -39,47 +39,47 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.xpReward = 20;
-        this.moveControl = new VoidShredderEntity.VoidShredder_MoveControl(this);
+        this.moveControl = new VoidShredderMoveControl(this);
+        this.lookControl = new VoidShredderEntity.VoidShredderLookControl(this);
     }
-    
+
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 85.0D)
-                .add(Attributes.ATTACK_DAMAGE, 19.0f)
-                .add(Attributes.ATTACK_SPEED, 2.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f)
-                .add(Attributes.FLYING_SPEED, 0.8f).build();
+                .add(Attributes.ATTACK_DAMAGE, 39.0f)
+                .add(Attributes.ATTACK_SPEED, 2.5f)
+                .add(Attributes.MOVEMENT_SPEED, 20f)
+                .add(Attributes.FLYING_SPEED, 1f).build();
+    }
+
+    /**
+     * Called to update the entity's position/logic.
+     */
+    public void tick() {
+        this.noPhysics = true;
+        super.tick();
+        this.noPhysics = false;
+        this.setNoGravity(true);
     }
 
     //Goals of Entity
     protected void registerGoals() {
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 8,
-                true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0D));
-        this.goalSelector.addGoal(7, new VoidShredderEntity.VoidshredderLookGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(5, new VoidShredderEntity.RandomFloatAroundGoal(this)) ;
-        this.goalSelector.addGoal(2, new VoidShredderEntity.Voidshredder_AttackGoal());
-        this.targetSelector.addGoal(1, new Voidshredder_TargetGoal());
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new ChargeTargetGoal());
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 16.0F));
+        this.goalSelector.addGoal(6, new RandomFloatAroundGoal());
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
-    //Called when the entity is attacked
-        public boolean hurt(DamageSource pSource, float pAmount) {
-            if (this.isInvulnerableTo(pSource)) {
-                return false;
-            } else if (pSource.getDirectEntity() instanceof LightningBolt && pSource.getEntity() instanceof Player) {
-                super.hurt(pSource, 1000.0F);
-                return true;
-            } else {
-                return super.hurt(pSource, pAmount);
-            }
-        }
-    public boolean isPersistenceRequired() {
+    protected boolean shouldDespawnInPeaceful() {
         return true;
     }
 
-    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
-        return false;
+    /**
+     * Gets how bright this entity is.
+     */
+    public float getBrightness() {
+        return -1.0F;
     }
 
     //Sets the animation in different States
@@ -87,8 +87,8 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         Vec3 v = getDeltaMovement();
         if(v.y > 0) {
             System.out.println("Entity is going up");
-        //    event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
-        //    return PlayState.CONTINUE;
+            //    event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
+            //    return PlayState.CONTINUE;
         }
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
@@ -108,22 +108,8 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         return this.factory;
     }
 
-
-        public SoundSource getSoundSource() {
-        return SoundSource.HOSTILE;
-    }
-        protected SoundEvent getAmbientSound() { return SoundEvents.GUARDIAN_AMBIENT; }
-        protected SoundEvent getHurtSound(DamageSource damageSourceIn) { return SoundEvents.WITHER_HURT; }
-        protected SoundEvent getDeathSound() { return SoundEvents.VEX_DEATH; }
-    protected float getSoundVolume() {
-        return 5f;
-    }
-    
-    static class RandomFloatAroundGoal extends Goal {
-        private final VoidShredderEntity voidshredder;
-
-        public RandomFloatAroundGoal(VoidShredderEntity p_32783_) {
-            this.voidshredder = p_32783_;
+    class ChargeTargetGoal extends Goal {
+        public ChargeTargetGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
         }
 
@@ -132,41 +118,30 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
          * method as well.
          */
         public boolean canUse() {
-            MoveControl movecontrol = this.voidshredder.getMoveControl();
-            if (!movecontrol.hasWanted()) {
-                return true;
+            if (VoidShredderEntity.this.getTarget() != null && !VoidShredderEntity.this.getMoveControl().hasWanted() && VoidShredderEntity.this.random.nextInt(reducedTickDelay(3)) == 0) {
+                return VoidShredderEntity.this.distanceToSqr(VoidShredderEntity.this.getTarget()) > 4.0D;
             } else {
-                double d0 = movecontrol.getWantedX() - this.voidshredder.getX();
-                double d1 = movecontrol.getWantedY() - this.voidshredder.getY();
-                double d2 = movecontrol.getWantedZ() - this.voidshredder.getZ();
-                double d3 = d0 * d0 + d1 * d1 + d2 * d2;
-                return d3 < 1.0D || d3 > 3600.0D;
+                return false;
             }
         }
 
+        /**
+         * Returns whether an in-progress EntityAIBase should continue executing
+         */
         public boolean canContinueToUse() {
-            return false;
+            return VoidShredderEntity.this.getMoveControl().hasWanted() && VoidShredderEntity.this.getTarget() != null && VoidShredderEntity.this.getTarget().isAlive();
         }
-
+        /**
+         * Execute a one shot task or start executing a continuous task
+         */
         public void start() {
-            Random random = this.voidshredder.getRandom();
-            double d0 = this.voidshredder.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d1 = this.voidshredder.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d2 = this.voidshredder.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.voidshredder.getMoveControl().setWantedPosition(d0, d1, d2, 0.3D);
-        }
-    }
+            LivingEntity livingentity = VoidShredderEntity.this.getTarget();
+            if (livingentity != null) {
+                Vec3 vec3 = livingentity.getEyePosition();
+                VoidShredderEntity.this.moveControl.setWantedPosition(vec3.x, vec3.y - 1, vec3.z, 8.0D);
+            }
 
-    static class VoidshredderLookGoal extends Goal {
-        private final VoidShredderEntity voidShredder;
-
-        public VoidshredderLookGoal(VoidShredderEntity p_32762_) {
-            this.voidShredder = p_32762_;
-            this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-        }
-
-        public boolean canUse() {
-            return true;
+            VoidShredderEntity.this.playSound(SoundEvents.VEX_CHARGE, 2.0F, 1.0F);
         }
 
         public boolean requiresUpdateEveryTick() {
@@ -177,130 +152,129 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
          * Keep ticking a continuous task that has already been started
          */
         public void tick() {
-            if (this.voidShredder.getTarget() == null) {
-                Vec3 vec3 = this.voidShredder.getDeltaMovement();
-                this.voidShredder.setYRot(-((float) Mth.atan2(vec3.x, vec3.z)) * (180F / (float)Math.PI));
-                this.voidShredder.yBodyRot = this.voidShredder.getYRot();
-            } else {
-                LivingEntity livingentity = this.voidShredder.getTarget();
-                double d0 = 64.0D;
-                if (livingentity.distanceToSqr(this.voidShredder) < 4096.0D) {
-                    double d1 = livingentity.getX() - this.voidShredder.getX();
-                    double d2 = livingentity.getZ() - this.voidShredder.getZ();
-                    this.voidShredder.setYRot(-((float)Mth.atan2(d1, d2)) * (180F / (float)Math.PI));
-                    this.voidShredder.yBodyRot = this.voidShredder.getYRot();
+            LivingEntity livingentity = VoidShredderEntity.this.getTarget();
+            if (livingentity != null) {
+                int intMinX = (int) Math.floor(VoidShredderEntity.this.getBoundingBox().minX - 1);
+                int intMinY = (int) Math.floor(VoidShredderEntity.this.getBoundingBox().minY - 1);
+                int intMinZ = (int) Math.floor(VoidShredderEntity.this.getBoundingBox().minZ - 1);
+                int intMaxX = (int) Math.ceil(VoidShredderEntity.this.getBoundingBox().maxX + 1);
+                int intMaxY = (int) Math.ceil(VoidShredderEntity.this.getBoundingBox().maxY + 1);
+                int intMaxZ = (int) Math.ceil(VoidShredderEntity.this.getBoundingBox().maxZ + 1);
+                BoundingBox box = new BoundingBox(intMinX, intMinY, intMinZ, intMaxX, intMaxY, intMaxZ);
+                if (VoidShredderEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
+                    VoidShredderEntity.this.doHurtTarget(livingentity);
+                } else {
+                    double d0 = VoidShredderEntity.this.distanceToSqr(livingentity);
+                    if (d0 < 9.0D) {
+                        Vec3 vec3 = livingentity.getEyePosition();
+                        VoidShredderEntity.this.moveControl.setWantedPosition(vec3.x, vec3.y, vec3.z, 1.0D);
+                    }
                 }
-            }
 
+            }
         }
     }
 
-    static class VoidShredder_MoveControl extends MoveControl {
-        private final VoidShredderEntity voidShredder;
-        private int floatDuration;
+    //Called when the entity is attacked
+        public boolean hurt(DamageSource pSource, float pAmount) {
+        if (pSource.getDirectEntity() instanceof LightningBolt && pSource.getEntity() instanceof Player) {
+                super.hurt(pSource, 1000.0F);
+                return true;
+            } else {
+                return super.hurt(pSource, pAmount);
+            }
+        }
+    public boolean isPersistenceRequired() {
+        return true;
+    }
 
-        public VoidShredder_MoveControl(VoidShredderEntity entity) {
-            super(entity);
-            this.voidShredder = entity;
+    class VoidShredderLookControl extends LookControl {
+        public VoidShredderLookControl(Mob pMob) {
+            super(pMob);
+        }
+        //Updates look every tick
+        public void tick() {
+        }
+    }
+
+    class VoidShredderMoveControl extends MoveControl {
+        public VoidShredderMoveControl(VoidShredderEntity p_34062_) {
+            super(p_34062_);
         }
 
         public void tick() {
             if (this.operation == MoveControl.Operation.MOVE_TO) {
-                if (this.floatDuration-- <= 0) {
-                    this.floatDuration += this.voidShredder.getRandom().nextInt(5) + 2;
-                    Vec3 vec3 = new Vec3(this.wantedX - this.voidShredder.getX(), this.wantedY - this.voidShredder.getY(), this.wantedZ - this.voidShredder.getZ());
-                    double d0 = vec3.length();
-                    vec3 = vec3.normalize();
-                    if (this.canReach(vec3, Mth.ceil(d0))) {
-                        this.voidShredder.setDeltaMovement(this.voidShredder.getDeltaMovement().add(vec3.scale(2d)));
+                Vec3 vec3 = new Vec3(this.wantedX - VoidShredderEntity.this.getX(), this.wantedY - VoidShredderEntity.this.getY(), this.wantedZ - VoidShredderEntity.this.getZ());
+                double d0 = vec3.length();
+                if (d0 < VoidShredderEntity.this.getBoundingBox().getSize()) {
+                    this.operation = MoveControl.Operation.WAIT;
+                    VoidShredderEntity.this.setDeltaMovement(VoidShredderEntity.this.getDeltaMovement().scale(0.5D));
+                } else {
+                    VoidShredderEntity.this.setDeltaMovement(VoidShredderEntity.this.getDeltaMovement().add(vec3.scale(this.speedModifier * 0.05D / d0)));
+                    if (VoidShredderEntity.this.getTarget() == null) {
+                        Vec3 vec31 = VoidShredderEntity.this.getDeltaMovement();
+                        VoidShredderEntity.this.setYRot(-((float)Mth.atan2(vec31.x, vec31.z)) * (180F / (float)Math.PI));
+                        VoidShredderEntity.this.yBodyRot = VoidShredderEntity.this.getYRot();
                     } else {
-                        this.operation = MoveControl.Operation.WAIT;
+                        double d2 = VoidShredderEntity.this.getTarget().getX() - VoidShredderEntity.this.getX();
+                        double d1 = VoidShredderEntity.this.getTarget().getZ() - VoidShredderEntity.this.getZ();
+                        VoidShredderEntity.this.setYRot(-((float)Mth.atan2(d2, d1)) * (180F / (float)Math.PI));
+                        VoidShredderEntity.this.yBodyRot = VoidShredderEntity.this.getYRot();
                     }
                 }
 
             }
         }
-        private boolean canReach(Vec3 vec3, int i1) {
-            AABB aabb = new AABB(this.voidShredder.getBoundingBox().maxX, this.voidShredder.getBoundingBox().maxY,
-                    this.voidShredder.getBoundingBox().maxZ, this.voidShredder.getBoundingBox().minX,
-                    this.voidShredder.getBoundingBox().minY, this.voidShredder.getBoundingBox().minZ);
-
-            for(int i = 1; i < i1; ++i) {
-                aabb = aabb.move(vec3);
-                if (!this.voidShredder.level.noCollision(this.voidShredder, aabb)) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
     }
 
-    class Voidshredder_TargetGoal extends Goal {
-        private final TargetingConditions attackTargeting = TargetingConditions.forCombat().range(64.0D);
-        private int nextScanTick = reducedTickDelay(20);
+
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+        return false;
+    }
+
+    public SoundSource getSoundSource() { return SoundSource.HOSTILE; }
+    protected SoundEvent getAmbientSound() { return SoundEvents.GUARDIAN_AMBIENT; }
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) { return SoundEvents.WITHER_HURT; }
+    protected SoundEvent getDeathSound() { return SoundEvents.VEX_DEATH; }
+    protected float getSoundVolume() { return 5f; }
+
+    class RandomFloatAroundGoal extends Goal {
+        public RandomFloatAroundGoal() {
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
 
         /**
          * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
          * method as well.
          */
         public boolean canUse() {
-            if (this.nextScanTick > 0) {
-                --this.nextScanTick;
-            } else {
-                this.nextScanTick = reducedTickDelay(60);
-                List<Player> list = VoidShredderEntity.this.level.getNearbyPlayers(this.attackTargeting, VoidShredderEntity.this, VoidShredderEntity.this.getBoundingBox().inflate(16.0D, 64.0D, 16.0D));
-                if (!list.isEmpty()) {
-                    list.sort(Comparator.<Entity, Double>comparing(Entity::getY).reversed());
+            return !VoidShredderEntity.this.getMoveControl().hasWanted() && VoidShredderEntity.this.random.nextInt(reducedTickDelay(3)) == 0;
+        }
 
-                    for(Player player : list) {
-                        if (VoidShredderEntity.this.canAttack(player, TargetingConditions.DEFAULT)) {
-                            VoidShredderEntity.this.setTarget(player);
-                            return true;
-                        }
-                    }
-                }
-
-            }
+        /**
+         * Returns whether an in-progress EntityAIBase should continue executing
+         */
+        public boolean canContinueToUse() {
             return false;
         }
 
         /**
-         * Returns whether an in-progress EntityAIBase should continue executing
+         * Keep ticking a continuous task that has already been started
          */
-        public boolean canContinueToUse() {
-            LivingEntity livingentity = VoidShredderEntity.this.getTarget();
-            return livingentity != null && VoidShredderEntity.this.canAttack(livingentity, TargetingConditions.DEFAULT);
-        }
-    }
+        public void tick() {
+            BlockPos blockpos = VoidShredderEntity.this.blockPosition();
 
-
-    class Voidshredder_AttackGoal extends VoidShredderEntity.Voidshredder_TargetGoal {
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
-        public boolean canUse() {
-            return true;
-        }
-
-        /**
-         * Returns whether an in-progress EntityAIBase should continue executing
-         */
-        public boolean canContinueToUse() {
-            LivingEntity livingentity = VoidShredderEntity.this.getTarget();
-            if (livingentity == null) {
-                return false;
-            } else if (!livingentity.isAlive()) {
-                return false;
-            } else {
-                if (livingentity instanceof Player player) {
-                    if (livingentity.isSpectator() || player.isCreative()) {
-                        return false;
+            for(int i = 0; i < 3; ++i) {
+                BlockPos blockpos1 = blockpos.offset(VoidShredderEntity.this.random.nextInt(15) - 7, VoidShredderEntity.this.random.nextInt(11) - 5, VoidShredderEntity.this.random.nextInt(15) - 7);
+                if (VoidShredderEntity.this.level.isEmptyBlock(blockpos1)) {
+                    VoidShredderEntity.this.moveControl.setWantedPosition((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 0.25D);
+                    if (VoidShredderEntity.this.getTarget() == null) {
+                        VoidShredderEntity.this.getLookControl().setLookAt((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 180.0F, 20.0F);
                     }
+                    break;
                 }
-                return this.canUse();
             }
+
         }
     }
 }

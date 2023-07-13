@@ -10,11 +10,9 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.mp3skater.getop.effect.ModEffect;
 import net.mp3skater.getop.item.ModArmorMaterials;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -29,8 +27,8 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable {
 
     public static Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
         (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-                .put(ModArmorMaterials.PAINITE, new MobEffectInstance(ModEffect.PAINITE_ARMOR_BOOST.get(),
-                        25, 1)).build();
+                .put(ModArmorMaterials.PAINITE,
+                        new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 125, 1)).build();
     public PainiteArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);
     }

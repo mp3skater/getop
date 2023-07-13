@@ -12,12 +12,12 @@ public class Deathray_Particle extends TextureSheetParticle {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
 
-        this.friction = 2f;
+        this.friction = 0;
         this.xd = xd * 3;
         this.yd = yd * 3;
         this.zd = zd * 3;
-        this.quadSize *= 10f;
-        this.lifetime = 20;
+        this.quadSize *= 16f;
+        this.lifetime = 16;
         this.setSpriteFromAge(spriteSet);
 
         this.rCol = 1f;
