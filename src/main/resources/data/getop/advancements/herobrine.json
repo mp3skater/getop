@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "getop:herobrine_sword"
+    },
+    "title": "Herobrine's Sword",
+    "description": "A Legend is born!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "getop:getop",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "getop:herobrine_sword"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

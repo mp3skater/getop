@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "getop:item/broken_end_sceptre",
+		"particle": "getop:item/broken_end_sceptre"
+	},
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 90, 50],
+			"translation": [0, 0, 1],
+			"scale": [2.5, 2.5, 0.85]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, -90, -50],
+			"translation": [0, 0, 1],
+			"scale": [2.5, 2.5, 0.85]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1, 1, 0.3]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1, 1, 0.3]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [1, 1, 0.3]
+		},
+		"gui": {
+			"scale": [1.2, 1.2, 1.1]
+		},
+		"head": {
+			"rotation": [0, 180, 80],
+			"translation": [2, -17.5, 3.75],
+			"scale": [3, 3, 1.2]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 0, 1],
+			"scale": [1.4, 1.4, 0.6]
+		}
+	}
+}
