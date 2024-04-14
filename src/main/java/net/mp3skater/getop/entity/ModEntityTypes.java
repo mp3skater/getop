@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
+import net.mp3skater.getop.entity.custom.EndSceptreEntity;
 import net.mp3skater.getop.entity.custom.VoidShredderEntity;
 
 public class ModEntityTypes {
@@ -20,6 +21,9 @@ public class ModEntityTypes {
                             .sized(0.8f, 2.0f)
                             .build(new ResourceLocation(GetOP.MOD_ID, "void_shredder").toString()));
 
+    public static final RegistryObject<EntityType<EndSceptreEntity>> ENDSCEPTRE_ENTITY = ENTITY_TYPES.register("end_sceptre_entity",
+            () -> EntityType.Builder.of((EntityType.EntityFactory<EndSceptreEntity>) EndSceptreEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F).build("end_sceptre_entity"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

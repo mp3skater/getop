@@ -19,7 +19,7 @@ modId="getop" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.1.5" #mandatory
+version="0.1.10" #mandatory
  # A display name for the mod
 displayName="Get OP Mod" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
@@ -29,7 +29,7 @@ displayName="Get OP Mod" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="logo.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for IFEN7 and D3nnoTrago for helping us out with the builds and Kaupenjoe for his amazing Tutorial Series that made this project even possible!" #optional
+credits="Thanks for IFEN7 and D3nnoTrago for helping us out with the builds and Kaupenjoe for his amazing Tutorial Series that made this project even possible!"
 # A text field displayed in the mod UI
 authors="mp3skater & Johnny_trago" #optional
 # The description text for the mod (multi line!) (#mandatory)
@@ -50,9 +50,15 @@ The GetOP-Mod introduces new weapons to fight for and form alliances. Explore ev
     side="BOTH"
 # Here's another dependency
 [[dependencies.getop]]
+    modId="geckolib3"
+    mandatory=true
+    versionRange="[3.0.13,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.getop]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.18.1,1.19)"
     ordering="NONE"
-    side="BOTH"# PlayerAnimator dependency
+    side="BOTH"

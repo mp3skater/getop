@@ -6,6 +6,7 @@ import net.mp3skater.getop.entity.custom.VoidShredderEntity;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class Void_ShredderModel extends AnimatedGeoModel<VoidShredderEntity> {
+
     @Override
     public ResourceLocation getModelLocation(VoidShredderEntity object) {
         return new ResourceLocation(GetOP.MOD_ID, "geo/void_shredder.geo.json");

@@ -40,21 +40,19 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.xpReward = 20;
         this.moveControl = new VoidShredderMoveControl(this);
-        this.lookControl = new VoidShredderEntity.VoidShredderLookControl(this);
+        this.lookControl = new VoidShredderLookControl(this);
     }
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 85.0D)
-                .add(Attributes.ATTACK_DAMAGE, 39.0f)
+                .add(Attributes.ATTACK_DAMAGE, 10.0f)
                 .add(Attributes.ATTACK_SPEED, 2.5f)
-                .add(Attributes.MOVEMENT_SPEED, 20f)
+                .add(Attributes.MOVEMENT_SPEED, 10f)
                 .add(Attributes.FLYING_SPEED, 1f).build();
     }
 
-    /**
-     * Called to update the entity's position/logic.
-     */
+    // Update the entity's position
     public void tick() {
         this.noPhysics = true;
         super.tick();
@@ -75,9 +73,6 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         return true;
     }
 
-    /**
-     * Gets how bright this entity is.
-     */
     public float getBrightness() {
         return -1.0F;
     }
@@ -125,15 +120,9 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
             }
         }
 
-        /**
-         * Returns whether an in-progress EntityAIBase should continue executing
-         */
         public boolean canContinueToUse() {
             return VoidShredderEntity.this.getMoveControl().hasWanted() && VoidShredderEntity.this.getTarget() != null && VoidShredderEntity.this.getTarget().isAlive();
         }
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
         public void start() {
             LivingEntity livingentity = VoidShredderEntity.this.getTarget();
             if (livingentity != null) {
@@ -148,9 +137,6 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
             return true;
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
         public void tick() {
             LivingEntity livingentity = VoidShredderEntity.this.getTarget();
             if (livingentity != null) {
@@ -161,7 +147,14 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
                 int intMaxY = (int) Math.ceil(VoidShredderEntity.this.getBoundingBox().maxY + 1);
                 int intMaxZ = (int) Math.ceil(VoidShredderEntity.this.getBoundingBox().maxZ + 1);
                 BoundingBox box = new BoundingBox(intMinX, intMinY, intMinZ, intMaxX, intMaxY, intMaxZ);
-                if (VoidShredderEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
+                int intMinX2 = (int) Math.floor(livingentity.getBoundingBox().minX);
+                int intMinY2 = (int) Math.floor(livingentity.getBoundingBox().minY);
+                int intMinZ2 = (int) Math.floor(livingentity.getBoundingBox().minZ);
+                int intMaxX2 = (int) Math.ceil(livingentity.getBoundingBox().maxX);
+                int intMaxY2 = (int) Math.ceil(livingentity.getBoundingBox().maxY);
+                int intMaxZ2 = (int) Math.ceil(livingentity.getBoundingBox().maxZ);
+                BoundingBox box2 = new BoundingBox(intMinX2, intMinY2, intMinZ2, intMaxX2, intMaxY2, intMaxZ2);
+                if (box.intersects(box2)) {
                     VoidShredderEntity.this.doHurtTarget(livingentity);
                 } else {
                     double d0 = VoidShredderEntity.this.distanceToSqr(livingentity);
@@ -175,24 +168,23 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         }
     }
 
-    //Called when the entity is attacked
-        public boolean hurt(DamageSource pSource, float pAmount) {
-        if (pSource.getDirectEntity() instanceof LightningBolt && pSource.getEntity() instanceof Player) {
-                super.hurt(pSource, 1000.0F);
-                return true;
-            } else {
-                return super.hurt(pSource, pAmount);
-            }
-        }
+    // Called when the entity is attacked
+    public boolean hurt(DamageSource pSource, float pAmount) {if (pSource.getDirectEntity() instanceof LightningBolt && pSource.getEntity() instanceof Player) {
+        super.hurt(pSource, 1000.0F);
+        return true;
+    } else {
+        return super.hurt(pSource, pAmount);
+    }
+    }
     public boolean isPersistenceRequired() {
         return true;
     }
 
-    class VoidShredderLookControl extends LookControl {
+    static class VoidShredderLookControl extends LookControl {
         public VoidShredderLookControl(Mob pMob) {
             super(pMob);
         }
-        //Updates look every tick
+        // Updates look every tick
         public void tick() {
         }
     }
@@ -243,24 +235,14 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean canUse() {
             return !VoidShredderEntity.this.getMoveControl().hasWanted() && VoidShredderEntity.this.random.nextInt(reducedTickDelay(3)) == 0;
         }
 
-        /**
-         * Returns whether an in-progress EntityAIBase should continue executing
-         */
         public boolean canContinueToUse() {
             return false;
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
         public void tick() {
             BlockPos blockpos = VoidShredderEntity.this.blockPosition();
 

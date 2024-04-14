@@ -1,6 +1,10 @@
 package net.mp3skater.getop.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.item.ModItems;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -14,8 +18,18 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
+import static net.mp3skater.getop.world.dimension.ModDimensions.GTDIM_KEY;
+
 @Mod.EventBusSubscriber(modid = GetOP.MOD_ID)
 public class ModEvents {
+    @SubscribeEvent
+    public void PlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
+        Player player = event.getPlayer();
+        ResourceKey<Level> dimType = event.getTo();
+        if(dimType==GTDIM_KEY) {
+
+        }
+    }
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
         if(event.getType() == VillagerProfession.TOOLSMITH) {

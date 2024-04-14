@@ -7,6 +7,7 @@ public class GetOPCommonConfigs {
     public static final ForgeConfigSpec SPEC;
 
     public static final ForgeConfigSpec.ConfigValue<Double> END_SCEPTRE_REACH_DISTANCE;
+    public static final ForgeConfigSpec.ConfigValue<Double> END_SCEPTRE_AIR_DASH_DISTANCE;
     public static final ForgeConfigSpec.ConfigValue<Double> DEATH_SWORD_REACH_DISTANCE;
     public static final ForgeConfigSpec.ConfigValue<Double> HEROBRINE_SWORD_REACH_DISTANCE;
     public static final ForgeConfigSpec.ConfigValue<Double> ICE_SCYTHE_RADIUS;
@@ -16,7 +17,9 @@ public class GetOPCommonConfigs {
     static {
         BUILDER.push("Configs for the Get OP Mod");
 
-        END_SCEPTRE_REACH_DISTANCE = BUILDER.comment("How long the reach distance of the teleport ability!")
+        END_SCEPTRE_REACH_DISTANCE = BUILDER.comment("How long the reach distance of the ground teleport ability!")
+                .defineInRange("Reach Distance", 40d, 8d, 80d);
+        END_SCEPTRE_AIR_DASH_DISTANCE = BUILDER.comment("How long the reach distance of the air dash ability!")
                 .defineInRange("Reach Distance", 40d, 8d, 80d);
         DEATH_SWORD_REACH_DISTANCE = BUILDER.comment("How long the reach distance of death-ray ability!")
                 .defineInRange("Reach Distance", 12d, 5d, 50d);

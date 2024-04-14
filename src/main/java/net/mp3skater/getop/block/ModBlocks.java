@@ -5,6 +5,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,7 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.block.custom.AnvilOfSageBlock;
-import net.mp3skater.getop.block.custom.RadioactiveBlock;
 import net.mp3skater.getop.item.ModCreativeModeTab;
 import net.mp3skater.getop.item.ModItems;
 
@@ -26,12 +27,22 @@ public class ModBlocks {
     public static final RegistryObject<Block> PAINITE_ORE_BLOCK = registerBlock("painite_ore_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+
     public static final RegistryObject<Block> PAINITE_BLOCK = registerBlock("painite_block",
-            () -> new RadioactiveBlock(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(12f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+
     public static final RegistryObject<Block> ANVILOFSAGE_BLOCK = registerBlock("anvilofsage_block",
             () -> new AnvilOfSageBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()),
             ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> AMETHYST_STAIRS = registerBlock("amethyst_stairs",
+            () -> new StairBlock(Blocks.AMETHYST_BLOCK::defaultBlockState, BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> AMETHYST_SLAB = registerBlock("amethyst_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -2,12 +2,20 @@
   "item.getop.painite": "Painite",
   "item.getop.painite_ingot": "Painite Ingot",
 
-  "item.getop.deathsword": "Deathsword",
+  "item.getop.deathaxe": "Deathaxe",
+  "item.getop.ice_scythe": "Ice Scythe",
   "item.getop.pickashe": "Pickashe",
   "item.getop.end_sceptre": "End Sceptre",
-  "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
-  "item.getop.ice_scythe": "Ice Scythe",
   "item.getop.herobrine_sword": "Herobrine Sword",
+
+  "item.getop.broken_deathaxe": "Broken Deathaxe",
+  "item.getop.broken_ice_scythe": " Broken Ice Scythe",
+  "item.getop.broken_pickashe": "Broken Pickashe",
+  "item.getop.broken_end_sceptre": "Broken End Sceptre",
+  "item.getop.broken_herobrine_sword": "Herobrine Sword",
+
+  "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
+  "entity.getop.void_shredder": "Pure Darkness",
 
   "item.getop.painite_helmet": "Painite Helmet",
   "item.getop.painite_chestplate": "Painite Chestplate",
@@ -18,7 +26,8 @@
   "block.getop.painite_block": "Painite Block",
   "block.getop.anvilofsage_block": "Anvil Of Sage",
 
-  "enchantment.getop.lightning_striker": "Lightning Striker",
+  "block.getop.amethyst_stairs": "Amethyst Stairs",
+  "block.getop.amethyst_slab": "Amethyst Slab",
 
   "effects.getop.freeze": "Freeze",
 

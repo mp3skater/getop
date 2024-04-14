@@ -1,6 +1,5 @@
 package net.mp3skater.getop.item.custom;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,7 +19,7 @@ import net.mp3skater.getop.effect.FreezeEffect;
 import net.mp3skater.getop.effect.ModEffect;
 import org.jetbrains.annotations.NotNull;
 
-public class IceScytheItem extends SwordItem {
+public class IceScytheItem extends SwordItem implements RareItem{
     public IceScytheItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
     }
@@ -40,9 +39,6 @@ public class IceScytheItem extends SwordItem {
     use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         Vec3 center = player.getEyePosition();
         double radius = GetOPCommonConfigs.ICE_SCYTHE_RADIUS.get();
-        if(player.hasEffect(ModEffect.PAINITE_ARMOR_BOOST.get())) {
-            radius = radius * 2;
-        }
 
         double minX = center.x - radius;
         double minY = center.y - radius;

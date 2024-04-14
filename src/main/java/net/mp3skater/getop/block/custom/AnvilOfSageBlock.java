@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -22,7 +23,7 @@ import net.mp3skater.getop.block.entity.ModBlockEntities;
 import net.mp3skater.getop.block.entity.custom.AnvilOfSageBlock_Entity;
 import org.jetbrains.annotations.Nullable;
 
-public class AnvilOfSageBlock extends BaseEntityBlock implements Fallable {
+public class AnvilOfSageBlock extends FallingBlock implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public AnvilOfSageBlock(Properties properties) {
@@ -92,10 +93,25 @@ public class AnvilOfSageBlock extends BaseEntityBlock implements Fallable {
         return new AnvilOfSageBlock_Entity(pPos, pState);
     }
 
+    //random code I copied from BaseBlockEntity:
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         return createTickerHelper(pBlockEntityType, ModBlockEntities.ANVIL_OF_SAGE_BLOCK_ENTITY.get(),
                 AnvilOfSageBlock_Entity::tick);
+    }
+    public boolean triggerEvent(BlockState pState, Level pLevel, BlockPos pPos, int pId, int pParam) {
+        super.triggerEvent(pState, pLevel, pPos, pId, pParam);
+        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+        return blockentity == null ? false : blockentity.triggerEvent(pId, pParam);
+    }
+    @javax.annotation.Nullable
+    public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
+        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+        return blockentity instanceof MenuProvider ? (MenuProvider)blockentity : null;
+    }
+    @javax.annotation.Nullable
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> p_152133_, BlockEntityType<E> p_152134_, BlockEntityTicker<? super E> p_152135_) {
+        return p_152134_ == p_152133_ ? (BlockEntityTicker<A>)p_152135_ : null;
     }
 }
