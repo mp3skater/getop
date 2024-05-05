@@ -11,6 +11,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -25,11 +26,13 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.mp3skater.getop.block.entity.ModBlockEntities;
 import net.mp3skater.getop.item.ModItems;
+import net.mp3skater.getop.recipe.AnvilOfSageRecipe;
 import net.mp3skater.getop.screen.AnvilofSage_Menu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 import java.util.Random;
 
 public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider {
@@ -43,19 +46,43 @@ public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 72;
+
     public AnvilOfSageBlock_Entity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.ANVIL_OF_SAGE_BLOCK_ENTITY.get(), pWorldPosition, pBlockState);
+        this.data = new ContainerData() {
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> AnvilOfSageBlock_Entity.this.progress;
+                    case 1 -> AnvilOfSageBlock_Entity.this.maxProgress;
+                    default -> 0;
+                };
+            }
+
+            public void set(int index, int value) {
+                switch(index) {
+                    case 0: AnvilOfSageBlock_Entity.this.progress = value; break;
+                    case 1: AnvilOfSageBlock_Entity.this.maxProgress = value; break;
+                }
+            }
+
+            public int getCount() {
+                return 2;
+            }
+        };
     }
 
     @Override
     public Component getDisplayName() {
-        return new TextComponent("Anvil of Sage");
+        return new TextComponent(""); // Anvil of Sage
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory, Player pPlayer) {
-        return new AnvilofSage_Menu(pContainerId, pInventory, this);
+        return new AnvilofSage_Menu(pContainerId, pInventory, this, this.data);
     }
 
     @Nonnull
@@ -83,6 +110,7 @@ public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
+        tag.putInt("anvil_of_sage.progress", progress);
         super.saveAdditional(tag);
     }
 
@@ -90,6 +118,7 @@ public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+        progress = nbt.getInt("anvil_of_sage.progress");
     }
 
     public void drops() {
@@ -102,29 +131,72 @@ public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, AnvilOfSageBlock_Entity pBlockEntity) {
-        if(hasRecipe(pBlockEntity) && hasNotReachedStackLimit(pBlockEntity)) {
-            craftItem(pBlockEntity);
+        if(hasRecipe(pBlockEntity)) {
+            pBlockEntity.progress++;
+            setChanged(pLevel, pPos, pState);
+            if(pBlockEntity.progress > pBlockEntity.maxProgress) {
+                craftItem(pBlockEntity);
+            }
+        } else {
+            pBlockEntity.resetProgress();
+            setChanged(pLevel, pPos, pState);
         }
     }
 
-    private static void craftItem(AnvilOfSageBlock_Entity entity) {
-        entity.itemHandler.extractItem(0, 1, false);
-        entity.itemHandler.extractItem(1, 1, false);
-        entity.itemHandler.getStackInSlot(2).hurt(1, new Random(), null);
-
-        entity.itemHandler.setStackInSlot(3, new ItemStack(ModItems.ICE_SCYTHE.get(),
-                entity.itemHandler.getStackInSlot(3).getCount() + 1));
-    }
-
     private static boolean hasRecipe(AnvilOfSageBlock_Entity entity) {
-        boolean hasItemInFirstSlot = entity.itemHandler.getStackInSlot(0).getItem() == Items.DIAMOND_SWORD;
-        boolean hasItemInSecondSlot = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.PAINITE_INGOT.get();
-        boolean hasItemInThirdSlot = entity.itemHandler.getStackInSlot(2).getItem() == Items.NETHERITE_PICKAXE;
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
 
-        return hasItemInFirstSlot && hasItemInSecondSlot && hasItemInThirdSlot;
+        Optional<AnvilOfSageRecipe> match = level.getRecipeManager()
+                .getRecipeFor(AnvilOfSageRecipe.Type.INSTANCE, inventory, level);
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
+                && hasWaterInWaterSlot(entity) && hasToolsInToolSlot(entity);
     }
 
-    private static boolean hasNotReachedStackLimit(AnvilOfSageBlock_Entity entity) {
-        return entity.itemHandler.getStackInSlot(3).getCount() < entity.itemHandler.getStackInSlot(3).getMaxStackSize();
+    private static boolean hasWaterInWaterSlot(AnvilOfSageBlock_Entity entity) {
+        return PotionUtils.getPotion(entity.itemHandler.getStackInSlot(0)) == Potions.WATER;
+    }
+
+    private static boolean hasToolsInToolSlot(AnvilOfSageBlock_Entity entity) {
+        return entity.itemHandler.getStackInSlot(2).getItem() == ModItems.PAINITE.get();
+    }
+
+    private static void craftItem(AnvilOfSageBlock_Entity entity) {
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
+
+        Optional<AnvilOfSageRecipe> match = level.getRecipeManager()
+                .getRecipeFor(AnvilOfSageRecipe.Type.INSTANCE, inventory, level);
+
+        if(match.isPresent()) {
+            entity.itemHandler.extractItem(0,1, false);
+            entity.itemHandler.extractItem(1,1, false);
+            entity.itemHandler.getStackInSlot(2).hurt(1, new Random(), null);
+
+            entity.itemHandler.setStackInSlot(3, new ItemStack(match.get().getResultItem().getItem(),
+                    entity.itemHandler.getStackInSlot(3).getCount() + 1));
+
+            entity.resetProgress();
+        }
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
+        return inventory.getItem(3).getItem() == output.getItem() || inventory.getItem(3).isEmpty();
+    }
+
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+        return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
     }
 }

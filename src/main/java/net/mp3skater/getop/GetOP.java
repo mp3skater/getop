@@ -16,6 +16,7 @@ import net.mp3skater.getop.enchantment.ModEnchantments;
 import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.item.ModItems;
 import net.mp3skater.getop.particle.ModParticles;
+import net.mp3skater.getop.recipe.ModRecipes;
 import net.mp3skater.getop.screen.ModMenuTypes;
 import net.mp3skater.getop.world.dimension.ModDimensions;
 import net.mp3skater.getop.world.structure.ModStructures;
@@ -51,6 +52,8 @@ public class GetOP
         GeckoLib.initialize();
 
         //eventBus.addListener(this::setup);
+
+        ModRecipes.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

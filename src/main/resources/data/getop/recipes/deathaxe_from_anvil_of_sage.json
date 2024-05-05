@@ -1,0 +1,11 @@
+{
+  "type": "getop:anvil_of_sage",
+  "ingredients": [
+    {
+      "item": "getop:broken_deathaxe"
+    }
+  ],
+  "output": {
+    "item": "getop:deathaxe"
+  }
+}
