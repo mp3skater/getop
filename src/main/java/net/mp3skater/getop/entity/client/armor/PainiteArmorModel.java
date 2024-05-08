@@ -18,6 +18,6 @@ public class PainiteArmorModel extends AnimatedGeoModel<PainiteArmorItem> {
 
     @Override
     public ResourceLocation getAnimationFileLocation(PainiteArmorItem animatable) {
-        return new ResourceLocation(GetOP.MOD_ID, "animations/armor_animation.json");
+        return null;
     }
 }
