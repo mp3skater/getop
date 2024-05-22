@@ -3,7 +3,7 @@
   Get OP
 </h1>
 
-> A Minecraft-forge mod for 1.18.2
+> A Minecraft-forge mod for 1.18.2-40.0.5
 
 <details>
 <summary>YouTube showcase</summary>
@@ -54,9 +54,9 @@ Modrinth (recommended) | Curseforge
 
 ## 💼 License
 
-Spotube is open source and licensed under the [MIT](/LICENSE) License.
+GetOP is open source and licensed under the [MIT](/LICENSE) License.
 
 ## API's
-1. [Geckolib](https://modrinth.com/mod/geckolib) - Helps creating 3d-models easily in Java with json files
+1. [Geckolib](https://modrinth.com/mod/geckolib) v.3.0.13 - Helps creating 3d-models easily in Java using json files
 
 <div align="center"><h4>© Copyright GetOP 2024</h4></div>

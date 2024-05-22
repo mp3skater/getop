@@ -34,10 +34,9 @@ public class AnvilofSage_Menu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 34, 40));
-            this.addSlot(new SlotItemHandler(handler, 1, 57, 18));
-            this.addSlot(new SlotItemHandler(handler, 2, 103, 18));
-            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
+            this.addSlot(new SlotItemHandler(handler, 0, 27, 47));
+            this.addSlot(new SlotItemHandler(handler, 1, 76, 47));
+            this.addSlot(new ModResultSlot(handler, 2, 134, 47));
         });
 
         // Important for synchronization
