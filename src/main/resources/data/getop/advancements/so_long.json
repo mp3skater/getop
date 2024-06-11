@@ -3,8 +3,8 @@
     "icon": {
       "item": "getop:herobrine_sword"
     },
-    "title": "Herobrine's Sword",
-    "description": "Found the legendary Herobrine sword!",
+    "title": "So long nerds",
+    "description": "Collected the whole painite armor!",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
@@ -17,7 +17,10 @@
         "items": [
           {
             "items": [
-              "getop:herobrine_sword"
+              "getop:painite_helmet",
+              "getop:painite_chestplate",
+              "getop:painite_leggings",
+              "getop:painite_boots"
             ]
           }
         ]

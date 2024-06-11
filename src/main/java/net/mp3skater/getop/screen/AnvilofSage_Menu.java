@@ -37,6 +37,7 @@ public class AnvilofSage_Menu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 0, 27, 47));
             this.addSlot(new SlotItemHandler(handler, 1, 76, 47));
             this.addSlot(new ModResultSlot(handler, 2, 134, 47));
+            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
         });
 
         // Important for synchronization
