@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "getop:block/anvilofsage_block", "y": 270 },
-    "facing=east": { "model": "getop:block/anvilofsage_block" },
-    "facing=south": { "model": "getop:block/anvilofsage_block", "y": 90 },
-    "facing=west": { "model": "getop:block/anvilofsage_block", "y": 180 }
-  }
-}
