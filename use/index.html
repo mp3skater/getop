@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use - EarlyGame</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" />
+    <link rel="stylesheet" href="../resources/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/css/main.css" />
+    <style>
+        #ddVersion {
+            padding: 8px;
+            background-color: rgb(var(--var-bg-primary), 0.8);
+            color: rgb(var(--var-txt-primary));
+            border: 1px solid rgb(var(--var-bg-secondary));
+            border-radius: 8px;
+            margin-left: 8px;
+            box-shadow: 0 4px 6px #0000007f;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #usebg {
+            background-image: url('../resources/img/use_light.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .dark-mode #usebg {
+            background-image: url('../resources/img/use_dark.png');
+        }
+    </style>
+</head>
+<body>
+    <header class="overflow-hidden fixed-top">
+        <div class="container-sm fs-5">
+            <div class="fw-bolder float-start py-3 py-sm-4">
+                <span class="d-inline-block d-sm-none">
+                    <span id="btnMenu" class="ps-3 pe-4"><i class="fa-solid fa-bars"></i></span>EARLYGAME
+                </span>
+                <span class="d-none d-sm-inline-block">
+                    <a href="../">GETOP</a>
+                </span>
+            </div>
+            <div id="topNav" class="float-end py-3 py-sm-4 d-none d-sm-block">
+                <span class="me-4"><a href="../use/">USE</a></span>
+                <span class="me-4"><a href="../wiki/">WIKI</a></span>
+                <span class="me-4"><a href="../source/">SOURCE</a></span>
+                <span class="me-4"><a href="../donate/">DONATE</a></span>
+                <span id="btnTheme1"><i class="fa-solid fa-moon"></i></span>
+            </div>
+        </div>
+    </header>
+
+    <div id="topmenu" class="d-sm-none" style="display: none;">
+        <div class="p-4" style="text-align: center">
+            <a href="../"><div class="navbutton">Home</div></a>
+            <a href="../wiki/"><div class="navbutton">Wiki</div></a>
+            <a href="../source/"><div class="navbutton">Source</div></a>
+            <a href="../donate/"><div class="navbutton">Donate</div></a>
+            <br />
+            <span id="btnTheme2" style="font-size: 2.5rem"><i class="fa-solid fa-moon"></i></span>
+        </div>
+    </div>
+
+    <section>
+        <div class="my-5"></div>
+
+        <div class="d-none d-sm-block">
+            <div id="usebg" style="height: 50vh;">
+                <div style="background-color: rgba(var(--var-bg-primary), 0.3); height: 50vh;">
+                    <div class="px-5 py-3 rounded mx-auto fade-in" style="width: fit-content; background-color: rgba(var(--var-bg-primary), 0.5); text-align: center; position: relative; top: 50%; transform: translateY(-50%); box-shadow: 0 2px 16px #0000007f">
+                        <div class="fs-1 fw-bolder">GET THE MOD NOW!</div>
+                        <div>If you don't know how to install the mod, you may use this very detailed <a href="https://www.windowscentral.com/minecraft-java-edition-guide-how-to-install-mods">guide</a>.</div>
+                        <div class="my-3">
+                            <a id="btnDownload"><button type="button" class="button1">Download</button></a>
+                        </div>
+                        <div>
+                            <label for="ddVersion">Choose a version...</label>
+                            <select name="ddVersion" id="ddVersion">
+                                <option value="18" selected>1.18</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-sm my-4" style="text-align: center">
+                <div class="fs-2 fw-bolder">ALTERNATIVE DOWNLOADS</div>
+                <p style="margin: 0">Alternatively, you can choose to download from one of the mirrors below.</p>
+                <div class="my-4">
+                    <a href="https://modrinth.com/mod/getop" class="me-4"><button type="button" class="button2">Modrinth</button></a><a href="https://www.curseforge.com/minecraft/mc-mods/getop"><button type="button" class="button2">CurseForge</button></a>
+                </div>
+                <p>All downloads listed above are official links.
+                    Do not download this mod from any other sites
+                    as it may impose potential privacy and
+                    security threats.</p>
+            </div>
+        </div>
+        <div class="container-sm my-4 d-sm-none" style="text-align: center">
+            <i class="fa-solid fa-face-sad-tear m-5 fade-in" style="color: #adb5bd; font-size: 128pt" oncontextmenu="return false;"></i>
+            <div class="fs-2 fw-bolder">SORRY!</div>
+            <p>This mod is not compatible with Bedrock Edition.
+                To experience EarlyGame, you must download it
+                on your PC with Minecraft Java Edition.</p>
+        </div>
+
+    </section>
+
+    <footer class="overflow-hidden" style="background-color: #495057; color: white">
+        <div class="container-sm py-5 px-4 px-sm-0">
+            <div class="row">
+                <div class="col-sm-7">
+                    <p><strong>ABOUT EARLYGAME</strong></p>
+                    <p>
+                        GetOP is an open-source Minecraft mod for Forge
+                        that aims to prolong the possibilities and span 
+                        of a Minecraft server. It is a project for the community.
+                        Everyone is welcome to contribute!
+                    </p>
+                </div>
+                <div class="col-sm-2 d-none d-sm-block">
+                    <p><strong>NAVIGATE</strong></p>
+                    <ul style="list-style-type:none; padding: 0">
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../use/">Use</a></li>
+                        <li><a href="../wiki/">Wiki</a></li>
+                        <li><a href="../source/">Source</a></li>
+                        <li><a href="../donate/">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <p><strong>SOCIALS</strong></p>
+                    <ul style="list-style-type:none; padding: 0">
+                        <li><a target="_blank" href="https://github.com/JayCeeCreates"><i class="fa-brands fa-github" style="width: 20pt; text-align: center;"></i> GitHub</a></li>
+                        <li><a target="_blank" href="https://discord.com/users/801074717192486932"><i class="fa-brands fa-discord" style="width: 20pt; text-align: center;"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-4" style="font-size: 0.75rem">
+                This project is not an official Mojang product and is not affiliated with Mojang. Made by mp3skater & Johnny1857. Powered by GitHub Pages. Thanks to JayCee Creates for the template.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../resources/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../resources/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ddVersion').val('18').change();
+        })
+
+        $('#ddVersion').change(function () {
+            let i = this.selectedIndex;
+            var _dllink = '';
+            switch (i) {
+                case 0: _dllink = 'https://github.com/mp3skater/GetOP-mod-data/releases/download/1.18-1.1.2/getop-1.18-1.1.2.jar'; break;
+            }
+            $('#btnDownload').attr('href', _dllink);
+        })
+    </script>
+</body>
+</html>
