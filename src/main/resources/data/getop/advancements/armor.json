@@ -1,15 +1,15 @@
 {
   "display": {
     "icon": {
-      "item": "getop:painite_chestplate"
+      "item": "getop:painite_helmet"
     },
-    "title": "So long nerds",
-    "description": "Collected the whole painite armor!",
+    "title": "Armor!!",
+    "description": "Crafted a piece of the painite armor set!",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "getop:armor",
+  "parent": "getop:getop",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -21,7 +21,11 @@
               "getop:painite_chestplate",
               "getop:painite_leggings",
               "getop:painite_boots"
-            ]
+            ],
+            "count": {
+              "min": 1,
+              "max": 1
+            }
           }
         ]
       }
