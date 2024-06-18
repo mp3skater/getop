@@ -25,7 +25,7 @@ public class AnvilofSage_Menu extends AbstractContainerMenu {
 
     public AnvilofSage_Menu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.ANVILOFSAGE_MENU.get(), pContainerId);
-        checkContainerSize(inv, 4);
+        checkContainerSize(inv, 3);
         blockEntity = ((AnvilOfSageBlock_Entity) entity);
         this.level = inv.player.level;
         this.data = data;
@@ -37,7 +37,6 @@ public class AnvilofSage_Menu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 0, 27, 47));
             this.addSlot(new SlotItemHandler(handler, 1, 76, 47));
             this.addSlot(new ModResultSlot(handler, 2, 134, 47));
-            this.addSlot(new ModResultSlot(handler, 3, 80, 60));
         });
 
         // Important for synchronization
@@ -73,7 +72,7 @@ public class AnvilofSage_Menu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
