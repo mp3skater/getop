@@ -26,7 +26,7 @@ You will need to find very OP weapons all around your world, explore the vast en
 
 This data mod is client-/server-side, it needs to be installed on both places.
 
-[➜ For additional details, available settings and customization, take a look at the wiki](https://github.com/Tschipcraft/more_mobs/wiki)
+[➜ For additional details, available settings and customization, take a look at the wiki](https://mp3skater.github.io/GetOP-mod-data/)
 
 <div align="center">
     <a href="https://discord.gg/JepR5mXB"><img alt="Discord Server" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg"></a>
