@@ -2,7 +2,6 @@ package net.mp3skater.getop.effect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.Mob;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,6 +17,9 @@ public class ModEffect {
 
     public static final RegistryObject<MobEffect> FEATHER_FALL_EFFECT = MOB_EFFECTS.register("feather_fall_effect",
             () -> new FeatherfallEffect(MobEffectCategory.BENEFICIAL, 177857));
+
+    public static final RegistryObject<MobEffect> GUM_SKIN_EFFECT = MOB_EFFECTS.register("gum_skin_effect",
+            () -> new GumSkinEffect(MobEffectCategory.BENEFICIAL, 0x748eeb));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
