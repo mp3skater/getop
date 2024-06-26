@@ -1,16 +1,15 @@
 {
   "display": {
     "icon": {
-      "item": "getop:herobrine_sword"
+      "item": "getop:painite"
     },
-    "title": "Conquer a Legend",
-    "description": "Take Herobrine's Sword",
-    "frame": "challenge",
+    "title": "Call of the void",
+    "description": "Did you catch it?",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "background": "getop:textures/block/painite_ore_block.png"
   },
-  "parent": "getop:castle",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -18,7 +17,7 @@
         "items": [
           {
             "items": [
-              "getop:herobrine_sword"
+              "getop:painite"
             ]
           }
         ]

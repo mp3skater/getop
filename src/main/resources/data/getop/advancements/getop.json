@@ -3,13 +3,13 @@
     "icon": {
       "item": "getop:painite_ingot"
     },
-    "title": "Get OP",
-    "description": "Did you catch it?",
+    "title": "GET OP!",
+    "description": "You need an ingot to continue",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
-    "background": "getop:textures/block/painite_ore_block.png"
+    "announce_to_chat": true
   },
+  "parent": "getop:painite",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -17,7 +17,7 @@
         "items": [
           {
             "items": [
-              "getop:painite"
+              "getop:painite_ingot"
             ]
           }
         ]

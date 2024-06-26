@@ -5,9 +5,10 @@
     },
     "title": "So long nerds",
     "description": "Collected the whole painite armor!",
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": true,
+    "hidden": false
   },
   "parent": "getop:armor",
   "criteria": {

@@ -1,16 +1,15 @@
 {
   "display": {
     "icon": {
-      "item": "getop:herobrine_sword"
+      "item": "getop:end_sceptre"
     },
-    "title": "Conquer a Legend",
-    "description": "Take Herobrine's Sword",
-    "frame": "challenge",
+    "title": "Even light can´t catch me",
+    "description": "Create the End Sceptre",
+    "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
+    "announce_to_chat": true
   },
-  "parent": "getop:castle",
+  "parent": "getop:getop",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -18,7 +17,7 @@
         "items": [
           {
             "items": [
-              "getop:herobrine_sword"
+              "getop:end_sceptre"
             ]
           }
         ]
