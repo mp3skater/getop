@@ -26,8 +26,6 @@ public class ModStructures {
      */
     public static final RegistryObject<StructureFeature<?>> SKY_STRUCTURES =
             DEFERRED_REGISTRY_STRUCTURE.register("sky_structures", SkyStructures::new);
-    public static final RegistryObject<StructureFeature<?>> LAVAPOOL_STRUCTERS =
-            DEFERRED_REGISTRY_STRUCTURE.register("lavapool_structers", LavapoolStructers::new);
 
 
     public static void register(IEventBus eventBus) {
