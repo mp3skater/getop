@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetOP</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" />
+    <link rel="stylesheet" href="./resources/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./resources/css/main.css" />
+    <style>
+        a, div, span, body {
+            color: white;
+            filter: drop-shadow(0 2px 2px #00000030);
+        }
+        header {
+            background-color: transparent !important;
+        }
+        .home-section {
+            text-align: center;
+            position: relative;
+            top: 50%;
+            margin: 0 auto;
+        }
+        .home-section #eg-logo {
+            max-width: 640px;
+        }
+        .eg-oneliner {
+            font-size: 1.25rem;
+        }
+        #btnTheme1 {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        #btnTheme1:hover {
+            color: rgb(var(--var-fg-primary));
+        }
+        #bg {
+            background-image: url('../resources/img/wiki_bg.png');
+            background-position: 100% 100%;
+        }
+
+        @media (max-width:575.98px) {
+            .home-section #eg-logo {
+                width: 100%;
+            }
+            .eg-oneliner {
+                font-size: initial;
+            }
+        }
+    </style>
+</head>
+<body id="bg">
+    <header class="overflow-hidden fixed-top">
+        <div class="container-sm fs-5">
+            <div id="topNav" class="float-end py-3 py-sm-4 d-none d-sm-block">
+                <span class="me-4"><a href="./wiki">WIKI</a></span>
+                <span class="me-4"><a href="./use">DOWNLOAD</a></span>
+                <span class="me-4"><a href="./source">SOURCE</a></span>
+                <span class="me-4"><a href="./donate">DONATE</a></span>
+                <span id="btnTheme1"><i class="fa-solid fa-moon"></i></span>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div>
+            <div class="container-sm h-100">
+                <div class="home-section slide-in-up">
+                    <img id="eg-logo" src="./resources/img/logo.png" alt="GetOP logo" />
+                    <p class="eg-oneliner">A Minecraft endgame mod that provides endless reasons for you and your friends to continue exploring your world.</p>
+                    <div class="mt-4">
+                        <a href="./use" class="d-none d-sm-inline me-4"><button type="button" class="button1">Use</button></a><a href="./wiki"><button type="button" class="button2">Wiki</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-100 p-4" style="position:fixed;bottom:0;color:white;z-index: 1;text-align: center;line-height: 20pt;">
+        <div class="container-sm">
+            <div class="float-sm-start mb-2 mb-sm-0" style="font-size: 20pt">
+                <a target="_blank" href="https://github.com/mp3skater"><i class="fa-brands fa-github me-2" style="width: 20pt; text-align: center;"></i></a>
+            </div>
+	    <a href="https://www.textstudio.com/">Font generator</a>
+            <div class="float-sm-end">Made by mp3skater & Johnny1857. Powered by GitHub Pages. Thanks to JayCee Creates for the template.</div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./resources/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./resources/js/main.js"></script>
+</body>
+</html>

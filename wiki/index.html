@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki - EarlyGame</title>
+    <title>Wiki - GetOP</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" />
     <link rel="stylesheet" href="../resources/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="../resources/css/main.css" />
@@ -44,12 +44,12 @@
                     <span id="btnMenu" class="ps-3 pe-4"><i class="fa-solid fa-bars"></i></span>EARLYGAME
                 </span>
                 <span class="d-none d-sm-inline-block">
-                    <a href="../">EARLYGAME</a>
+                    <a href="../">GETOP</a>
                 </span>
             </div>
             <div id="topNav" class="float-end py-3 py-sm-4 d-none d-sm-block">
-                <span class="me-4"><a href="../use/">USE</a></span>
                 <span class="me-4"><a href="../wiki/">WIKI</a></span>
+                <span class="me-4"><a href="../use/">DOWNLOAD</a></span>
                 <span class="me-4"><a href="../source/">SOURCE</a></span>
                 <span class="me-4"><a href="../donate/">DONATE</a></span>
                 <span id="btnTheme1"><i class="fa-solid fa-moon"></i></span>
@@ -59,8 +59,8 @@
 
     <div id="topmenu" class="d-sm-none" style="display: none;">
         <div class="p-4" style="text-align: center">
-            <a href="../"><div class="navbutton">Home</div></a>
-            <a href="../wiki/"><div class="navbutton">Wiki</div></a>
+            <a href="../"><div class="navbutton">Wiki</div></a>
+            <a href="../use/"><div class="navbutton">Download</div></a>
             <a href="../source/"><div class="navbutton">Source</div></a>
             <a href="../donate/"><div class="navbutton">Donate</div></a>
             <br />
@@ -70,11 +70,13 @@
 
     <section>
         <div class="my-5"></div>
-        <div id="usebg" style="height: 50vh;">
+        <div id="usebg" style="height: 70vh;">
             <div style="background-color: rgba(var(--var-bg-primary), 0.3); height: 50vh">
                 <div class="mx-3 px-5 py-3 rounded mx-sm-auto fade-in" style="width: fit-content; background-color: rgba(var(--var-bg-primary), 0.5); text-align: center; position: relative; top: 50%; transform: translateY(-50%); box-shadow: 0 2px 16px #0000007f">
-                    <div class="fs-1 fw-bolder">THE EARLYGAME WIKI</div>
-                    <div>This page contains more information about the mod and how to use it.</div>
+                    <div class="fs-1 fw-bolder">THE GETOP WIKI</div>
+                    <div>This page contains more information about the mod and how to use it.</div><div class="mt-4">
+                        <a href="./use"><button type="button" class="button1">Download</button></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,37 +84,27 @@
             <div class="row px-2 px-sm-0">
                 <div class="col-sm-3 pe-sm-4">
                     <div class="d-none d-sm-block sticky">
-                        <select name="ddVersion" id="ddVersion" class="dropdown mb-3">
-                            <option value="" selected hidden>Select a version...</option>
-                            <option value="16">1.16</option>
-                            <option value="18">1.18+</option>
-                        </select>
                         <div id="tblContents" class="px-4 py-3">
                             <h4>Contents</h4>
                             <ul class="m-0 p-0" style="list-style-type: none">
                                 <li><a onmouseover="setParam($(this), 'page', 'home');">Home</a></li>
-                                <li><a onmouseover="setParam($(this), 'page', 'faq');">FAQ</a></li>
                                 <li><a onmouseover="setParam($(this), 'page', 'overview');">Overview</a></li>
                                 <li><a onmouseover="setParam($(this), 'page', 'setup');">Setup</a></li>
                                 <li><a onmouseover="setParam($(this), 'page', 'blocks');">Blocks and Items</a></li>
                                 <li><a onmouseover="setParam($(this), 'page', 'recipes');">Recipes</a></li>
+                                <li><a onmouseover="setParam($(this), 'page', 'faq');">FAQ</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="d-sm-none">
-                        <select name="ddVersion2" id="ddVersion2" class="dropdown mb-3">
-                            <option value="" selected hidden>Select a version...</option>
-                            <option value="16">1.16</option>
-                            <option value="18">1.18+</option>
-                        </select>
                         <select name="ddContents" id="ddContents" class="dropdown">
                             <option value="" selected hidden>Select a page...</option>
                             <option value="home">Home</option>
-                            <option value="faq">FAQ</option>
                             <option value="overview">Overview</option>
                             <option value="setup">Setup</option>
                             <option value="blocks">Blocks and Items</option>
                             <option value="recipes">Recipes</option>
+                            <option value="faq">FAQ</option>
                         </select>
                     </div>
                 </div>
@@ -128,11 +120,11 @@
         <div class="container-sm py-5 px-4 px-sm-0">
             <div class="row">
                 <div class="col-sm-7">
-                    <p><strong>ABOUT EARLYGAME</strong></p>
+                    <p><strong>ABOUT GETOP</strong></p>
                     <p>
-                        EarlyGame is an open-source Minecraft mod for Fabric
-                        that aims to tweak the early game progression. It is
-                        a project driven by the community, for the community.
+                        GetOP is an open-source Minecraft mod for Forge
+                        that aims to prolong your survival experience. It's
+                        a project made for the Minecraft modding community.
                         Everyone is welcome to contribute!
                     </p>
                 </div>
@@ -149,15 +141,15 @@
                 <div class="col-sm-3">
                     <p><strong>SOCIALS</strong></p>
                     <ul style="list-style-type:none; padding: 0">
-                        <li><a target="_blank" href="https://twitter.com/jaycee_creates"><i class="fa-brands fa-twitter" style="width: 20pt; text-align: center;"></i> Twitter</a></li>
-                        <li><a target="_blank" href="https://instagram.com/jayceecreates"><i class="fa-brands fa-instagram" style="width: 20pt; text-align: center;"></i> Instagram</a></li>
-                        <li><a target="_blank" href="https://github.com/JayCeeCreates"><i class="fa-brands fa-github" style="width: 20pt; text-align: center;"></i> GitHub</a></li>
-                        <li><i class="fa-brands fa-discord" style="width: 20pt; text-align: center;"></i> Discord (JayCee#1620)</li>
+                        <li><a target="_blank" href="https://github.com/mp3skater"><i class="fa-brands fa-github" style="width: 20pt; text-align: center;"></i> GitHub (mp3skater)</a></li>
+                        <li><a target="_blank" href="https://discord.com/users/801074717192486932"><i class="fa-brands fa-discord" style="width: 20pt; text-align: center;"></i> Discord (mp3skater)</a></li>
+                        <li><a target="_blank" href="https://github.com/Johnny1857"><i class="fa-brands fa-github" style="width: 20pt; text-align: center;"></i> GitHub (Johnny1857)</a></li>
+                        <li><img><i class="fa-brands fa-discord" style="width: 20pt; text-align: center;"></i> Discord (Johnny1857)</img></li>
                     </ul>
                 </div>
             </div>
             <div class="mt-4" style="font-size: 0.75rem">
-                This project is not an official Mojang product and is not affiliated with Mojang. Made with 💜 by JayCee Creates. Powered by GitHub Pages.
+                This project is not an official Mojang product and is not affiliated with Mojang. Made by mp3skater and Johnny1857. Powered by GitHub Pages. Build from JayCee Creates's wiki.
             </div>
         </div>
     </footer>
