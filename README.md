@@ -1,6 +1,5 @@
 <h1 align="center">
   <img src="https://github.com/mp3skater/GetOP-mod-data/blob/wiki/resources/img/logo.png" width="100%" style="image-rendering: pixelated"><br/>
-  Get OP
 </h1>
 
 > A Minecraft-forge mod for 1.18.2-40.0.5
