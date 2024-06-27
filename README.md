@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/mp3skater/GetOP-mod-data/blob/wiki/resources/img/logo.png" width="80" height="80" style="image-rendering: pixelated"><br/>
+  <img src="https://github.com/mp3skater/GetOP-mod-data/blob/wiki/resources/img/logo.png" width="80" height="80" style="image-rendering: pixelated"><br/>
   Get OP
 </h1>
 
