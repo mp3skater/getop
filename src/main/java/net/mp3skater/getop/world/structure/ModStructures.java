@@ -26,6 +26,16 @@ public class ModStructures {
      */
     public static final RegistryObject<StructureFeature<?>> SKY_STRUCTURES =
             DEFERRED_REGISTRY_STRUCTURE.register("sky_structures", SkyStructures::new);
+    public static final RegistryObject<StructureFeature<?>> END_CASTLE_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("end_castle_structures", EndCastleStructures::new);
+    public static final RegistryObject<StructureFeature<?>> NETHER_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("nether_structures", NetherStructures::new);
+    public static final RegistryObject<StructureFeature<?>> CAVE_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("cave_structures", CaveStructures::new);
+    public static final RegistryObject<StructureFeature<?>> END_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("end_structures", EndStructures::new);
+    public static final RegistryObject<StructureFeature<?>> WATER_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("water_structures", WaterStructures::new);
 
 
     public static void register(IEventBus eventBus) {
