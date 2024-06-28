@@ -71,15 +71,9 @@
                 <div style="background-color: rgba(var(--var-bg-primary), 0.3); height: 50vh;">
                     <div class="px-5 py-3 rounded mx-auto fade-in" style="width: fit-content; background-color: rgba(var(--var-bg-primary), 0.5); text-align: center; position: relative; top: 50%; transform: translateY(-50%); box-shadow: 0 2px 16px #0000007f">
                         <div class="fs-1 fw-bolder">GET THE MOD NOW!</div>
-                        <div>If you don't know how to install the mod, you may use this very detailed <a href="https://www.windowscentral.com/minecraft-java-edition-guide-how-to-install-mods">guide</a>.</div>
-                        <div class="my-3">
-                            <a id="btnDownload"><button type="button" class="button1">Download</button></a>
-                        </div>
-                        <div>
-                            <label for="ddVersion">Choose a version...</label>
-                            <select name="ddVersion" id="ddVersion">
-                                <option value="18" selected>1.18</option>
-                            </select>
+                        <div>If you don't know how to install the mod, you may use this very detailed <a href="https://www.windowscentral.com/minecraft-java-edition-guide-how-to-install-mods"><b><u>guide</u></b></a></div>
+                        <div class="my-4">
+                            <a href="https://github.com/mp3skater/GetOP-mod-data/releases/download/1.19-1.1.2/earlygame-1.19-1.1.2.jar" class="me-4"><button type="button" class="button2">Latest Release</button></a>
                         </div>
                     </div>
                 </div>
@@ -146,17 +140,8 @@
     <script src="../resources/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../resources/js/main.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#ddVersion').val('18').change();
-        })
-
         $('#ddVersion').change(function () {
-            let i = this.selectedIndex;
-            var _dllink = '';
-            switch (i) {
-                case 0: _dllink = 'https://github.com/mp3skater/GetOP-mod-data/releases/download/1.18-1.1.2/getop-1.18-1.1.2.jar'; break;
-            }
-            $('#btnDownload').attr('href', _dllink);
+            $('#btnDownload').attr('href', 'https://www.windowscentral.com/minecraft-java-edition-guide-how-to-install-mods');
         })
     </script>
 </body>
