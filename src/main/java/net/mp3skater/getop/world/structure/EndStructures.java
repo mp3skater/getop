@@ -41,7 +41,7 @@ public class EndStructures extends StructureFeature<JigsawConfiguration> {
         }
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
-        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
+        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(70);
 
         // Return optional empty if there are islands nearby make it appear surrounded by more void
         if(context.getLowestY(21, 21) > 40) return Optional.empty();

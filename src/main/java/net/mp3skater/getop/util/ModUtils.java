@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -62,5 +63,13 @@ public class ModUtils {
         boolean isTp_able2 = !tp2.isSolidRender(level, tpable_pos2);
 
         return isTp_able && isTp_able2;
+    }
+
+    public static boolean spawnablePos(BlockState checkingBlock, int height, NoiseColumn baseColumn) {
+        return checkingBlock.isAir() && // Airgap found
+                baseColumn.getBlock(height-1).canOcclude() && // On top of not lava
+                baseColumn.getBlock(height+1).isAir() && // big airgap
+                baseColumn.getBlock(height+2).isAir() && // bigger airgap
+                baseColumn.getBlock(height+3).isAir(); // big enough airgap
     }
 }

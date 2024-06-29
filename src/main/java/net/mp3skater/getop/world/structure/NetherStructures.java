@@ -3,8 +3,7 @@ package net.mp3skater.getop.world.structure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.QuartPos;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.AirBlock;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.mp3skater.getop.GetOP;
+import net.mp3skater.getop.util.ModUtils;
 import org.apache.logging.log4j.Level;
 
 import java.util.Optional;
@@ -62,11 +62,21 @@ public class NetherStructures extends StructureFeature<JigsawConfiguration> {
         // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
         BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
 
-        // Gets the lowest block inside the dimension
-        int lowestY = context.getLowestY(blockpos.getX(), blockpos.getZ());
-        // Search for the first land with air above it and set blockpos's Y value to it
-        int topLandY = context.chunkGenerator().getFirstFreeHeight(blockpos.getX(), blockpos.getZ(), Heightmap.Types.WORLD_SURFACE, context.heightAccessor());
-        blockpos = blockpos.atY(topLandY);
+        // Find the first place where there is air on top of a block
+        NoiseColumn baseColumn = context.chunkGenerator().getBaseColumn(blockpos.getX(), blockpos.getZ(), context.heightAccessor())
+                ;
+        int netherRoofHeight = context.chunkGenerator().getFirstFreeHeight(blockpos.getX(), blockpos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor())
+                ;
+        BlockState checkingBlock;
+        boolean placefound = false;
+        int height;
+        for(height = context.getLowestY(blockpos.getX(), blockpos.getZ()); height<netherRoofHeight && !placefound; height++) {
+            checkingBlock = baseColumn.getBlock(height);
+            if(ModUtils.spawnablePos(checkingBlock, height, baseColumn))
+                placefound = true;
+        }
+
+        blockpos = blockpos.atY(placefound? height : context.chunkGenerator().getSpawnHeight(context.heightAccessor()));
 
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(context, PoolElementStructurePiece::new, blockpos, false,  false);

@@ -33,7 +33,7 @@ public class EndCastleStructures extends StructureFeature<JigsawConfiguration> {
         // Grabs the chunk position we are at
         ChunkPos chunkpos = context.chunkPos();
 
-        // Generates only one Structure at the position x:0, z:0
+        // Generates only one Structure at the chunk-position x:0, z:0
         return chunkpos.x == 0 && chunkpos.z == 0;
     }
 
