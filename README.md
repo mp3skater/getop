@@ -4,8 +4,8 @@
 
 > A Minecraft-forge mod for 1.18.2-40.0.5
 
-<a href="http://www.youtube.com/watch?v=sruFdJCgIDo">
-<img alt="GetOP showcase thumbnail" width=70% src="https://tschipcraft.ddns.net/mod_resources/youtube_preview.php?id=sruFdJCgIDo" title="Watch on YouTube">
+<a align="center" href="http://www.youtube.com/watch?v=sruFdJCgIDo">
+<img alt="GetOP showcase thumbnail" width=90% src="https://tschipcraft.ddns.net/mod_resources/youtube_preview.php?id=sruFdJCgIDo" title="Watch on YouTube">
 </a>
 
 ## Features
