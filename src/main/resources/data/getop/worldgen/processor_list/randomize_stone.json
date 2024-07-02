@@ -12,8 +12,8 @@
           // The block to look for from the nbt file
           // This has a 50% chance of allowing the found stone bricks block to be replaced
           "input_predicate": {
-            "block": "minecraft:stone_bricks",
-            "probability": 0.5,
+            "block": "minecraft:stone",
+            "probability": 0.05,
             "predicate_type": "minecraft:random_block_match"
           },
           // This is always true
@@ -23,13 +23,13 @@
           },
           // The actual block to place if the above conditions return true
           "output_state": {
-            "Name": "minecraft:infested_stone_bricks"
+            "Name": "minecraft:iron_ore"
           }
         },
         {
           "input_predicate": {
-            "block": "minecraft:stone_bricks",
-            "probability": 0.05,
+            "block": "minecraft:stone",
+            "probability": 0.001,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
@@ -41,8 +41,8 @@
         },
         {
           "input_predicate": {
-            "block": "minecraft:cobbled_deepslate",
-            "probability": 0.1,
+            "block": "minecraft:stone",
+            "probability": 0.005,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
@@ -50,7 +50,7 @@
           },
           // If an output_state block has properties, you must define ALL properties of the block!
           "output_state": {
-            "Name": "minecraft:deepslate_redstone_ore",
+            "Name": "minecraft:diamond_ore",
             "Properties": {
               "lit": false
             }

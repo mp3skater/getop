@@ -20,7 +20,7 @@
         // that is targeting this pool directly. Be sure to change that Jigsaw Block's target pool
         // to make this side pool spawn in your own mod.
         "location": "getop:cave_small",
-        "processors": "minecraft:empty",
+        "processors": "getop:randomize_stone",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -32,7 +32,7 @@
       "weight": 1,
       "element": {
         "location": "getop:cave_mid",
-        "processors": "minecraft:empty",
+        "processors": "getop:randomize_stone",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -44,7 +44,7 @@
       "weight": 1,
       "element": {
         "location": "getop:cave_big",
-        "processors": "minecraft:empty",
+        "processors": "getop:randomize_stone",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

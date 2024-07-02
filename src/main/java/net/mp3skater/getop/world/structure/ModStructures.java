@@ -36,6 +36,8 @@ public class ModStructures {
             DEFERRED_REGISTRY_STRUCTURE.register("end_structures", EndStructures::new);
     public static final RegistryObject<StructureFeature<?>> WATER_STRUCTURES =
             DEFERRED_REGISTRY_STRUCTURE.register("water_structures", WaterStructures::new);
+    public static final RegistryObject<StructureFeature<?>> LAVA_STRUCTURES =
+            DEFERRED_REGISTRY_STRUCTURE.register("lava_structures", CaveStructures::new);
 
 
     public static void register(IEventBus eventBus) {
