@@ -23,10 +23,8 @@ public class FeatherfallEffect extends MobEffect {
        public static void onEntityFall(LivingFallEvent event) {
             if (event.getEntity() instanceof Player player && player.hasEffect(ModEffect.FEATHER_FALL_EFFECT.get())) {
                 // Prevent fall damage for player
-                    event.setDistance(0.0F);
-                    event.setCanceled(true);
-            } else {
-                event.setCanceled(false);
+                float distance = event.getDistance();
+                event.setDistance((distance<20? 0 : distance-20)*0.8F);
             }
        }
    }

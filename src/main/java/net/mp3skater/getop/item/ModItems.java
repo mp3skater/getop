@@ -28,7 +28,7 @@ public class ModItems {
             () -> new DeathSwordItem(ModTiers.PAINITE, 2, -2.6f,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PICKASHE = ITEMS.register("pickashe",
-            () -> new PickaxeItem(ModTiers.PAINITE, 1, -2.6f,
+            () -> new PickAsheItem(ModTiers.PAINITE, 1, -2.6f,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> END_SCEPTRE = ITEMS.register("end_sceptre",
             () -> new EndSceptreItem(ModTiers.PAINITE,

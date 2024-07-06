@@ -6,29 +6,25 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.mp3skater.getop.GetOP;
-import net.mp3skater.getop.config.GetOPCommonConfigs;
-import net.mp3skater.getop.entity.ModEntityTypes;
-import net.mp3skater.getop.entity.custom.EndSceptreEntity;
-import net.mp3skater.getop.util.ModUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class EndSceptreItem extends TieredItem implements RareItem {
-
-	public EndSceptreItem(Tier pTier, Properties pProperties) {
-		super(pTier, pProperties);
+public class PickAsheItem extends PickaxeItem implements RareItem {
+	public PickAsheItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+		super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
 	}
 
 	@Override
 	public @NotNull UseAnim getUseAnimation(ItemStack pStack) {
-		return UseAnim.SPEAR;
+		return UseAnim.CROSSBOW;
 	}
 
 	@Override
@@ -46,13 +42,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		if(level.isClientSide) spawnParticles(level, eye);
 
 		// Do the teleportation and boost on server side
-		else {
-			// If the player is shifting, he boosts and teleports
-			if(player.isShiftKeyDown()) boostAndTeleport(eye, look, level, player);
-
-			// If he isn't shifting, he throws the teleport entity
-			else throwTpEntity(level, player);
-		}
+		else throwFireball(level, player);
 
 		// Add Cooldown
 		player.getCooldowns().addCooldown(this, 20);
@@ -63,35 +53,14 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		return super.use(level, player, hand);
 	}
 
-	private void boostAndTeleport(Vec3 eye, Vec3 look, Level level, Player player) {
-		// Get config values
-		Double tp_length = GetOPCommonConfigs.END_SCEPTRE_TP_LENGTH.get();
-		Double dash_speed = GetOPCommonConfigs.END_SCEPTRE_AIR_DASH_SPEED.get();
-
-		// Calculate the teleportation target position
-		if(tp_length>0) {
-			Vec3 vec_end = eye.add(look.scale(tp_length));
-			if(ModUtils.TpAblePos_Air(vec_end, level)) {
-				BlockPos block_end = new BlockPos(vec_end);
-				player.moveTo(block_end.getX(), block_end.getY(), block_end.getZ());
-			}
-		}
-
-		// Apply the movement boost
-		if(dash_speed>0) {
-			player.hurtMarked = true;
-			player.setDeltaMovement(look.scale(dash_speed));
-		}
-	}
-
 	// Inside your class where the method belongs
-	private void throwTpEntity(Level level, Player player) {
+	private void throwFireball(Level level, Player player) {
 		// Ensure it's running on the server side
 		if (!(level instanceof ServerLevel world)) {
 			return;
 		}
 
-		EndSceptreEntity entity = new EndSceptreEntity(ModEntityTypes.ENDSCEPTRE_ENTITY.get(), world);
+		LargeFireball entity = new LargeFireball(EntityType.FIREBALL, level);
 
 		// Set the initial position and motion of the entity
 		entity.setPos(player.getX(), player.getEyeY(), player.getZ());
@@ -100,7 +69,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		// Calculate the velocity based on player's look direction
 		float rotationYaw = player.getYRot();
 		float rotationPitch = player.getXRot();
-		float velocity = 1.5F;
+		float velocity = 5f;
 
 		// Adjust the motion of the entity based on player's rotation
 		double motionX = -Math.sin(Math.toRadians(rotationYaw)) * Math.cos(Math.toRadians(rotationPitch));
@@ -116,27 +85,25 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 
 	private void spawnParticles(Level level, Vec3 eye) {
 		// Spawn the particles
-		if (level.isClientSide) {
-			Random random = new Random();
-			float maxDistance = 2;
+		Random random = new Random();
+		float maxDistance = 2;
 
-			// Spawn witch spell particles
-			for (int i = 0; i < 20; i++) {
-				double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
-				double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
-				double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
-				Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
-				level.addParticle(ParticleTypes.WITCH, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
-			}
+		// Spawn smoke particles
+		for (int i = 0; i < 20; i++) {
+			double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
+			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
+			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
+			Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
+			level.addParticle(ParticleTypes.LARGE_SMOKE, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
+		}
 
-			// Spawn end rod particles
-			for (int i = 0; i < 7; i++) {
-				double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
-				double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
-				double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
-				Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
-				level.addParticle(ParticleTypes.END_ROD, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
-			}
+		// Spawn lava particles
+		for (int i = 0; i < 20; i++) {
+			double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
+			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
+			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
+			Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
+			level.addParticle(ParticleTypes.LAVA, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
 		}
 	}
 

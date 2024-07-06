@@ -67,14 +67,14 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 				}
 				if(dmg>0) player.hurt(DamageSource.WITHER, dmg);
 			}
-			//damages weapon per hit
+			// damages weapon per hit
 			ItemStack itemstack = player.getItemInHand(hand);
 			itemstack.hurtAndBreak(1, player,
 							player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 		}
 
 		// Spawn the particles
-		if(level.isClientSide) {
+		else {
 			Random random = new Random();
 
 			// Spawn 20 damage indicator particles
@@ -83,7 +83,7 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 				double offsetX = 3 * Math.cos(angle) * random.nextDouble();
 				double offsetY = 3 * random.nextDouble();
 				double offsetZ = 3 * Math.sin(angle) * random.nextDouble();
-				Vec3 particlePos = start.add(look.x+offsetX-1, look.y+offsetY-1, look.z+offsetZ-1);
+				Vec3 particlePos = start.add(look.x+offsetX, look.y+offsetY, look.z+offsetZ);
 				double speed = 8 + random.nextDouble()*2;
 				level.addParticle(ParticleTypes.DAMAGE_INDICATOR,
 								particlePos.x, particlePos.y, particlePos.z,
