@@ -20,21 +20,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-import static net.minecraft.world.item.Rarity.RARE;
-
 public class DeathSwordItem extends AxeItem implements RareItem {
 	public DeathSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
 		super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
+	public boolean canPerformAction(@NotNull ItemStack stack, net.minecraftforge.common.@NotNull ToolAction toolAction) {
 		return false;
 	}
 
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack>
-	use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
+	use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
 		// Return if the hand isn't the main hand
 		if(hand!=InteractionHand.MAIN_HAND) return new InteractionResultHolder<>(InteractionResult.FAIL, player.getItemInHand(hand));
 
@@ -58,8 +56,7 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 			double maxZ = Math.max(start.z, end.z) + margin_xz;
 			AABB boundingBox = new AABB(minX, minY, minZ, maxX, maxY, maxZ);
 			Iterable<Entity> entities = level.getEntities(player, boundingBox);
-			//player.sendMessage(new TextComponent("In a radius of " + GetOPCommonConfigs.DEATH_SWORD_REACH_DISTANCE.get()
-			//        + " blocks these entities will get damaged 25 hp: " + entities), player.getUUID());
+
 			int dmg = 0;
 			int maxDmg = 5;
 			for (Entity entity : entities) {
@@ -103,7 +100,7 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 	}
 
 	@Override
-	public boolean hurtEnemy(@NotNull ItemStack pStack, LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
+	public boolean hurtEnemy(@NotNull ItemStack pStack, @NotNull LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
 		if (!pAttacker.level.isClientSide()) {
 			pTarget.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 2), pAttacker);
 		}
@@ -111,7 +108,7 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 	}
 
 	@Override
-	public float getDestroySpeed(ItemStack pStack, BlockState pState) {
+	public float getDestroySpeed(@NotNull ItemStack pStack, @NotNull BlockState pState) {
 		return 1.0f;
 	}
 }

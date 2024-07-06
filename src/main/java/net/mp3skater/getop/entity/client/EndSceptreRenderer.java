@@ -8,10 +8,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.entity.custom.EndSceptreEntity;
-import net.mp3skater.getop.entity.custom.VoidShredderEntity;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoProjectilesRenderer;
 
-public class EndSceptreRenderer extends GeoEntityRenderer<EndSceptreEntity> {
+public class EndSceptreRenderer extends GeoProjectilesRenderer<EndSceptreEntity> {
     public EndSceptreRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new EndSceptreModel());
         this.shadowRadius = 0.2f;
@@ -29,5 +28,4 @@ public class EndSceptreRenderer extends GeoEntityRenderer<EndSceptreEntity> {
         stack.scale(1.0F, 1.0F, 1.0F);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
-
 }

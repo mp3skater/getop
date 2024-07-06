@@ -13,17 +13,19 @@ import net.mp3skater.getop.entity.custom.VoidShredderEntity;
 
 public class ModEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, GetOP.MOD_ID);
+      DeferredRegister.create(ForgeRegistries.ENTITIES, GetOP.MOD_ID);
 
     public static final RegistryObject<EntityType<VoidShredderEntity>> VOID_SHREDDER =
-            ENTITY_TYPES.register("void_shredder",
-                    () -> EntityType.Builder.of(VoidShredderEntity::new, MobCategory.MONSTER)
-                            .sized(0.8f, 2.0f)
-                            .build(new ResourceLocation(GetOP.MOD_ID, "void_shredder").toString()));
+      ENTITY_TYPES.register("void_shredder",
+        () -> EntityType.Builder.of(VoidShredderEntity::new, MobCategory.MONSTER)
+          .sized(0.8f, 2.0f)
+          .build(new ResourceLocation(GetOP.MOD_ID, "void_shredder").toString()));
 
-    public static final RegistryObject<EntityType<EndSceptreEntity>> ENDSCEPTRE_ENTITY = ENTITY_TYPES.register("end_sceptre_entity",
-            () -> EntityType.Builder.of((EntityType.EntityFactory<EndSceptreEntity>) EndSceptreEntity::new, MobCategory.MISC)
-                    .sized(0.5F, 0.5F).build("end_sceptre_entity"));
+    public static final RegistryObject<EntityType<EndSceptreEntity>> ENDSCEPTRE_ENTITY =
+      ENTITY_TYPES.register("end_sceptre_entity",
+      () -> EntityType.Builder.of(EndSceptreEntity::new, MobCategory.MISC)
+        .sized(0.5F, 0.5F)
+        .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -77,22 +77,26 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         return -1.0F;
     }
 
-    //Sets the animation in different States
+    // Sets the animation in different States
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         Vec3 v = getDeltaMovement();
-        if(v.y > 0) {
-            System.out.println("Entity is going up");
-            //    event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
-            //    return PlayState.CONTINUE;
+        // Entity is going up
+        if (v.y > 0) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("up", true));
+            return PlayState.CONTINUE;
         }
-        if (event.isMoving()) {
+        // Entity is moving (not up)
+        else if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
             return PlayState.CONTINUE;
         }
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        return PlayState.CONTINUE;
+        // Entity is not moving
+        else {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+            return PlayState.CONTINUE;
+        }
     }
+
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller",

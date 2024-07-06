@@ -31,7 +31,7 @@ public class ModItems {
             () -> new PickaxeItem(ModTiers.PAINITE, 1, -2.6f,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> END_SCEPTRE = ITEMS.register("end_sceptre",
-            () -> new EndSceptreItem(ModTiers.PAINITE, 1, -2.8f,
+            () -> new EndSceptreItem(ModTiers.PAINITE,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> SENTINEL_BLADE = ITEMS.register("sentinel_blade",
             () -> new SwordItem(ModTiers.PAINITE, 2, -2.0f,
