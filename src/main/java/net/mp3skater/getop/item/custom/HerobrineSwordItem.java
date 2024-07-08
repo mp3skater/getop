@@ -21,6 +21,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
 import net.mp3skater.getop.item.ModItems;
+import net.mp3skater.getop.util.ModUtils;
+import net.mp3skater.getop.world.dimension.ModDimensions;
 import org.jetbrains.annotations.NotNull;
 
 import static net.minecraft.world.item.Rarity.EPIC;
@@ -32,6 +34,19 @@ public class HerobrineSwordItem extends SwordItem {
 
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		// Return if it isn't main hand
+		if(hand!=InteractionHand.MAIN_HAND) return super.use(level, player, hand);
+
+		// Normal Herobrine ability (lightning and tp)
+		if(!player.isShiftKeyDown()) lightningPower(level, player);
+
+		// Go to GetOP Dimension
+		else ModUtils.changeDimension(player, level, ModDimensions.GTDIM_KEY, this);
+
+		return super.use(level, player, hand);
+	}
+
+	private void lightningPower(Level level, Player player) {
 		// Get config value
 		Double reach = GetOPCommonConfigs.HEROBRINE_SWORD_REACH_DISTANCE.get();
 
@@ -74,18 +89,6 @@ public class HerobrineSwordItem extends SwordItem {
 				player.moveTo(pos);
 			}
 		}
-		return super.use(level, player, hand);
-	}
-
-	@Mod.EventBusSubscriber
-	public static class ModEventBusEvents {
-		@SubscribeEvent
-		public static void onEntityStruckByLightning(EntityStruckByLightningEvent event) {
-			if (event.getEntity() instanceof Player player &&
-				player.getMainHandItem().getItem() == ModItems.HEROBRINE_SWORD.get())
-				event.setCanceled(true);
-		}
-
 	}
 
 	@Override
