@@ -7,8 +7,8 @@ import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-public class GumSkinEffect extends MobEffect {
-    public GumSkinEffect(MobEffectCategory mobEffectCategory, int color) {
+public class HardenedSkinEffect extends MobEffect {
+    public HardenedSkinEffect(MobEffectCategory mobEffectCategory, int color) {
         super(mobEffectCategory, color);
     }
 
@@ -22,7 +22,7 @@ public class GumSkinEffect extends MobEffect {
        @SubscribeEvent
        public static void onEntityStruckByLightning(EntityStruckByLightningEvent event)
        {
-           if(event.getEntity() instanceof Player player && player.hasEffect(GetOPEffects.GUM_SKIN_EFFECT.get()))
+           if(event.getEntity() instanceof Player player && player.hasEffect(GetOPEffects.HARDENED_SKIN_EFFECT.get()))
                event.setCanceled(true);
        }
    }

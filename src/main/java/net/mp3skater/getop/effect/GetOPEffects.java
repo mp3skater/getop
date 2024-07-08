@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 
-public class ModEffect {
+public class GetOPEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, GetOP.MOD_ID);
 
@@ -19,7 +19,10 @@ public class ModEffect {
             () -> new FeatherfallEffect(MobEffectCategory.BENEFICIAL, 177857));
 
     public static final RegistryObject<MobEffect> GUM_SKIN_EFFECT = MOB_EFFECTS.register("gum_skin_effect",
-            () -> new GumSkinEffect(MobEffectCategory.BENEFICIAL, 0x748eeb));
+            () -> new GumSkinEffect(MobEffectCategory.BENEFICIAL, 0xc195c3));
+
+    public static final RegistryObject<MobEffect> HARDENED_SKIN_EFFECT = MOB_EFFECTS.register("hardened_skin_effect",
+            () -> new HardenedSkinEffect(MobEffectCategory.BENEFICIAL, 0x363a4b));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

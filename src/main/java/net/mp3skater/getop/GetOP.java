@@ -11,7 +11,7 @@ import net.mp3skater.getop.block.ModBlocks;
 import net.mp3skater.getop.block.entity.ModBlockEntities;
 import net.mp3skater.getop.config.GetOPClientConfigs;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
-import net.mp3skater.getop.effect.ModEffect;
+import net.mp3skater.getop.effect.GetOPEffects;
 import net.mp3skater.getop.enchantment.ModEnchantments;
 import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.item.ModItems;
@@ -37,7 +37,7 @@ public class GetOP
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
 
-        ModEffect.register(eventBus);
+        GetOPEffects.register(eventBus);
         ModEnchantments.register(eventBus);
 
         ModStructures.register(eventBus);

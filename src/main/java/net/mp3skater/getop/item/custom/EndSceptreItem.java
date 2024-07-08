@@ -11,7 +11,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
 import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.entity.custom.EndSceptreEntity;
@@ -71,7 +70,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		// Calculate the teleportation target position
 		if(tp_length>0) {
 			Vec3 vec_end = eye.add(look.scale(tp_length));
-			if(ModUtils.TpAblePos_Air(vec_end, level)) {
+			if(ModUtils.tpAblePosAir(vec_end, level)) {
 				BlockPos block_end = new BlockPos(vec_end);
 				player.moveTo(block_end.getX(), block_end.getY(), block_end.getZ());
 			}

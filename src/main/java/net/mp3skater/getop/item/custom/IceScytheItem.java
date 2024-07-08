@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
-import net.mp3skater.getop.effect.ModEffect;
+import net.mp3skater.getop.effect.GetOPEffects;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -29,7 +29,7 @@ public class IceScytheItem extends SwordItem implements RareItem {
 	public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
 		Level level = pAttacker.getLevel();
 		if (!level.isClientSide()) {
-			pTarget.addEffect(new MobEffectInstance(ModEffect.FREEZE.get(), 40, 1), pAttacker);
+			pTarget.addEffect(new MobEffectInstance(GetOPEffects.FREEZE.get(), 40, 1), pAttacker);
 		}
 		return super.hurtEnemy(pStack, pTarget, pAttacker);
 	}
@@ -68,7 +68,7 @@ public class IceScytheItem extends SwordItem implements RareItem {
 		for(Entity entity : entities) {
 			if(entity instanceof LivingEntity && entity.isAlive() && !level.isClientSide()) {
 				entity.hurt(DamageSource.MAGIC, 2);
-				((LivingEntity) entity).addEffect(new MobEffectInstance(ModEffect.FREEZE.get(), 50, 1), player);
+				((LivingEntity) entity).addEffect(new MobEffectInstance(GetOPEffects.FREEZE.get(), 50, 1), player);
 			}
 		}
 	}

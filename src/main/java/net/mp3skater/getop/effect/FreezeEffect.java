@@ -15,7 +15,7 @@ public class FreezeEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if(!pLivingEntity.level.isClientSide()) {
-            if (this == ModEffect.FREEZE.get()) {
+            if (this == GetOPEffects.FREEZE.get()) {
                 pLivingEntity.setDeltaMovement(pLivingEntity.getDeltaMovement().multiply(0.1, 1.0, 0.1));
             }
             super.applyEffectTick(pLivingEntity, pAmplifier);

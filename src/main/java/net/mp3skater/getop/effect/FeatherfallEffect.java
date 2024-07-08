@@ -21,7 +21,7 @@ public class FeatherfallEffect extends MobEffect {
    public static class ModEventBusEvents {
        @SubscribeEvent
        public static void onEntityFall(LivingFallEvent event) {
-            if (event.getEntity() instanceof Player player && player.hasEffect(ModEffect.FEATHER_FALL_EFFECT.get())) {
+            if (event.getEntity() instanceof Player player && player.hasEffect(GetOPEffects.FEATHER_FALL_EFFECT.get())) {
                 // Prevent fall damage for player
                 float distance = event.getDistance();
                 event.setDistance((distance<20? 0 : distance-20)*0.8F);
