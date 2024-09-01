@@ -17,11 +17,15 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.mp3skater.getop.GetOP;
+import net.mp3skater.getop.item.ModItems;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -31,6 +35,8 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Random;
 
 public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -41,6 +47,7 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         this.xpReward = 20;
         this.moveControl = new VoidShredderMoveControl(this);
         this.lookControl = new VoidShredderLookControl(this);
+        setItemSlotAndDropWhenKilled(EquipmentSlot.MAINHAND, new ItemStack(ModItems.SENTINEL_BLADE.get()));
     }
 
     public static AttributeSupplier setAttributes() {
