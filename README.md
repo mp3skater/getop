@@ -48,8 +48,8 @@ And you also need to install the right verion of the API: [Geckolib](https://mod
 
 - [mp3skater](https://github.com/mp3skater) - The Founder, Maintainer and Lead Developer
 - [Johnny1857](https://github.com/Johnny1857) - The Co-founder, Head of Design, and Head of Building
-- [IFEN7](https://github.com/IFEN7) - Builder, Loottables
-- denno4511 - Builder
+- [IFEN7](https://github.com/IFEN7) - Builder
+- denno4511 - Builder, Loottables
 
 ## 💼 License
 
