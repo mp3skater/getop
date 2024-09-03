@@ -91,7 +91,7 @@ public class EndSceptreEntity extends ThrowableProjectile implements IAnimatable
 
 	// Sets the animation
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("Idle", true));
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("tp_idle", true));
 		return PlayState.CONTINUE;
 	}
 

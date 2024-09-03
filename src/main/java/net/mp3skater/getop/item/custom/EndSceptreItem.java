@@ -99,7 +99,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		// Calculate the velocity based on player's look direction
 		float rotationYaw = player.getYRot();
 		float rotationPitch = player.getXRot();
-		float velocity = 1.5F;
+		float velocity = 2.5F;
 
 		// Adjust the motion of the entity based on player's rotation
 		double motionX = -Math.sin(Math.toRadians(rotationYaw)) * Math.cos(Math.toRadians(rotationPitch));
