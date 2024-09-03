@@ -17,8 +17,8 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class ModUtils {
-	public static void teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location, Item usedItem) {
-		if (player.level.isClientSide) return;
+	public static boolean teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location, Item usedItem) {
+		if (player.level.isClientSide) return false;
 
 		ServerLevel destinationWorld = Objects.requireNonNull(player.getServer()).getLevel(destinationType);
 
@@ -29,6 +29,7 @@ public class ModUtils {
 				usedItem != null ? usedItem.getDescription().getString() : "null");
 
 			player.changeDimension(destinationWorld, new SimpleTeleporter(location));
+			return true;
 		} else {
 			// Log more details for debugging
 			if (destinationWorld == null) {
@@ -42,6 +43,7 @@ public class ModUtils {
 				GetOP.LOGGER.info("Available dimension: {}", level.dimension().location())
 			);
 		}
+		return false;
 	}
 
 	private record SimpleTeleporter(Vec3 location) implements ITeleporter {

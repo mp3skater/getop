@@ -23,12 +23,15 @@ public class DimensionChangingItem extends Item {
 	}
 
 	@Override
-	public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+	public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player player, InteractionHand hand) {
 		// Changing to GetOP Dimension
-		if(pPlayer instanceof ServerPlayer serverPlayer) {
-			ModUtils.teleportEntityToDimension(serverPlayer, dimension, location, this);
+		if(player instanceof ServerPlayer serverPlayer) {
+			if(ModUtils.teleportEntityToDimension(serverPlayer, dimension, location, this)) {
+				player.getItemInHand(hand).hurtAndBreak(1, player,
+						player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
+			}
 		}
 
-		return super.use(pLevel, pPlayer, pUsedHand);
+		return super.use(pLevel, player, hand);
 	}
 }

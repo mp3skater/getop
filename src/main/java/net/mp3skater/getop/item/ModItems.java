@@ -25,9 +25,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
 
     public static final RegistryObject<Item> NEW_WORLD_KEY = ITEMS.register("new_world_key",
-      () -> new DimensionChangingItem(new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB),
-        ModDimensions.GTDIM_KEY,
-        new Vec3(0,0,0)));
+      () -> new DimensionChangingItem(new Item.Properties().durability(24)
+              .tab(ModCreativeModeTab.GET_OP_TAB), ModDimensions.GTDIM_KEY, new Vec3(0,0,0)));
 
     public static final RegistryObject<Item> DEATHAXE = ITEMS.register("deathaxe",
             () -> new DeathSwordItem(ModTiers.PAINITE, 2, -2.6f,
