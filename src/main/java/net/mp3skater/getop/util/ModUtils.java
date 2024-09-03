@@ -3,33 +3,58 @@ package net.mp3skater.getop.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.util.ITeleporter;
 import net.mp3skater.getop.GetOP;
 
+import java.util.Objects;
+import java.util.function.Function;
+
 public class ModUtils {
-	public static void changeDimension(Player pPlayer, Level pLevel, ResourceKey<Level> dimension, Item usedItem) {
-		// Announce in console
-		GetOP.LOGGER.info("Player: {} tries to change to dimension: {} using {}", pPlayer, dimension.location(), usedItem);
+	public static void teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location, Item usedItem) {
+		if (player.level.isClientSide) return;
 
-		// Ensure this logic runs only on the server side
-		if (pLevel.isClientSide) return;
+		ServerLevel destinationWorld = Objects.requireNonNull(player.getServer()).getLevel(destinationType);
 
-		if (pPlayer instanceof ServerPlayer serverPlayer) {
-			// Getting the dimension
-			ServerLevel targetLevel = serverPlayer.server.getLevel(dimension);
+		if (destinationWorld != null && player.level.dimension() != destinationType) {
+			GetOP.LOGGER.info("Player: {} tries to change to dimension: {} using {}",
+				player.getDisplayName().getString(),
+				destinationWorld.dimension().location(),
+				usedItem != null ? usedItem.getDescription().getString() : "null");
 
-			// Change dimension to the specified dimension
-			if (targetLevel != null) serverPlayer.changeDimension(targetLevel);
-				// Error handling
-			else GetOP.LOGGER.warn("Target dimension {} not found", dimension.location());
+			player.changeDimension(destinationWorld, new SimpleTeleporter(location));
+		} else {
+			// Log more details for debugging
+			if (destinationWorld == null) {
+				GetOP.LOGGER.error("Destination world is null! Make sure the dimension {} is registered and available on the server.", destinationType.location());
+			} else {
+				GetOP.LOGGER.warn("Player is already in the target dimension: {}", destinationType.location());
+			}
+
+			// Optional: Log available dimensions for more context
+			player.getServer().getAllLevels().forEach(level ->
+				GetOP.LOGGER.info("Available dimension: {}", level.dimension().location())
+			);
 		}
 	}
+
+	private record SimpleTeleporter(Vec3 location) implements ITeleporter {
+
+		@Override
+			public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
+				// Teleport entity to the specified location in the new dimension
+				entity.teleportTo(location.x(), location.y(), location.z());
+				entity.setYRot(yaw); // yaw
+				entity.setXRot(entity.getXRot()); // pitch
+				return repositionEntity.apply(true);
+			}
+		}
 
 	// Return true if tp position isn't in a wall
 	public static boolean tpAblePosAir(Vec3 vec_end, Level level) {

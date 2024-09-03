@@ -1,10 +1,9 @@
 package net.mp3skater.getop.item;
 
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,7 +25,9 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
 
     public static final RegistryObject<Item> NEW_WORLD_KEY = ITEMS.register("new_world_key",
-      () -> new DimensionChangingItem(new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB), ModDimensions.GTDIM_KEY));
+      () -> new DimensionChangingItem(new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB),
+        ModDimensions.GTDIM_KEY,
+        new Vec3(0,0,0)));
 
     public static final RegistryObject<Item> DEATHAXE = ITEMS.register("deathaxe",
             () -> new DeathSwordItem(ModTiers.PAINITE, 2, -2.6f,

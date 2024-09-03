@@ -16,11 +16,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
-import net.mp3skater.getop.item.ModItems;
 import net.mp3skater.getop.util.ModUtils;
 import net.mp3skater.getop.world.dimension.ModDimensions;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +37,7 @@ public class HerobrineSwordItem extends SwordItem {
 		if(!player.isShiftKeyDown()) lightningPower(level, player);
 
 		// Go to GetOP Dimension
-		else ModUtils.changeDimension(player, level, ModDimensions.GTDIM_KEY, this);
+		else ModUtils.teleportEntityToDimension(player, ModDimensions.GTDIM_KEY, new Vec3(0,0,0), this);
 
 		return super.use(level, player, hand);
 	}
