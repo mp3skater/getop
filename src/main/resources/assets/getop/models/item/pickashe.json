@@ -3,5 +3,6 @@
 	"textures": {
 		"layer0": "getop:item/pickashe",
 		"particle": "getop:item/pickashe"
-	}
+	},
+	"container": "getop:broken_pickashe"
 }

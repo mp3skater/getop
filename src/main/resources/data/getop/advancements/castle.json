@@ -4,7 +4,7 @@
       "item": "minecraft:nether_bricks"
     },
     "title": "The Glory of Nothingness",
-    "description": "find the mysterious castle ",
+    "description": "Find the mysterious castle",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
@@ -12,19 +12,13 @@
   },
   "parent": "getop:getop",
   "criteria": {
-    "fortress": {
+    "requirement": {
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "feature": "getop:air_temple"
+          "dimension": "getop:gtdim"
         }
       }
     }
-  },
-  "requirements": [
-    [
-      "air_temple"
-    ]
-  ]
+  }
 }
-
