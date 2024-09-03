@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "CAD",
+    " E "
+  ],
+  "key": {
+    "A": {
+      "item": "getop:painite_ingot"
+    },
+    "B": {
+      "item": "getop:deathaxe"
+    },
+    "C": {
+      "item": "getop:pickashe"
+    },
+    "D": {
+      "item": "getop:end_sceptre"
+    },
+    "E": {
+      "item": "getop:ice_scythe"
+    }
+  },
+  "result": {
+    "item": "getop:new_world_key"
+  }
+}
