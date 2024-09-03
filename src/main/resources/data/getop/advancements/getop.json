@@ -1,15 +1,15 @@
 {
   "display": {
     "icon": {
-      "item": "getop:painite_ingot"
+      "item": "getop:painite"
     },
-    "title": "GET OP!",
-    "description": "You need an ingot to continue",
+    "title": "Get OP",
+    "description": "Are you ready to become the most OP of all?",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": true,
+    "background": "getop:textures/block/painite_ore_block.png"
   },
-  "parent": "getop:painite",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -17,7 +17,7 @@
         "items": [
           {
             "items": [
-              "getop:painite_ingot"
+              "getop:painite"
             ]
           }
         ]

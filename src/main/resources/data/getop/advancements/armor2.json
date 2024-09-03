@@ -3,7 +3,7 @@
     "icon": {
       "item": "getop:painite_chestplate"
     },
-    "title": "So long nerds",
+    "title": "So Long Nerds",
     "description": "Collected the whole painite armor!",
     "frame": "challenge",
     "show_toast": true,
@@ -25,6 +25,10 @@
             ]
           }
         ]
+      },
+      "count": {
+        "min": 4,
+        "max": 4
       }
     }
   }

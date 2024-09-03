@@ -3,13 +3,13 @@
     "icon": {
       "item": "getop:end_sceptre"
     },
-    "title": "Even light can´t catch me",
-    "description": "Create the End Sceptre",
+    "title": "Weapon master",
+    "description": "Collect all Getop Weapons",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "getop:getop",
+  "parent": "getop:weapon",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -17,10 +17,17 @@
         "items": [
           {
             "items": [
+              "getop:deathaxe",
+              "getop:pickashe",
+              "getop:ice_scythe",
               "getop:end_sceptre"
             ]
           }
         ]
+      },
+      "count": {
+        "min": 4,
+        "max": 4
       }
     }
   }

@@ -3,8 +3,8 @@
     "icon": {
       "item": "getop:herobrine_sword"
     },
-    "title": "Conquer a Legend",
-    "description": "Take Herobrine's Sword",
+    "title": "Got OP",
+    "description": "Conquered Herobrine's Sword",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,

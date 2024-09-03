@@ -1,15 +1,15 @@
 {
   "display": {
     "icon": {
-      "item": "getop:painite"
+      "item": "getop:deathaxe"
     },
-    "title": "Call of the void",
-    "description": "Did you catch it?",
+    "title": "A legendary weapon",
+    "description": "Create a getop weapon",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
-    "background": "getop:textures/block/painite_ore_block.png"
+    "announce_to_chat": true
   },
+  "parent": "getop:ingot",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -17,7 +17,10 @@
         "items": [
           {
             "items": [
-              "getop:painite"
+              "getop:deathaxe",
+              "getop:pickashe",
+              "getop:ice_scythe",
+              "getop:end_sceptre"
             ]
           }
         ]

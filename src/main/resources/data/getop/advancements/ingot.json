@@ -1,10 +1,10 @@
 {
   "display": {
     "icon": {
-      "item": "getop:ice_scythe"
+      "item": "getop:painite_ingot"
     },
-    "title": "Brr!! Cold and Sharp",
-    "description": "Create the Ice Scythe",
+    "title": "The most powerful ingot",
+    "description": "One step closer to become the most OP of all!",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
@@ -17,7 +17,7 @@
         "items": [
           {
             "items": [
-              "getop:ice_scythe"
+              "getop:painite_ingot"
             ]
           }
         ]
