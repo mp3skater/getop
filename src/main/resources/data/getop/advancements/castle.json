@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:nether_bricks"
+      "item": "getop:herobrine_sword"
     },
     "title": "The Glory of Nothingness",
     "description": "Find the mysterious castle",
@@ -10,7 +10,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "getop:getop",
+  "parent": "getop:weapon2",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:location",
