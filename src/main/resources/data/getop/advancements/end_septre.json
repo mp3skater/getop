@@ -1,11 +1,11 @@
 {
   "display": {
     "icon": {
-      "item": "getop:new_world_key"
+      "item": "getop:end_sceptre"
     },
-    "title": "Weapon master",
-    "description": "Collect all Getop Weapons",
-    "frame": "challenge",
+    "title": "Even light can´t catch me",
+    "description": "Create the End Sceptre",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },
@@ -17,9 +17,6 @@
         "items": [
           {
             "items": [
-              "getop:deathaxe",
-              "getop:pickashe",
-              "getop:ice_scythe",
               "getop:end_sceptre"
             ]
           }

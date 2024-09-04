@@ -4,7 +4,7 @@
       "item": "getop:painite_ingot"
     },
     "title": "The most powerful ingot",
-    "description": "One step closer to become the most OP of all!",
+    "description": "You need a ingot to continue",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true

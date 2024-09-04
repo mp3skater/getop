@@ -4,7 +4,7 @@
       "item": "getop:painite"
     },
     "title": "Get OP",
-    "description": "Are you ready to become the most OP of all?",
+    "description": "Call of the void",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
