@@ -50,10 +50,7 @@
           },
           // If an output_state block has properties, you must define ALL properties of the block!
           "output_state": {
-            "Name": "minecraft:diamond_ore",
-            "Properties": {
-              "lit": false
-            }
+            "Name": "minecraft:diamond_ore"
           }
         }
       ]
