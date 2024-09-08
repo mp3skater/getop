@@ -1,14 +1,19 @@
 package net.mp3skater.getop.item.custom;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.mp3skater.getop.item.ModItems;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.controller.AnimationController;
@@ -16,6 +21,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
+
+import java.util.List;
 
 public class PainiteArmorItem extends GeoArmorItem implements IAnimatable, RareItem {
 	private AnimationFactory factory = new AnimationFactory(this);
@@ -45,14 +52,17 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable, RareI
 		return PlayState.STOP;
 	}
 
-	private static boolean hasNoArmorOn(Player player) {
-		ItemStack boots = player.getInventory().getArmor(0);
-		ItemStack leggings = player.getInventory().getArmor(1);
-		ItemStack breastplate = player.getInventory().getArmor(2);
-		ItemStack helmet = player.getInventory().getArmor(3);
-
-		return helmet.isEmpty() && breastplate.isEmpty()
-			&& leggings.isEmpty() && boots.isEmpty();
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		if (pStack.getItem() == ModItems.PAINITE_HELMET.get()) {
+			pTooltipComponents.add(new TranslatableComponent("item.getop.painite_helmet.tooltip"));
+		} else if (pStack.getItem() == ModItems.PAINITE_CHESTPLATE.get()) {
+			pTooltipComponents.add(new TranslatableComponent("item.getop.painite_chestplate.tooltip"));
+		} else if (pStack.getItem() == ModItems.PAINITE_LEGGINGS.get()) {
+			pTooltipComponents.add(new TranslatableComponent("item.getop.painite_leggings.tooltip"));
+		} else if (pStack.getItem() == ModItems.PAINITE_BOOTS.get()) {
+			pTooltipComponents.add(new TranslatableComponent("item.getop.painite_boots.tooltip"));
+		}
 	}
 
 	@Mod.EventBusSubscriber

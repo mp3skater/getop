@@ -11,6 +11,12 @@
   "item.getop.herobrine_sword": "Herobrine Sword",
   "item.getop.sentinel_blade": "Sentinel Blade",
 
+  "item.getop.deathaxe.tooltip": "Deal brutal damage at a cost!",
+  "item.getop.ice_scythe.tooltip": "Freeze your enemies!",
+  "item.getop.pickashe.tooltip": "Explosion Pickaxe: Mine with a bang!",
+  "item.getop.end_sceptre.tooltip": "Teleport Staff that bends space!",
+  "item.getop.herobrine_sword.tooltip": "Bring down lightning and move at the speed of light!",
+
   "item.getop.broken_deathaxe": "Broken Deathaxe",
   "item.getop.broken_ice_scythe": " Broken Ice Scythe",
   "item.getop.broken_pickashe": "Broken Pickashe",
@@ -24,6 +30,11 @@
   "item.getop.painite_chestplate": "Painite Chestplate",
   "item.getop.painite_leggings": "Painite Leggings",
   "item.getop.painite_boots": "Painite Boots",
+
+  "item.getop.painite_helmet.tooltip": "Makes you lightning proof!",
+  "item.getop.painite_chestplate.tooltip": "Makes you explosion proof!",
+  "item.getop.painite_leggings.tooltip": "Makes you fire proof!",
+  "item.getop.painite_boots.tooltip": "Makes you fall damage proof!",
 
   "block.getop.painite_ore_block": "Painite Ore",
   "block.getop.painite_block": "Painite Block",

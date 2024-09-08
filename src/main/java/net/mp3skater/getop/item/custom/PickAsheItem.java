@@ -2,6 +2,8 @@ package net.mp3skater.getop.item.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -15,7 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.mp3skater.getop.entity.custom.CoolFireballEntity;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 public class PickAsheItem extends PickaxeItem implements RareItem {
@@ -51,6 +55,11 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 		player.getItemInHand(hand).hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
 		return super.use(level, player, hand);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		pTooltipComponents.add(new TranslatableComponent("item.getop.pickashe.tooltip"));
 	}
 
 	// Inside your class where the method belongs

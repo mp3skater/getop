@@ -1,7 +1,8 @@
 package net.mp3skater.getop.item.custom;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,9 +19,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.mp3skater.getop.config.GetOPCommonConfigs;
 import org.jetbrains.annotations.NotNull;
+import net.mp3skater.getop.util.ModUtils;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 public class DeathSwordItem extends AxeItem implements RareItem {
 	public DeathSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
@@ -30,6 +32,11 @@ public class DeathSwordItem extends AxeItem implements RareItem {
 	@Override
 	public boolean canPerformAction(@NotNull ItemStack stack, net.minecraftforge.common.@NotNull ToolAction toolAction) {
 		return false;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		pTooltipComponents.add(new TranslatableComponent("item.getop.deathaxe.tooltip"));
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package net.mp3skater.getop.item.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,7 +18,9 @@ import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.entity.custom.EndSceptreEntity;
 import net.mp3skater.getop.util.ModUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 public class EndSceptreItem extends TieredItem implements RareItem {
@@ -44,7 +48,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		// Spawn the particles on the client
 		if(level.isClientSide) spawnParticles(level, eye);
 
-		// Do the teleportation and boost on server side
+		// Do the teleportation and boost on the server side
 		else {
 			// If the player is shifting, he boosts and teleports
 			if(player.isShiftKeyDown()) boostAndTeleport(eye, look, level, player);
@@ -60,6 +64,11 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		player.getItemInHand(hand).hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
 		return super.use(level, player, hand);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		pTooltipComponents.add(new TranslatableComponent("item.getop.end_sceptre.tooltip"));
 	}
 
 	private void boostAndTeleport(Vec3 eye, Vec3 look, Level level, Player player) {
@@ -101,7 +110,7 @@ public class EndSceptreItem extends TieredItem implements RareItem {
 		float rotationPitch = player.getXRot();
 		float velocity = 2.5F;
 
-		// Adjust the motion of the entity based on player's rotation
+		// Adjust the motion of the entity based on the player's rotation
 		double motionX = -Math.sin(Math.toRadians(rotationYaw)) * Math.cos(Math.toRadians(rotationPitch));
 		double motionY = -Math.sin(Math.toRadians(rotationPitch));
 		double motionZ = Math.cos(Math.toRadians(rotationYaw)) * Math.cos(Math.toRadians(rotationPitch));
