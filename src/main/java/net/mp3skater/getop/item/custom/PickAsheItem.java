@@ -7,12 +7,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.mp3skater.getop.entity.custom.CoolFireballEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -34,18 +35,17 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 		if(hand!=InteractionHand.MAIN_HAND)
 			return new InteractionResultHolder<>(InteractionResult.FAIL, player.getItemInHand(hand));
 
-		// Getting the player's look direction and eye position
-		Vec3 look = player.getLookAngle();
+		// Getting the player's eye position
 		Vec3 eye = player.getEyePosition();
 
-		// Spawn the particles on the client
-		if(level.isClientSide) spawnParticles(level, eye);
-
-		// Do the teleportation and boost on server side
-		else throwFireball(level, player);
+		// Do the teleportation and boost on the server side
+		if(!level.isClientSide) throwFireball(level, player);
 
 		// Add Cooldown
 		player.getCooldowns().addCooldown(this, 20);
+
+		// Spawn the particles on the client
+		if(level.isClientSide) spawnParticles(level, eye);
 
 		// Break it on use
 		player.getItemInHand(hand).hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -60,7 +60,7 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 			return;
 		}
 
-		LargeFireball entity = new LargeFireball(EntityType.FIREBALL, level);
+		CoolFireballEntity entity = new CoolFireballEntity(EntityType.FIREBALL, level);
 
 		// Set the initial position and motion of the entity
 		entity.setPos(player.getX(), player.getEyeY(), player.getZ());

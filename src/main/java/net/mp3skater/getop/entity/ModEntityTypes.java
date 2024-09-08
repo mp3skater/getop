@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
+import net.mp3skater.getop.entity.custom.CoolFireballEntity;
 import net.mp3skater.getop.entity.custom.EndSceptreEntity;
 import net.mp3skater.getop.entity.custom.VoidShredderEntity;
 
@@ -23,9 +24,15 @@ public class ModEntityTypes {
 
     public static final RegistryObject<EntityType<EndSceptreEntity>> ENDSCEPTRE_ENTITY =
       ENTITY_TYPES.register("end_sceptre_entity",
-      () -> EntityType.Builder.of(EndSceptreEntity::new, MobCategory.MISC)
-        .sized(0.5F, 0.5F)
-        .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
+        () -> EntityType.Builder.of(EndSceptreEntity::new, MobCategory.MISC)
+          .sized(0.5F, 0.5F)
+          .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
+
+    public static final RegistryObject<EntityType<CoolFireballEntity>> COOL_FIREBALL =
+      ENTITY_TYPES.register("cool_fireball",
+        () -> EntityType.Builder.of(CoolFireballEntity::new, MobCategory.MISC)
+          .sized(0.5F, 0.5F)
+          .build(new ResourceLocation(GetOP.MOD_ID, "cool_fireball").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
