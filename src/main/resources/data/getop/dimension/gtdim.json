@@ -8,7 +8,7 @@
       "features": false,
       "layers": [
         {
-          "block": "minecraft:stone",
+          "block": "minecraft:air",
           "height": 1
         }
       ],
@@ -16,13 +16,13 @@
         {
           "structures": [
             {
-              "structure": "getop:sky_fan",
+              "structure": "getop:herobrine_castle",
               "weight": 1
             }
           ],
           "placement": {
             "type": "minecraft:random_spread",
-            "salt": 0,
+            "salt": 304050607,
             "spacing": 1,
             "separation": 0
           }
