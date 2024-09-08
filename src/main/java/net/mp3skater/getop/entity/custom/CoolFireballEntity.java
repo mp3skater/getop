@@ -40,7 +40,7 @@ public class CoolFireballEntity extends LargeFireball implements IAnimatable {
 	protected void onHit(HitResult pResult) {
 		if (!this.level.isClientSide) {
 			boolean flag = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-			this.level.explode(null, this.getX(), this.getY(), this.getZ(), power, flag, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
+			this.level.explode(null, this.getX(), this.getY(), this.getZ(), power, false, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
 			this.discard();
 		}
 	}
