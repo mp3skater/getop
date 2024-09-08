@@ -1,6 +1,7 @@
 package net.mp3skater.getop.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -13,10 +14,42 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
 import net.mp3skater.getop.GetOP;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 import java.util.function.Function;
 
 public class ModUtils {
+	// Spawns particles in all directions
+	public static void explosionParticleEffect(Level level, Vec3 start, int numParticles, double speed, ArrayList<ParticleOptions> types) {
+		Random random = new Random();
+
+		// Spawn particles in all directions
+		for (int i = 0; i < numParticles; i++) {
+			// Generate a random direction in spherical coordinates
+			double theta = random.nextDouble() * 2 * Math.PI; // Azimuthal angle
+			double phi = Math.acos(2 * random.nextDouble() - 1); // Polar angle
+
+			// Convert spherical coordinates to Cartesian coordinates
+			double offsetX = Math.sin(phi) * Math.cos(theta);
+			double offsetY = Math.cos(phi);
+			double offsetZ = Math.sin(phi) * Math.sin(theta);
+
+			// Apply speed to the offset direction
+			offsetX *= speed;
+			offsetY *= speed;
+			offsetZ *= speed;
+
+			// Compute the particle's position
+			Vec3 particlePos = start.add(offsetX, offsetY, offsetZ);
+
+			// Add the particle to the level
+			ParticleOptions type = types.get(random.nextInt(1, 10000000) % types.size());
+			level.addParticle(type, // You can replace this with any other particle type
+				particlePos.x, particlePos.y, particlePos.z,
+				offsetX, offsetY, offsetZ);
+		}
+	}
 	public static void teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location, Item usedItem) {
 		if (player.level.isClientSide) return;
 

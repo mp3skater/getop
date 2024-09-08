@@ -35,6 +35,8 @@ public class IceScytheItem extends SwordItem implements RareItem {
 	@Override
 	public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
 		Level level = pAttacker.getLevel();
+		ModUtils.explosionParticleEffect(level, pTarget.getEyePosition(), 40, 2f,
+			new ArrayList<>(List.of(ParticleTypes.ENCHANTED_HIT)));
 		if (!level.isClientSide()) {
 			pTarget.addEffect(new MobEffectInstance(GetOPEffects.FREEZE.get(), 40, 1), pAttacker);
 		}
@@ -49,7 +51,8 @@ public class IceScytheItem extends SwordItem implements RareItem {
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		// Spawn particles on the client
-		if(level.isClientSide) spawnParticles(level, player.getEyePosition());
+		if(level.isClientSide) ModUtils.explosionParticleEffect(level, player.getEyePosition(), 40, 2f,
+			new ArrayList<>(Arrays.asList(ParticleTypes.SNOWFLAKE, ParticleTypes.ENCHANTED_HIT)));
 
 		// Give the effect on the server
 		else addEffectToEntities(player, level);
@@ -82,29 +85,6 @@ public class IceScytheItem extends SwordItem implements RareItem {
 				entity.hurt(DamageSource.MAGIC, 2);
 				((LivingEntity) entity).addEffect(new MobEffectInstance(GetOPEffects.FREEZE.get(), 50, 1), player);
 			}
-		}
-	}
-
-	private void spawnParticles(Level level, Vec3 eye) {
-		Random random = new Random();
-		float maxDistance = 2;
-
-		// Spawn witch spell particles
-		for (int i = 0; i < 50; i++) {
-			double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
-			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
-			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
-			Vec3 particlePos = eye.add(offsetX - 1, offsetY - 1, offsetZ - 1);
-			level.addParticle(ParticleTypes.ENCHANTED_HIT, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
-		}
-
-		// Spawn end rod particles
-		for (int i = 0; i < 20; i++) {
-			double offsetX = (random.nextDouble() * 2 - 1) * maxDistance;
-			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
-			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
-			Vec3 particlePos = eye.add(offsetX - 1, offsetY - 1, offsetZ - 1);
-			level.addParticle(ParticleTypes.SNOWFLAKE, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
 		}
 	}
 }
