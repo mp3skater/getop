@@ -1,0 +1,15 @@
+{
+  "name": "getop:herobrine_castle/storagetower_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "getop:castle_storagetower_bottom",
+        "processors": "getop:randomize_quartz_block",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "getop:herobrine_castle/musictower_top_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "getop:castle_musictower_top",
+        "processors": "getop:randomize_quartz_block",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
