@@ -23,10 +23,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class EndSceptreItem extends TieredItem implements RareItem {
-
-	public EndSceptreItem(Tier pTier, Properties pProperties) {
-		super(pTier, pProperties);
+public class EndSceptreItem extends SwordItem implements RareItem {
+	public EndSceptreItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+		super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
 	}
 
 	@Override
