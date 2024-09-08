@@ -71,9 +71,6 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable, RareI
 		@SubscribeEvent
 		public static void onLivingDamage(LivingDamageEvent event) {
 			if (event.getEntity() instanceof Player player) {
-				// Return if no armor on
-				if(hasNoArmorOn(player)) return;
-
 				// Helmet: Lightning protection
 				if (event.getSource() == DamageSource.LIGHTNING_BOLT) {
 					ItemStack helmet = player.getInventory().getArmor(3); // 3 = helmet slot
@@ -81,33 +78,37 @@ public class PainiteArmorItem extends GeoArmorItem implements IAnimatable, RareI
 						// Cancel lightning damage
 						event.setCanceled(true);
 					}
+					player.getInventory().getArmor(3).hurtAndBreak(2, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 				}
 
 				// Chestplate: Explosion protection
-				if (event.getSource().isExplosion()) {
+				else if (event.getSource().isExplosion()) {
 					ItemStack chestplate = player.getInventory().getArmor(2); // 2 = chestplate slot
 					if (chestplate.getItem() == ModItems.PAINITE_CHESTPLATE.get()) {
 						// Cancel explosion damage
 						event.setCanceled(true);
 					}
+					player.getInventory().getArmor(2).hurtAndBreak(2, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 				}
 
 				// Leggings: Fire protection
-				if (event.getSource().isFire() || event.getSource().isExplosion() || event.getSource().isBypassArmor()) {
+				else if (event.getSource().isFire()) {
 					ItemStack leggings = player.getInventory().getArmor(1); // 1 = leggings slot
 					if (leggings.getItem() == ModItems.PAINITE_LEGGINGS.get()) {
 						// Cancel fire damage
 						event.setCanceled(true);
 					}
+					player.getInventory().getArmor(1).hurtAndBreak(2, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 				}
 
 				// Boots: Cancel all damage when wearing boots
-				if(event.getSource().isFall()) {
+				else if(event.getSource().isFall()) {
 					ItemStack boots = player.getInventory().getArmor(0); // 0 = boots slot
 					if (boots.getItem() == ModItems.PAINITE_BOOTS.get()) {
 						// Cancel all damage
 						event.setCanceled(true);
 					}
+					player.getInventory().getArmor(0).hurtAndBreak(2, player, player1 -> player.broadcastBreakEvent(player.getUsedItemHand()));
 				}
 			}
 		}
