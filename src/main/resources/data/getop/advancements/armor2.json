@@ -24,11 +24,8 @@
               "getop:painite_boots"
             ]
           }
-        ]
-      },
-      "count": {
-        "min": 4,
-        "max": 4
+        ],
+        "count": 4
       }
     }
   }
