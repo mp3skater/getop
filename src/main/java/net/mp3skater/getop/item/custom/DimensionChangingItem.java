@@ -26,7 +26,7 @@ public class DimensionChangingItem extends Item {
 	public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		// Changing to GetOP Dimension
 		if(pPlayer instanceof ServerPlayer serverPlayer) {
-			ModUtils.teleportEntityToDimension(serverPlayer, dimension, location, this);
+			ModUtils.teleportEntityToDimension(serverPlayer, dimension, location);
 		}
 
 		return super.use(pLevel, pPlayer, pUsedHand);

@@ -44,7 +44,7 @@ public class HerobrineSwordItem extends SwordItem {
 		if(!player.isShiftKeyDown()) lightningPower(level, player);
 
 		// Go to GetOP Dimension
-		else ModUtils.teleportEntityToDimension(player, ModDimensions.GTDIM_KEY, new Vec3(0,0,0), this);
+		else ModUtils.teleportEntityToDimension(player, ModDimensions.GTDIM_KEY, new Vec3(0,0,0));
 
 		return super.use(level, player, hand);
 	}

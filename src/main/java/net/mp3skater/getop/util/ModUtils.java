@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,16 +49,15 @@ public class ModUtils {
 				offsetX, offsetY, offsetZ);
 		}
 	}
-	public static void teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location, Item usedItem) {
+	public static void teleportEntityToDimension(Player player, ResourceKey<Level> destinationType, Vec3 location) {
 		if (player.level.isClientSide) return;
 
 		ServerLevel destinationWorld = Objects.requireNonNull(player.getServer()).getLevel(destinationType);
 
 		if (destinationWorld != null && player.level.dimension() != destinationType) {
-			GetOP.LOGGER.info("Player: {} tries to change to dimension: {} using {}",
+			GetOP.LOGGER.info("Player: {} tries to change to dimension: {}",
 				player.getDisplayName().getString(),
-				destinationWorld.dimension().location(),
-				usedItem != null ? usedItem.getDescription().getString() : "null");
+				destinationWorld.dimension().location());
 
 			player.changeDimension(destinationWorld, new SimpleTeleporter(location));
 		} else {

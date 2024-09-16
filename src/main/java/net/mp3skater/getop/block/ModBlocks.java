@@ -3,20 +3,21 @@ package net.mp3skater.getop.block;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.block.custom.AnvilOfSageBlock;
+import net.mp3skater.getop.block.custom.TpStepOnBlock;
 import net.mp3skater.getop.item.ModCreativeModeTab;
 import net.mp3skater.getop.item.ModItems;
+import net.mp3skater.getop.world.dimension.ModDimensions;
 
 import java.util.function.Supplier;
 
@@ -35,6 +36,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> ANVILOFSAGE_BLOCK = registerBlock("anvilofsage_block",
             () -> new AnvilOfSageBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()),
             ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
+      () -> new TpStepOnBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
+        .strength(3f).sound(SoundType.STONE), ModDimensions.GTDIM_KEY,
+        new Vec3(0,0,0)), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> AMETHYST_STAIRS = registerBlock("amethyst_stairs",
             () -> new StairBlock(Blocks.AMETHYST_BLOCK::defaultBlockState, BlockBehaviour.Properties.of(Material.AMETHYST)
