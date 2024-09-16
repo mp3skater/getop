@@ -15,7 +15,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.entity.custom.CoolFireballEntity;
+import net.mp3skater.getop.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -69,7 +71,7 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 			return;
 		}
 
-		CoolFireballEntity entity = new CoolFireballEntity(EntityType.FIREBALL, level);
+		CoolFireballEntity entity = new CoolFireballEntity(ModEntityTypes.PICKAXE_FIREBALL.get(), level);
 
 		// Set the initial position and motion of the entity
 		entity.setPos(player.getX(), player.getEyeY(), player.getZ());
@@ -78,7 +80,7 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 		// Calculate the velocity based on player's look direction
 		float rotationYaw = player.getYRot();
 		float rotationPitch = player.getXRot();
-		float velocity = 5f;
+		float velocity = 0f; // later to 5f please
 
 		// Adjust the motion of the entity based on player's rotation
 		double motionX = -Math.sin(Math.toRadians(rotationYaw)) * Math.cos(Math.toRadians(rotationPitch));

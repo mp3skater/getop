@@ -28,11 +28,11 @@ public class ModEntityTypes {
           .sized(0.5F, 0.5F)
           .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
 
-    public static final RegistryObject<EntityType<CoolFireballEntity>> COOL_FIREBALL =
-      ENTITY_TYPES.register("cool_fireball",
+    public static final RegistryObject<EntityType<CoolFireballEntity>> PICKAXE_FIREBALL =
+      ENTITY_TYPES.register("pickashe_fireball",
         () -> EntityType.Builder.of(CoolFireballEntity::new, MobCategory.MISC)
           .sized(0.5F, 0.5F)
-          .build(new ResourceLocation(GetOP.MOD_ID, "cool_fireball").toString()));
+          .build(new ResourceLocation(GetOP.MOD_ID, "pickashe_fireball").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

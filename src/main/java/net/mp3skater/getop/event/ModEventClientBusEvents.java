@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.entity.client.EndSceptreRenderer;
+import net.mp3skater.getop.entity.client.PickasheFireballRenderer;
 import net.mp3skater.getop.entity.client.Void_ShredderRenderer;
 import net.mp3skater.getop.entity.client.armor.PainiteArmorRenderer;
 import net.mp3skater.getop.item.custom.PainiteArmorItem;
@@ -36,8 +37,10 @@ public class ModEventClientBusEvents {
     public static void clientSetup(final FMLClientSetupEvent event) {
         MenuScreens.register(ModMenuTypes.ANVILOFSAGE_MENU.get(), AnvilofSage_Screen::new);
         EntityRenderers.register(ModEntityTypes.VOID_SHREDDER.get(),
-                Void_ShredderRenderer::new);
+          Void_ShredderRenderer::new);
+        EntityRenderers.register(ModEntityTypes.PICKAXE_FIREBALL.get(),
+          PickasheFireballRenderer::new);
         EntityRenderers.register(ModEntityTypes.ENDSCEPTRE_ENTITY.get(),
-                EndSceptreRenderer::new);
+          EndSceptreRenderer::new);
     }
 }

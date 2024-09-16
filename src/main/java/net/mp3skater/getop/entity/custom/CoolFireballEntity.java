@@ -23,7 +23,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 public class CoolFireballEntity extends LargeFireball implements IAnimatable {
-	public CoolFireballEntity(EntityType<? extends LargeFireball> p_37199_, Level p_37200_) {
+	public CoolFireballEntity(EntityType<? extends CoolFireballEntity> p_37199_, Level p_37200_) {
 		super(p_37199_, p_37200_);
 		this.power = 4f;
 	}
@@ -35,6 +35,11 @@ public class CoolFireballEntity extends LargeFireball implements IAnimatable {
 
 	@Override
 	protected void defineSynchedData() {}
+
+	@Override
+	protected boolean shouldBurn() {
+		return false;
+	}
 
 	@Override
 	protected void onHit(HitResult pResult) {
