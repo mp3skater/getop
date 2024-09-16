@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
-import net.mp3skater.getop.entity.custom.CoolFireballEntity;
+import net.mp3skater.getop.entity.custom.PickasheFireballEntity;
 import net.mp3skater.getop.entity.custom.EndSceptreEntity;
 import net.mp3skater.getop.entity.custom.VoidShredderEntity;
 
@@ -28,9 +28,9 @@ public class ModEntityTypes {
           .sized(0.5F, 0.5F)
           .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
 
-    public static final RegistryObject<EntityType<CoolFireballEntity>> PICKAXE_FIREBALL =
+    public static final RegistryObject<EntityType<PickasheFireballEntity>> PICKASHE_FIREBALL =
       ENTITY_TYPES.register("pickashe_fireball",
-        () -> EntityType.Builder.of(CoolFireballEntity::new, MobCategory.MISC)
+        () -> EntityType.Builder.of(PickasheFireballEntity::new, MobCategory.MISC)
           .sized(0.5F, 0.5F)
           .build(new ResourceLocation(GetOP.MOD_ID, "pickashe_fireball").toString()));
 

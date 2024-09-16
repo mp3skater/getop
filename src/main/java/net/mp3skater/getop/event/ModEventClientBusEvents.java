@@ -38,7 +38,7 @@ public class ModEventClientBusEvents {
         MenuScreens.register(ModMenuTypes.ANVILOFSAGE_MENU.get(), AnvilofSage_Screen::new);
         EntityRenderers.register(ModEntityTypes.VOID_SHREDDER.get(),
           Void_ShredderRenderer::new);
-        EntityRenderers.register(ModEntityTypes.PICKAXE_FIREBALL.get(),
+        EntityRenderers.register(ModEntityTypes.PICKASHE_FIREBALL.get(),
           PickasheFireballRenderer::new);
         EntityRenderers.register(ModEntityTypes.ENDSCEPTRE_ENTITY.get(),
           EndSceptreRenderer::new);
