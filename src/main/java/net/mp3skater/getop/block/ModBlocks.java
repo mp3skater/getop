@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.block.custom.AnvilOfSageBlock;
-import net.mp3skater.getop.block.custom.TpStepOnBlock;
+import net.mp3skater.getop.block.custom.TpStepThroughBlock;
 import net.mp3skater.getop.item.ModCreativeModeTab;
 import net.mp3skater.getop.item.ModItems;
 import net.mp3skater.getop.world.dimension.ModDimensions;
@@ -38,7 +38,7 @@ public class ModBlocks {
             ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
-      () -> new TpStepOnBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
+      () -> new TpStepThroughBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
         .strength(3f).sound(SoundType.STONE), ModDimensions.GTDIM_KEY,
         new Vec3(0,0,0)), ModCreativeModeTab.GET_OP_TAB);
 
