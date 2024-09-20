@@ -3,22 +3,17 @@ package net.mp3skater.getop.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.mp3skater.getop.block.ModBlocks;
 import net.mp3skater.getop.util.ModUtils;
 
-public class TpStepOnBlock extends Block {
+public class EndRiftBlock extends Block {
     private final ResourceKey<Level> dimension;
     private final Vec3 location;
-    public TpStepOnBlock(Properties properties, ResourceKey<Level> dimension, Vec3 location) {
+    public EndRiftBlock(Properties properties, ResourceKey<Level> dimension, Vec3 location) {
         super(properties);
 			this.dimension = dimension;
 			this.location = location;

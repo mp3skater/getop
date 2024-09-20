@@ -1,9 +1,10 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "getop:block/end_rift",
-		"particle": "getop:block/end_rift"
+		"0": "getop:block/end_rift_block",
+		"particle": "getop:block/end_rift_block"
 	},
 	"elements": [
 		{

@@ -1,10 +1,13 @@
 package net.mp3skater.getop;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mp3skater.getop.block.ModBlocks;
@@ -62,6 +65,11 @@ public class GetOP
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
     }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.END_RIFT_BLOCK.get(), RenderType.translucent());
+    }
+
 }

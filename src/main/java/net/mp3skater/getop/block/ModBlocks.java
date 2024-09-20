@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.block.custom.AnvilOfSageBlock;
-import net.mp3skater.getop.block.custom.TpStepOnBlock;
+import net.mp3skater.getop.block.custom.EndRiftBlock;
 import net.mp3skater.getop.item.ModCreativeModeTab;
 import net.mp3skater.getop.item.ModItems;
 import net.mp3skater.getop.world.dimension.ModDimensions;
@@ -38,17 +38,17 @@ public class ModBlocks {
             ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
-      () -> new TpStepOnBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
+      () -> new EndRiftBlock(BlockBehaviour.Properties.of(Material.AIR)
         .strength(3f).sound(SoundType.STONE), ModDimensions.GTDIM_KEY,
         new Vec3(0,0,0)), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> AMETHYST_STAIRS = registerBlock("amethyst_stairs",
             () -> new StairBlock(Blocks.AMETHYST_BLOCK::defaultBlockState, BlockBehaviour.Properties.of(Material.AMETHYST)
-                    .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+                    .strength(7f).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> AMETHYST_SLAB = registerBlock("amethyst_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
-                    .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+                    .strength(7f).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
