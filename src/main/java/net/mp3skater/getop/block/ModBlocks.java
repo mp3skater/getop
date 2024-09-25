@@ -34,7 +34,7 @@ public class ModBlocks {
                     .strength(12f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> ANVILOFSAGE_BLOCK = registerBlock("anvilofsage_block",
-            () -> new AnvilOfSageBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()),
+            () -> new AnvilOfSageBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().sound(SoundType.ANVIL)),
             ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
