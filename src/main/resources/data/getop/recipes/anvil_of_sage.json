@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "g#g",
+        " g ",
+        "#p#"
+    ],
+    "key": {
+        "#": {
+            "item": "getop:painite"
+        },
+        "g": {
+            "item": "minecraft:iron_block"
+        },
+        "p": {
+            "item": "getop:painite_ingot"
+        }
+    },
+    "result": {
+        "item": "getop:anvilofsage_block",
+        "count": 1
+    }
+}

@@ -7,11 +7,11 @@
     ],
     "key": {
         "#": {
-            "item": "getop:painite"
+            "item": "getop:painite_ingot"
         }
     },
     "result": {
-        "item": "block.getop.painite_block",
+        "item": "getop:painite_block",
         "count": 1
     }
 }
