@@ -3,14 +3,14 @@
     "icon": {
       "item": "getop:herobrine_sword"
     },
-    "title": "Conquer a legend",
+    "title": "The strongest Hero",
     "description": "Take Herobrine's Sword",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "getop:castle",
+  "parent": "getop:weapon",
   "criteria": {
     "requirement": {
       "trigger": "minecraft:inventory_changed",
@@ -22,6 +22,10 @@
             ]
           }
         ]
+      },
+      "count": {
+        "min": 4,
+        "max": 4
       }
     }
   }
