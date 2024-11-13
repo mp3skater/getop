@@ -1,5 +1,9 @@
 package net.mp3skater.getop.screen;
 
+
+
+
+
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -27,9 +31,9 @@ public class AnvilofSage_Screen extends AbstractContainerScreen<AnvilofSage_Menu
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
 
-        if(menu.isCrafting()) {
-            blit(pPoseStack, x + 102, y + 41, 176, 0, 8, menu.getScaledProgress());
-        }
+        //if(menu.isCrafting()) {
+        //    blit(pPoseStack, x + 102, y + 41, 176, 0, 8, menu.getScaledProgress());
+        //}
     }
 
     @Override

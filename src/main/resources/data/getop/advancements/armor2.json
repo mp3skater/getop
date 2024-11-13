@@ -17,18 +17,22 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "getop:painite_helmet",
-              "getop:painite_chestplate",
-              "getop:painite_leggings",
-              "getop:painite_boots"
-            ]
+            "items": ["getop:painite_helmet"],
+            "count": 1
+          },
+          {
+            "items": ["getop:painite_chestplate"],
+            "count": 1
+          },
+          {
+            "items": ["getop:painite_leggings"],
+            "count": 1
+          },
+          {
+            "items": ["getop:painite_boots"],
+            "count": 1
           }
         ]
-      },
-      "count": {
-        "min": 4,
-        "max": 4
       }
     }
   }
