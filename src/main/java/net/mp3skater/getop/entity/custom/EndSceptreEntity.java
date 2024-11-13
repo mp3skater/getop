@@ -28,6 +28,8 @@ public class EndSceptreEntity extends ThrowableProjectile implements IAnimatable
 		super(p_37466_, p_37467_);
 	}
 
+	private int despawnTimer = 0;
+
 	private final AnimationFactory factory = new AnimationFactory(this);
 
 	// When an entity is hit, hurt it by 2f
@@ -70,7 +72,20 @@ public class EndSceptreEntity extends ThrowableProjectile implements IAnimatable
 			this.discard();
 		} else {
 			super.tick();
+
+			despawnTimer++;
+
+			// Despawn after 5 sec
+			if(despawnTimer >= 100) {
+				this.discard();
+			}
 		}
+	}
+
+	// No gravity
+	@Override
+	protected float getGravity() {
+		return 0;
 	}
 
 	// From the ThrownEnderpearl class
