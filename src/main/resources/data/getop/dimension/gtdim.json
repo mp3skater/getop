@@ -26,6 +26,20 @@
             "spacing": 1,
             "separation": 0
           }
+        },
+        {
+          "structures": [
+            {
+              "structure": "getop:ships",
+              "weight": 1
+            }
+          ],
+          "placement": {
+            "type": "minecraft:concentric_rings",
+            "distance": 64,
+            "spread": 50,
+            "count": 5
+          }
         }
       ]
     }
