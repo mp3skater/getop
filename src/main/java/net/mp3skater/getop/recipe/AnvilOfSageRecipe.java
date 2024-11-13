@@ -2,6 +2,7 @@ package net.mp3skater.getop.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -11,33 +12,36 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.mp3skater.getop.GetOP;
-
-import javax.annotation.Nullable;
+import net.mp3skater.getop.item.ModItems;
+import net.mp3skater.getop.item.custom.BrokenWeapon;
+import org.slf4j.Logger;
 
 public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
+    private static final Logger LOGGER = LogUtils.getLogger();
+
     private final ResourceLocation id;
     private final ItemStack output;
-    private final NonNullList<Ingredient> recipeItems;
+    private final ItemStack input;
 
-    public AnvilOfSageRecipe(ResourceLocation id, ItemStack output,
-                             NonNullList<Ingredient> recipeItems) {
+    public AnvilOfSageRecipe(ResourceLocation id, ItemStack output, ItemStack input) {
         this.id = id;
         this.output = output;
-        this.recipeItems = recipeItems;
+        this.input = input;
     }
 
     @Override
     public boolean matches(SimpleContainer simpleContainer, Level level) {
-        return recipeItems.get(0).test(simpleContainer.getItem(1));
+        return simpleContainer.getItem(1).getItem() == ModItems.PAINITE_INGOT.get() &&
+          simpleContainer.getItem(0).getItem() instanceof BrokenWeapon;
     }
 
     @Override
     public ItemStack assemble(SimpleContainer simpleContainer) {
-        return output;
+        return output.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
@@ -66,33 +70,24 @@ public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "anvil_of_sage";
     }
+
     public static class Serializer implements RecipeSerializer<AnvilOfSageRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID =
-                new ResourceLocation(GetOP.MOD_ID,"anvil_of_sage");
+        public static final ResourceLocation ID = new ResourceLocation(GetOP.MOD_ID, "anvil_of_sage");
 
         @Override
         public AnvilOfSageRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
+            ItemStack input = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "ingredient"));
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
-
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
-            }
-
-            return new AnvilOfSageRecipe(id, output, inputs);
+            return new AnvilOfSageRecipe(id, output, input);
         }
 
         @Override
         public AnvilOfSageRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
-
-            inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-
+            ItemStack input = buf.readItem();
             ItemStack output = buf.readItem();
-            return new AnvilOfSageRecipe(id, output, inputs);
+            return new AnvilOfSageRecipe(id, output, input);
         }
 
         @Override
@@ -109,7 +104,6 @@ public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
             return INSTANCE;
         }
 
-        @Nullable
         @Override
         public ResourceLocation getRegistryName() {
             return ID;
@@ -126,3 +120,5 @@ public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
         }
     }
 }
+
+

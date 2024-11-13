@@ -39,7 +39,7 @@ public class ModItems {
             () -> new EndSceptreItem(ModTiers.PAINITE, 2, -2.6f,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> SENTINEL_BLADE = ITEMS.register("sentinel_blade",
-            () -> new SwordItem(ModTiers.PAINITE, 1, -2.0f,
+            () -> new SwordItem(ModTiers.PAINITE, 2, -3.5f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> ICE_SCYTHE = ITEMS.register("ice_scythe",
             () -> new IceScytheItem(ModTiers.PAINITE, 2, -2.6f,
@@ -66,13 +66,13 @@ public class ModItems {
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
 
     public static final RegistryObject<Item> BROKEN_DEATHAXE = ITEMS.register("broken_deathaxe",
-            () -> new Item(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+            () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
     public static final RegistryObject<Item> BROKEN_PICKASHE = ITEMS.register("broken_pickashe",
-            () -> new Item(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+            () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
     public static final RegistryObject<Item> BROKEN_END_SCEPTRE = ITEMS.register("broken_end_sceptre",
-            () -> new Item(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+            () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
     public static final RegistryObject<Item> BROKEN_ICE_SCYTHE = ITEMS.register("broken_ice_scythe",
-            () -> new Item(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+            () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
