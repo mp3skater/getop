@@ -10,12 +10,14 @@
   "item.getop.end_sceptre": "End Sceptre",
   "item.getop.herobrine_sword": "Herobrine Sword",
   "item.getop.sentinel_blade": "Sentinel Blade",
+  "item.getop.abyss_shield": "Abyss Shield",
 
   "item.getop.deathaxe.tooltip": "Deal brutal damage at a cost!",
   "item.getop.ice_scythe.tooltip": "Freeze your enemies!",
   "item.getop.pickashe.tooltip": "Explosion Pickaxe: Mine with a bang!",
   "item.getop.end_sceptre.tooltip": "Teleport Staff that bends space!",
   "item.getop.herobrine_sword.tooltip": "Bring down lightning and move at the speed of light!",
+  "item.getop.abyss_shield.tooltip": "Boost your enemies into their abyss!",
 
   "item.getop.broken_deathaxe": "Broken Deathaxe",
   "item.getop.broken_ice_scythe": " Broken Ice Scythe",

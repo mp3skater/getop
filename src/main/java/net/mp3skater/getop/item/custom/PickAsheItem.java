@@ -103,7 +103,8 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
 			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
 			Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
-			level.addParticle(ParticleTypes.LARGE_SMOKE, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
+			level.addParticle(ParticleTypes.LARGE_SMOKE, particlePos.x, particlePos.y, particlePos.z,
+				0, 0, 0);
 		}
 
 		// Spawn lava particles
@@ -112,7 +113,8 @@ public class PickAsheItem extends PickaxeItem implements RareItem {
 			double offsetY = (random.nextDouble() * 2 - 1) * maxDistance;
 			double offsetZ = (random.nextDouble() * 2 - 1) * maxDistance;
 			Vec3 particlePos = eye.add(offsetX, offsetY, offsetZ);
-			level.addParticle(ParticleTypes.LAVA, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
+			level.addParticle(ParticleTypes.LAVA, particlePos.x, particlePos.y, particlePos.z,
+				0, 0, 0);
 		}
 	}
 

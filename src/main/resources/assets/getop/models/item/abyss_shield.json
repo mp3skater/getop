@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "builtin/entity",
 	"textures": {
-		"0": "getop:item/blase_shield",
-		"particle": "getop:item/blase_shield"
+		"0": "getop:item/abyss_shield",
+		"particle": "getop:item/abyss_shield"
 	},
 	"elements": [
 		{

@@ -3,7 +3,6 @@ package net.mp3skater.getop.item;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,7 +11,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
 import net.mp3skater.getop.entity.ModEntityTypes;
 import net.mp3skater.getop.item.custom.*;
-import net.mp3skater.getop.world.dimension.ModDimensions;
 
 public class ModItems {
 
@@ -42,8 +40,10 @@ public class ModItems {
             () -> new SwordItem(ModTiers.PAINITE, 2, -3.5f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> ICE_SCYTHE = ITEMS.register("ice_scythe",
-            () -> new IceScytheItem(ModTiers.PAINITE, 2, -2.6f,
-                    new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
+      () -> new IceScytheItem(ModTiers.PAINITE, 2, -2.6f,
+        new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
+    public static final RegistryObject<Item> ABYSS_SHIELD = ITEMS.register("abyss_shield",
+      () -> new AbyssShieldItem(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> HEROBRINE_SWORD = ITEMS.register("herobrine_sword",
             () -> new HerobrineSwordItem(ModTiers.PAINITE, 6, -2.2f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
