@@ -39,16 +39,16 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
       () -> new EndRiftBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
-        .strength(3f).sound(SoundType.STONE), ModDimensions.GTDIM_KEY,
+        .strength(3f).sound(SoundType.LODESTONE), ModDimensions.GTDIM_KEY,
         new Vec3(0,0,0)), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> AMETHYST_STAIRS = registerBlock("amethyst_stairs",
             () -> new StairBlock(Blocks.AMETHYST_BLOCK::defaultBlockState, BlockBehaviour.Properties.of(Material.AMETHYST)
-                    .strength(1.5f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+                    .strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> AMETHYST_SLAB = registerBlock("amethyst_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
-                    .strength(1.5f).requiresCorrectToolForDrops()), ModCreativeModeTab.GET_OP_TAB);
+                    .strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)), ModCreativeModeTab.GET_OP_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
