@@ -62,6 +62,7 @@ public class PickasheFireballEntity extends LargeFireball implements IAnimatable
 	// Sets the animation
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		event.getController().setAnimation(new AnimationBuilder().addAnimation("roll", true));
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("spin", true));
 		return PlayState.CONTINUE;
 	}
 
