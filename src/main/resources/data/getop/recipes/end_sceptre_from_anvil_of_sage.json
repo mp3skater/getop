@@ -1,0 +1,9 @@
+{
+  "type": "getop:anvil_of_sage",
+  "ingredient": {
+    "item": "getop:broken_end_sceptre"
+  },
+  "output": {
+    "item": "getop:end_sceptre"
+  }
+}

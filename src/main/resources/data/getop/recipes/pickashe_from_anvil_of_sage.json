@@ -1,0 +1,9 @@
+{
+  "type": "getop:anvil_of_sage",
+  "ingredient": {
+    "item": "getop:broken_pickashe"
+  },
+  "output": {
+    "item": "getop:pickashe"
+  }
+}

@@ -101,8 +101,9 @@ public class AnvilOfSageBlock_Entity extends BlockEntity implements MenuProvider
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        inventory.setItem(0, itemHandler.getStackInSlot(0));
-        inventory.setItem(1, itemHandler.getStackInSlot(1));
+        for(int i = 0; i<itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 

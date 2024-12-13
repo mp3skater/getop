@@ -31,8 +31,11 @@ public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer simpleContainer, Level level) {
-        return simpleContainer.getItem(1).getItem() == ModItems.PAINITE_INGOT.get() &&
-          simpleContainer.getItem(0).getItem() instanceof BrokenWeapon;
+        if(level.isClientSide()) {
+            return false;
+        }
+
+        return input.getItem() == simpleContainer.getItem(0).getItem(); // input.test() getItem().test simpleContainer.getItem(0).getItem() instanceof BrokenWeapon;
     }
 
     @Override
@@ -63,6 +66,13 @@ public class AnvilOfSageRecipe implements Recipe<SimpleContainer> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        ingredients.add(Ingredient.of(input));
+        ingredients.add(Ingredient.of(ModItems.PAINITE_INGOT.get()));
+        return ingredients;
     }
 
     public static class Type implements RecipeType<AnvilOfSageRecipe> {
