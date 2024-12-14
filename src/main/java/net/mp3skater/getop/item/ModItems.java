@@ -43,7 +43,8 @@ public class ModItems {
       () -> new IceScytheItem(ModTiers.PAINITE, 2, -2.6f,
         new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> ABYSS_SHIELD = ITEMS.register("abyss_shield",
-      () -> new AbyssShieldItem(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
+      () -> new AbyssShieldItem(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)
+        .stacksTo(1)));
     public static final RegistryObject<Item> HEROBRINE_SWORD = ITEMS.register("herobrine_sword",
             () -> new HerobrineSwordItem(ModTiers.PAINITE, 6, -2.2f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));

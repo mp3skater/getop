@@ -1,0 +1,9 @@
+{
+  "type": "getop:anvil_of_sage",
+  "ingredient": {
+    "item": "getop:broken_abyss_shield"
+  },
+  "output": {
+    "item": "getop:abyss_shield"
+  }
+}

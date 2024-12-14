@@ -45,7 +45,8 @@ public class EndSceptreEntity extends ThrowableProjectile implements IAnimatable
 		super.onHit(pResult);
 
 		for(int i = 0; i < 32; ++i) {
-			this.level.addParticle(ParticleTypes.PORTAL, this.getX(), this.getY() + this.random.nextDouble() * 2.0D, this.getZ(), this.random.nextGaussian(), 0.0D, this.random.nextGaussian());
+			this.level.addParticle(ParticleTypes.PORTAL, this.getX(), this.getY() + this.random.nextDouble() * 2.0D,
+				this.getZ(), this.random.nextGaussian(), 0.0D, this.random.nextGaussian());
 		}
 
 		if(!this.level.isClientSide && !this.isRemoved()) {

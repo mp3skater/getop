@@ -49,6 +49,7 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         this.lookControl = new VoidShredderLookControl(this);
         setItemSlotAndDropWhenKilled(EquipmentSlot.MAINHAND, new ItemStack(ModItems.SENTINEL_BLADE.get()));
     }
+    private boolean charging = false;
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
@@ -86,22 +87,32 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
 
     // Sets the animation in different States
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        Random random = new Random();
+        int average = 400; // Average time (ticks I think) after which he spins his weapon
+
         Vec3 v = getDeltaMovement();
         // Entity is going up
         if (v.y > 0) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("up", true));
-            return PlayState.CONTINUE;
         }
         // Entity is moving (not up)
         else if(event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
-            return PlayState.CONTINUE;
+        }
+        // Hitting
+        else if(charging) {
+            charging = false;
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("hit", false));
+        }
+        // Make a spin
+        else if(random.nextInt()%average==0) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle2", false));
         }
         // Entity is not moving
         else {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-            return PlayState.CONTINUE;
         }
+        return PlayState.CONTINUE;
     }
 
     @Override
@@ -117,6 +128,7 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
     class ChargeTargetGoal extends Goal {
         public ChargeTargetGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+            charging = true;
         }
 
         /**
