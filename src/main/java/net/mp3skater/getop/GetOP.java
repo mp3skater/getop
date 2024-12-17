@@ -54,7 +54,8 @@ public class GetOP
 
         GeckoLib.initialize();
 
-        //eventBus.addListener(this::setup);
+        eventBus.addListener(this::setup);
+        eventBus.addListener(this::clientSetup);
 
         ModRecipes.register(eventBus);
 

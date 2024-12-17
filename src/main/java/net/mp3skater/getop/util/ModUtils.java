@@ -4,7 +4,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NoiseColumn;
@@ -59,7 +64,10 @@ public class ModUtils {
 				player.getDisplayName().getString(),
 				destinationWorld.dimension().location());
 
+			player.hurtMarked = true;
 			player.changeDimension(destinationWorld, new SimpleTeleporter(location));
+			player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 100, 1));
+			player.moveTo(location);
 		} else {
 			// Log more details for debugging
 			if (destinationWorld == null) {
