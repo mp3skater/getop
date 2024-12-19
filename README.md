@@ -4,10 +4,6 @@
 
 > A Minecraft-forge mod for 1.18.2-40.0.5
 
-<a align="center" href="http://www.youtube.com/watch?v=sruFdJCgIDo">
-<img alt="GetOP showcase thumbnail" width=90% src="https://tschipcraft.ddns.net/mod_resources/youtube_preview.php?id=sruFdJCgIDo" title="Watch on YouTube">
-</a>
-
 ## Features
 
 With this end game mod you can find very **OverPowered** weapons all around your world, explore the vast end to search for the new ore called "painite" and find the Herobrine sword to truely understand what your world has to offer!
