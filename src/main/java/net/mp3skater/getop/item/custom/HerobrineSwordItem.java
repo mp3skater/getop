@@ -39,13 +39,15 @@ public class HerobrineSwordItem extends SwordItem {
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		// Return if it isn't main hand
-		if(hand!=InteractionHand.MAIN_HAND) return super.use(level, player, hand);
+		if (hand != InteractionHand.MAIN_HAND) return super.use(level, player, hand);
 
 		// Normal Herobrine ability (lightning and tp)
-		if(!player.isShiftKeyDown()) lightningPower(level, player);
+		if (!player.isShiftKeyDown()) lightningPower(level, player);
 
-		// Go to GetOP Dimension
-		else ModUtils.teleportEntityToDimension(player, ModDimensions.GTDIM_KEY, new Vec3(0,0,0));
+			// Go to GetOP Dimension
+		else {
+			ModUtils.teleportEntityToDimension(player, ModDimensions.GTDIM_KEY, new Vec3(0, 100, 90));
+		}
 
 		return super.use(level, player, hand);
 	}

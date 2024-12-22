@@ -19,6 +19,11 @@
   "item.getop.herobrine_sword.tooltip": "Bring down lightning and move at the speed of light!",
   "item.getop.abyss_shield.tooltip": "Boost your enemies into their abyss!",
 
+  "block.getop.deathaxe_altar_block": "Death Axe Altar",
+  "block.getop.ice_scythe_altar_block": "Ice Scythe Altar",
+  "block.getop.pickashe_altar_block": "Pickashe Altar",
+  "block.getop.end_sceptre_altar_block": "End Sceptre Altar",
+
   "item.getop.broken_deathaxe": "Broken Deathaxe",
   "item.getop.broken_ice_scythe": " Broken Ice Scythe",
   "item.getop.broken_pickashe": "Broken Pickashe",

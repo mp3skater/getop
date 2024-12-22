@@ -28,6 +28,12 @@ public class ModEntityTypes {
           .sized(0.5F, 0.5F)
           .build(new ResourceLocation(GetOP.MOD_ID, "end_sceptre_entity").toString()));
 
+    public static final RegistryObject<EntityType<EndSceptreEntity>> ANIMATION_HELPER_ENTITY =
+      ENTITY_TYPES.register("animation_helper_entity",
+        () -> EntityType.Builder.of(EndSceptreEntity::new, MobCategory.MISC)
+          .sized(0F, 0F)
+          .build(new ResourceLocation(GetOP.MOD_ID, "animation_helper_entity").toString()));
+
     public static final RegistryObject<EntityType<PickasheFireballEntity>> PICKASHE_FIREBALL =
       ENTITY_TYPES.register("pickashe_fireball",
         () -> EntityType.Builder.of(PickasheFireballEntity::new, MobCategory.MISC)

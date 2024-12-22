@@ -3,6 +3,7 @@ package net.mp3skater.getop.block;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -13,6 +14,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mp3skater.getop.GetOP;
+import net.mp3skater.getop.block.custom.AltarBlock;
 import net.mp3skater.getop.block.custom.AnvilOfSageBlock;
 import net.mp3skater.getop.block.custom.EndRiftBlock;
 import net.mp3skater.getop.item.ModCreativeModeTab;
@@ -36,6 +38,22 @@ public class ModBlocks {
     public static final RegistryObject<Block> ANVILOFSAGE_BLOCK = registerBlock("anvilofsage_block",
             () -> new AnvilOfSageBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()),
             ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> DEATHAXE_ALTAR_BLOCK = registerBlock("deathaxe_altar_block",
+            () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+							ModItems.BROKEN_DEATHAXE), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> ICE_SCYTHE_ALTAR_BLOCK = registerBlock("ice_scythe_altar_block",
+            () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+							ModItems.BROKEN_ICE_SCYTHE), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> PICKASHE_ALTAR_BLOCK = registerBlock("pickashe_altar_block",
+            () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+              ModItems.BROKEN_PICKASHE), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> END_SCEPTRE_ALTAR_BLOCK = registerBlock("end_sceptre_altar_block",
+            () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+              ModItems.BROKEN_END_SCEPTRE), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
       () -> new EndRiftBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
