@@ -31,22 +31,22 @@ public class ModItems {
             () -> new DeathSwordItem(ModTiers.PAINITE, 2, -2.6f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> PICKASHE = ITEMS.register("pickashe",
-            () -> new PickAsheItem(ModTiers.PAINITE, 2, -2.6f,
+            () -> new PickAsheItem(ModTiers.PAINITE, 3, -3f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> END_SCEPTRE = ITEMS.register("end_sceptre",
             () -> new EndSceptreItem(ModTiers.PAINITE, 2, -2.6f,
                     new Item.Properties().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> SENTINEL_BLADE = ITEMS.register("sentinel_blade",
-            () -> new SwordItem(ModTiers.PAINITE, 2, -3.5f,
+            () -> new SwordItem(ModTiers.PAINITE, 2, -2.6f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> ICE_SCYTHE = ITEMS.register("ice_scythe",
-      () -> new IceScytheItem(ModTiers.PAINITE, 2, -2.6f,
+      () -> new IceScytheItem(ModTiers.PAINITE, 1, -2f,
         new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
     public static final RegistryObject<Item> ABYSS_SHIELD = ITEMS.register("abyss_shield",
       () -> new AbyssShieldItem(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)
         .stacksTo(1)));
     public static final RegistryObject<Item> HEROBRINE_SWORD = ITEMS.register("herobrine_sword",
-            () -> new HerobrineSwordItem(ModTiers.PAINITE, 6, -2.2f,
+            () -> new HerobrineSwordItem(ModTiers.PAINITE, 10, -2.2f,
                     new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB)));
 
     public static final RegistryObject<Item> VOID_SHREDDER_SPAWN_EGG = ITEMS.register("void_shredder_spawn_egg",
