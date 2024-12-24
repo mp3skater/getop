@@ -25,6 +25,7 @@ public class PickasheFireballEntity extends LargeFireball implements IAnimatable
 
 	// Explosion power
 	float power;
+	int despawnTimer = 0;
 
 	@Override
 	protected void defineSynchedData() {}
@@ -52,6 +53,13 @@ public class PickasheFireballEntity extends LargeFireball implements IAnimatable
 			this.discard();
 		} else {
 			super.tick();
+
+			despawnTimer++;
+
+			// Despawn after 5 sec
+			if(despawnTimer >= 100) {
+				this.discard();
+			}
 		}
 	}
 
