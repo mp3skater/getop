@@ -5,7 +5,7 @@
 		"3": "getop:block/weapon_base",
 		"4": "getop:block/base_frost_ice_sythe",
 		"5": "getop:block/base_ice_syphe",
-		"6": "getop:item/Dead_Ice Scythe",
+		"6": "getop:item/broken_ice_scythe",
 		"particle": "getop:block/base_frost_ice_sythe"
 	},
 	"elements": [

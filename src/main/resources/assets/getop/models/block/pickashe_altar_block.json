@@ -5,7 +5,7 @@
 		"3": "getop:block/weapon_base",
 		"4": "getop:block/base_flame_pickash",
 		"5": "getop:block/base_pickash",
-		"6": "getop:item/Dead_pickasch",
+		"6": "getop:item/broken_pickashe",
 		"particle": "getop:block/base_flame_pickash"
 	},
 	"elements": [

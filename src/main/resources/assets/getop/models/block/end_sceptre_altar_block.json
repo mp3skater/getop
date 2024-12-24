@@ -5,7 +5,7 @@
 		"3": "getop:block/weapon_base",
 		"4": "getop:block/base_end_septer",
 		"5": "getop:block/base_tp_end_septer",
-		"6": "getop:item/dead_ endscepter",
+		"6": "getop:item/broken_end_sceptre",
 		"particle": "getop:block/base_end_septer"
 	},
 	"elements": [

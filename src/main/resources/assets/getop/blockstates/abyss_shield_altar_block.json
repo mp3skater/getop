@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model": "getop:block/abyss_shield_altar_block" }
+    "facing=north": { "model": "getop:block/abyss_shield_altar_block" },
+    "facing=east": { "model": "getop:block/abyss_shield_altar_block" , "y": 90},
+    "facing=south": { "model": "getop:block/abyss_shield_altar_block" },
+    "facing=west": { "model": "getop:block/abyss_shield_altar_block", "y": 90 }
   }
 }
