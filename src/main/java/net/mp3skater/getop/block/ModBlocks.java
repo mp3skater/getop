@@ -52,8 +52,16 @@ public class ModBlocks {
               ModItems.BROKEN_PICKASHE), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_SCEPTRE_ALTAR_BLOCK = registerBlock("end_sceptre_altar_block",
-            () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
-              ModItems.BROKEN_END_SCEPTRE), ModCreativeModeTab.GET_OP_TAB);
+      () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+        ModItems.BROKEN_END_SCEPTRE), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> ABYSS_SHIELD_ALTAR_BLOCK = registerBlock("abyss_shield_altar_block",
+      () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+        ModItems.ABYSS_SHIELD), ModCreativeModeTab.GET_OP_TAB);
+
+    public static final RegistryObject<Block> HEROBRINE_ALTAR_BLOCK = registerBlock("herobrine_altar_block",
+      () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
+        ModItems.HEROBRINE_SWORD), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> END_RIFT_BLOCK = registerBlock("end_rift_block",
       () -> new EndRiftBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)

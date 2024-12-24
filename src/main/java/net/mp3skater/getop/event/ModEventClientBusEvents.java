@@ -47,5 +47,12 @@ public class ModEventClientBusEvents {
         EntityRenderers.register(ModEntityTypes.ENDSCEPTRE_ENTITY.get(),
           EndSceptreRenderer::new);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.END_RIFT_BLOCK.get(), RenderType.translucent());
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEATHAXE_ALTAR_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.END_SCEPTRE_ALTAR_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PICKASHE_ALTAR_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ICE_SCYTHE_ALTAR_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ABYSS_SHIELD_ALTAR_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEROBRINE_ALTAR_BLOCK.get(), RenderType.translucent());
     }
 }
