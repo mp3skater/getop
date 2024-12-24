@@ -57,7 +57,7 @@ public class PickasheFireballEntity extends LargeFireball implements IAnimatable
 			despawnTimer++;
 
 			// Despawn after 5 sec
-			if(despawnTimer >= 100) {
+			if(despawnTimer >= 60) {
 				this.discard();
 			}
 		}
