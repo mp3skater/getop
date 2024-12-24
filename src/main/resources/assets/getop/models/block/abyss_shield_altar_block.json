@@ -3,10 +3,11 @@
 	"texture_size": [256, 256],
 	"textures": {
 		"1": "getop:block/base_shield",
-		"2": "getop:block/dark_oak_planks",
+		"2": "minecraft:block/dark_oak_planks",
 		"3": "getop:block/weapon_base",
+		"4": "getop:block/base_magic_shield",
 		"5": "getop:block/abyss_shield_tx",
-		"particle": "getop:block/base_magic_shield"
+		"particle": "getop:block/base_shield"
 	},
 	"elements": [
 		{
@@ -440,12 +441,8 @@
 			"to": [2, 14.5, 1.4],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"east": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"south": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"west": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
-				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
+				"north": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
 			}
 		},
 		{
@@ -453,25 +450,17 @@
 			"to": [2, 14.5, 21.1],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"east": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"south": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"west": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
-				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
-			}
+				"north": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
+				}
 		},
 		{
 			"from": [9.8, 9.5, 9.25],
 			"to": [9.8, 14.5, 13.25],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"east": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"south": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"west": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
-				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
+				"east": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
 			}
 		},
 		{
@@ -479,12 +468,8 @@
 			"to": [-9.85, 14.5, 13.25],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"east": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"south": {"uv": [0, 0, 0, 5], "texture": "#missing"},
-				"west": {"uv": [0, 0, 12.8, 16], "texture": "#particle"},
-				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
-				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
+				"east": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
 			}
 		},
 		{
