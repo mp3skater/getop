@@ -1,13 +1,10 @@
 package net.mp3skater.getop;
 
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mp3skater.getop.block.ModBlocks;
@@ -30,7 +27,6 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(GetOP.MOD_ID)
 public class GetOP
 {
-
     public static final String MOD_ID = "getop";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -55,7 +51,6 @@ public class GetOP
         GeckoLib.initialize();
 
         eventBus.addListener(this::setup);
-        eventBus.addListener(this::clientSetup);
 
         ModRecipes.register(eventBus);
 
@@ -63,14 +58,10 @@ public class GetOP
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GetOPClientConfigs.SPEC, "getop-client.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GetOPCommonConfigs.SPEC, "getop-common.toml");
+
+        // Register for server and game events
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event) {
-
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.END_RIFT_BLOCK.get(), RenderType.translucent());
-    }
-
+    private void setup(final FMLCommonSetupEvent event) {}
 }

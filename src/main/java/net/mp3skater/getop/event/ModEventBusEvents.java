@@ -20,10 +20,6 @@ public class ModEventBusEvents {
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
         event.put(ModEntityTypes.VOID_SHREDDER.get(), VoidShredderEntity.setAttributes());
     }
-    @SubscribeEvent
-    public static void registerArmorRenderer(final EntityRenderersEvent.AddLayers event) {
-        GeoArmorRenderer.registerArmorRenderer(PotatoArmorItem.class, new PainiteArmorRenderer());
-    }
     public static void registerRecipeTypes() {
         Registry.register(Registry.RECIPE_TYPE, AnvilOfSageRecipe.Type.ID, AnvilOfSageRecipe.Type.INSTANCE);
     }
