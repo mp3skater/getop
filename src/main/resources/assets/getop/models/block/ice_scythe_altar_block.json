@@ -5,8 +5,8 @@
 		"3": "getop:block/weapon_base",
 		"4": "getop:block/base_frost_ice_sythe",
 		"5": "getop:block/base_ice_syphe",
-		"6": "getop:item/broken_ice_scythe",
-		"particle": "getop:block/base_ice_sythe"
+		"6": "getop:item/Dead_Ice Scythe",
+		"particle": "getop:block/base_frost_ice_sythe"
 	},
 	"elements": [
 		{
@@ -427,9 +427,9 @@
 			}
 		},
 		{
-			"from": [3, 11, 8],
-			"to": [13, 21, 8],
-			"rotation": {"angle": 45, "axis": "z", "origin": [8, 16, 8]},
+			"from": [1, 12, 8],
+			"to": [15, 26, 8],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 19, 8]},
 			"faces": {
 				"north": {"uv": [2, 0.5, 16, 15], "rotation": 270, "texture": "#6", "cullface": "east"},
 				"south": {"uv": [2, 0.5, 16, 15], "texture": "#6", "cullface": "east"}
@@ -441,8 +441,11 @@
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
 				"north": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
-				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
-
+				"east": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
+				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
 			}
 		},
 		{
@@ -451,9 +454,11 @@
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
 				"north": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
-				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
-
-
+				"east": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"south": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"up": {"uv": [0, 0, 0, 4], "rotation": 90, "texture": "#missing"},
+				"down": {"uv": [0, 0, 0, 4], "rotation": 270, "texture": "#missing"}
 			}
 		},
 		{
@@ -461,9 +466,12 @@
 			"to": [9.9, 14.5, 13.25],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
+				"north": {"uv": [0, 0, 3.2, 5], "texture": "#missing"},
 				"east": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
-				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
-
+				"south": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
+				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
 			}
 		},
 		{
@@ -471,10 +479,12 @@
 			"to": [-9.85, 14.5, 13.25],
 			"rotation": {"angle": 45, "axis": "y", "origin": [0, 9, 0]},
 			"faces": {
+				"north": {"uv": [0, 0, 3.2, 5], "texture": "#missing"},
 				"east": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
-				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"}
-
-
+				"south": {"uv": [0, 0, 0, 5], "texture": "#missing"},
+				"west": {"uv": [0, 0, 12.8, 16], "texture": "#4"},
+				"up": {"uv": [0, 0, 0, 4], "texture": "#missing"},
+				"down": {"uv": [0, 0, 0, 4], "texture": "#missing"}
 			}
 		},
 		{
