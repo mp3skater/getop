@@ -23,12 +23,14 @@
   "block.getop.ice_scythe_altar_block": "Ice Scythe Altar",
   "block.getop.pickashe_altar_block": "Pickashe Altar",
   "block.getop.end_sceptre_altar_block": "End Sceptre Altar",
+  "block.getop.herobrine_altar_block": "Herobrine Altar",
+  "block.getop.abyss_shield_altar_block": "Abyss Shield Altar",
 
   "item.getop.broken_deathaxe": "Broken Deathaxe",
   "item.getop.broken_ice_scythe": " Broken Ice Scythe",
   "item.getop.broken_pickashe": "Broken Pickashe",
   "item.getop.broken_end_sceptre": "Broken End Sceptre",
-  "item.getop.broken_herobrine_sword": "Herobrine Sword",
+  "item.getop.broken_abyss_shield": "Broken Abyss Shield",
 
   "item.getop.void_shredder_spawn_egg": "Void Shredder Spawn Egg",
   "entity.getop.void_shredder": "Pure Darkness",
@@ -46,6 +48,7 @@
   "block.getop.painite_ore_block": "Painite Ore",
   "block.getop.painite_block": "Painite Block",
   "block.getop.anvilofsage_block": "Anvil Of Sage",
+  "block.getop.end_rift_block": "End Rift",
 
   "block.getop.amethyst_stairs": "Amethyst Stairs",
   "block.getop.amethyst_slab": "Amethyst Slab",
