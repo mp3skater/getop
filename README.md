@@ -21,11 +21,6 @@ This data mod is client-/server-side, it needs to be installed on both places.
 
 [➜ For additional details, available settings and customization, take a look at the wiki](https://mp3skater.github.io/getop)
 
-<div align="center">
-    <a href="https://discord.gg/JepR5mXB"><img alt="Discord Server" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg"></a>
-    <a href="https://www.buymeacoffee.com/mp3skater"><img alt="Buy me a Coffee" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/donate/buymeacoffee-singular_vector.svg"></a>
-</div>
-
 ## Screenshots
 
 ## Installation
