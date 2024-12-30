@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " a ",
+        "bcd",
+        " e "
+    ],
+    "key": {
+        "a": {
+            "item": "getop:deathaxe"
+        },
+        "b": {
+            "item": "getop:pickashe"
+        },
+        "c": {
+            "item": "getop:end_sceptre"
+        },
+        "d": {
+            "item": "getop:ice_scythe"
+        },
+        "e": {
+            "item": "getop:abyss_shield"
+        }
+    },
+    "result": {
+        "item": "getop:end_rift_block",
+        "count": 1
+    }
+}

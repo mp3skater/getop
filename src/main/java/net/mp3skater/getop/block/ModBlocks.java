@@ -3,7 +3,6 @@ package net.mp3skater.getop.block;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -57,7 +56,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ABYSS_SHIELD_ALTAR_BLOCK = registerBlock("abyss_shield_altar_block",
       () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),
-        ModItems.ABYSS_SHIELD), ModCreativeModeTab.GET_OP_TAB);
+        ModItems.BROKEN_ABYSS_SHIELD), ModCreativeModeTab.GET_OP_TAB);
 
     public static final RegistryObject<Block> HEROBRINE_ALTAR_BLOCK = registerBlock("herobrine_altar_block",
       () -> new AltarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion(),

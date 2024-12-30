@@ -73,7 +73,9 @@ public class ModItems {
     public static final RegistryObject<Item> BROKEN_END_SCEPTRE = ITEMS.register("broken_end_sceptre",
             () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
     public static final RegistryObject<Item> BROKEN_ICE_SCYTHE = ITEMS.register("broken_ice_scythe",
-            () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+      () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
+    public static final RegistryObject<Item> BROKEN_ABYSS_SHIELD = ITEMS.register("broken_abyss_shield",
+      () -> new BrokenWeapon(new Item.Properties().fireResistant().tab(ModCreativeModeTab.GET_OP_TAB).stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

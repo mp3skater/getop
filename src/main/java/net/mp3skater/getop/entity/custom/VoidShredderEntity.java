@@ -91,26 +91,32 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
         int average = 400; // Average time (ticks I think) after which he spins his weapon
 
         Vec3 v = getDeltaMovement();
-        // Entity is going up
-        if (v.y > 0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("up", true));
+        // Entity is moving
+        if(event.isMoving()) {
+            // up
+            if(v.y > 0) event.getController().setAnimation(new AnimationBuilder()
+              .addAnimation("up", true));
+            // down
+            else if(v.y < 0) event.getController().setAnimation(new AnimationBuilder()
+              .addAnimation("down", true));
+            // idle
+            else event.getController().setAnimation(new AnimationBuilder()
+                  .addAnimation("idle", true));
         }
-        // Entity is moving (not up)
-        else if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("forward", true));
-        }
+        // idle
+        else event.getController().setAnimation(new AnimationBuilder()
+          .addAnimation("idle", true));
+
         // Hitting
-        else if(charging) {
+        if(charging) {
+            event.getController().setAnimation(new AnimationBuilder()
+              .addAnimation("hit", false));
             charging = false;
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("hit", false));
         }
         // Make a spin
         else if(random.nextInt()%average==0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle2", false));
-        }
-        // Entity is not moving
-        else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+            event.getController().setAnimation(new AnimationBuilder()
+              .addAnimation("idle2", false));
         }
         return PlayState.CONTINUE;
     }
@@ -128,7 +134,6 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
     class ChargeTargetGoal extends Goal {
         public ChargeTargetGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-            charging = true;
         }
 
         /**
@@ -152,6 +157,7 @@ public class VoidShredderEntity extends FlyingMob implements IAnimatable, Enemy 
                 Vec3 vec3 = livingentity.getEyePosition();
                 VoidShredderEntity.this.moveControl.setWantedPosition(vec3.x, vec3.y - 1, vec3.z, 8.0D);
             }
+            charging = true;
 
             VoidShredderEntity.this.playSound(SoundEvents.VEX_CHARGE, 2.0F, 1.0F);
         }
