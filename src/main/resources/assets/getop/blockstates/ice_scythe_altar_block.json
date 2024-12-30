@@ -1,8 +1,5 @@
 {
   "variants": {
-    "facing=north": { "model": "getop:block/ice_scythe_altar_block" },
-    "facing=east": { "model": "getop:block/ice_scythe_altar_block" , "y": 90},
-    "facing=south": { "model": "getop:block/ice_scythe_altar_block" },
-    "facing=west": { "model": "getop:block/ice_scythe_altar_block", "y": 90 }
+    "": { "model": "getop:block/ice_scythe_altar_block" }
   }
 }
